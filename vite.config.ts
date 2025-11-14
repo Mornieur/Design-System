@@ -28,9 +28,9 @@ export default defineConfig(({ mode }) => {
     build: {
       lib: {
         entry: path.resolve(__dirname, 'src/index.ts'),
-        name: 'ByxDesignSystem',
+        name: 'DesignSystem',
         formats: ['es', 'cjs', 'umd'],
-        fileName: (format) => `byx-design-system.${format}.js`
+        fileName: (format) => `design-system.${format}.js`
       },
       rollupOptions: {
         external: ['react', 'react-dom'],
