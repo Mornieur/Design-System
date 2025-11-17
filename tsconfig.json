@@ -18,9 +18,11 @@
     "types": [
       "vitest/globals",
       "@testing-library/jest-dom",
-      "@storybook/addons",
       "@storybook/react",
-      "@types/react"
+      "@types/react",
+      "node",
+      "vitest",
+      "react"
     ]
   },
   "include": ["src", "vite.config.ts", "src/__tests__/setup/setup.tsx"],
