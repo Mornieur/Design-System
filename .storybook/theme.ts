@@ -1,27 +1,29 @@
 import { create } from 'storybook/theming';
+import { fonts } from '../src/design-tokens/fonts';
 
 export default create({
   base: 'dark',
+
   colorPrimary: '#7928CA',
   colorSecondary: '#FF3366',
 
-  appBg: '#F5F5F5',
-  appContentBg: '#FFFFFF',
-  appBorderColor: '#E0E0E0',
+  appBg: '#1A1A1A',
+  appContentBg: '#1F1F1F',
+  appBorderColor: '#333333',
   appBorderRadius: 8,
 
-  fontBase: '"Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif',
+  fontBase: fonts.body,
   fontCode: 'monospace',
 
-  textColor: '#333333',
-  textInverseColor: '#FFFFFF',
+  textColor: '#FFFFFF',
+  textInverseColor: '#000000',
 
-  barTextColor: '#333333',
+  barTextColor: '#CCCCCC',
   barSelectedColor: '#7928CA',
-  barBg: '#FFFFFF',
+  barBg: '#1F1F1F',
 
-  inputBg: '#FFFFFF',
-  inputBorder: '#E0E0E0',
-  inputTextColor: '#333333',
+  inputBg: '#2A2A2A',
+  inputBorder: '#444444',
+  inputTextColor: '#FFFFFF',
   inputBorderRadius: 4
 });
