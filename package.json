@@ -10,10 +10,26 @@
     "lint:fix": "eslint . --ext .ts,.tsx --fix",
     "format": "prettier --write .",
     "test": "vitest run",
-    "test:ui": "vitest --ui",
+    "test:ui": "vitest --ui --coverage.enabled=true",
+    "test:ci": "vitest run --coverage --poolOptions.forks.singleFork",
+    "prepare": "husky",
+    "type-check": "tsc --noEmit",
     "coverage": "vitest run --coverage",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,css,scss}": [
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "@stitches/react": "^1.2.8",
@@ -60,7 +76,9 @@
     "eslint-plugin-storybook": "10.0.7",
     "globals": "^16.5.0",
     "happy-dom": "^20.0.10",
+    "husky": "^9.1.7",
     "jsdom": "^27.1.0",
+    "lint-staged": "^16.2.6",
     "playwright": "^1.55.1",
     "prettier": "^3.6.2",
     "storybook-dark-mode": "^4.0.2",
