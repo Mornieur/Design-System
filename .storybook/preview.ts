@@ -4,7 +4,6 @@ import customTheme from './theme';
 const preview: Preview = {
   parameters: {
     controls: { expanded: true },
-
     backgrounds: {
       default: 'dark',
       values: [
@@ -12,10 +11,8 @@ const preview: Preview = {
         { name: 'dark', value: '#1A1A1A' }
       ]
     },
-
     darkMode: {
       current: 'dark',
-
       dark: customTheme,
       light: {
         ...customTheme,
@@ -23,6 +20,11 @@ const preview: Preview = {
         appBg: '#ffffff',
         textColor: '#000000'
       }
+    },
+    layout: 'centered',
+    viewMode: 'docs',
+    previewTabs: {
+      'storybook/docs/panel': { index: -1 }
     }
   }
 };
