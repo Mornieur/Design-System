@@ -1,5 +1,5 @@
 import { Button } from '..';
-import type { Meta, StoryObj } from '@storybook/react-vite';
+import type { Meta, StoryObj } from '@storybook/nextjs';
 import { expect } from 'storybook/test';
 
 const meta = {
@@ -23,7 +23,7 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
   args: { children: 'Clique Aqui', variant: 'primary' },
 
-  play: async ({ canvas, userEvent }) => {
+  play: async ({ canvas }) => {
     const button = canvas.getByRole('button', { name: /clique aqui/i });
 
     await expect(button).toBeVisible();
