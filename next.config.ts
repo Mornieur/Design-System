@@ -4,6 +4,9 @@ const withMDX = createMDX({
   extension: /\.mdx?$/
 });
 
-export default withMDX({
-  pageExtensions: ['ts', 'tsx', 'mdx']
-});
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  pageExtensions: ['ts', 'tsx', 'md', 'mdx']
+};
+
+export default withMDX(nextConfig);
