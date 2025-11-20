@@ -39,8 +39,8 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'happy-dom',
-    setupFiles: [path.resolve(__dirname, 'src/__tests__/setup/setup.tsx')],
-    include: ['**/*.test.tsx'],
+    setupFiles: ['src/tests/setup.ts'],
+    include: ['**/*.test.{ts,tsx}'],
     reporters: ['verbose'],
     coverage: {
       provider: 'v8',

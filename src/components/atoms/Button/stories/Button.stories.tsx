@@ -1,5 +1,6 @@
 import { Button } from '..';
-import type { StoryObj } from '@storybook/react-vite';
+import type { Meta, StoryObj } from '@storybook/nextjs';
+import { expect } from 'storybook/test';
 
 const meta = {
   title: 'Atoms/Button',
@@ -7,13 +8,13 @@ const meta = {
   parameters: {
     layout: 'centered'
   },
-  tags: ['autodocs', 'stable'],
+  tags: ['autodocs'],
   argTypes: {
     children: { control: 'text' },
     variant: { control: 'radio', options: ['primary', 'secondary', 'accent'] },
     disabled: { control: 'boolean' }
   }
-};
+} satisfies Meta<typeof Button>;
 
 export default meta;
 
@@ -21,11 +22,12 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: { children: 'Clique Aqui', variant: 'primary' },
-  play: async ({ canvasElement }) => {
-    const button = canvasElement.querySelector('button');
-    if (!button) throw new Error('Botão não encontrado');
-    expect(button).toHaveTextContent('Clique Aqui');
-    expect(button).not.toBeDisabled();
+
+  play: async ({ canvas }) => {
+    const button = canvas.getByRole('button', { name: /clique aqui/i });
+
+    await expect(button).toBeVisible();
+    await expect(button).not.toBeDisabled();
   }
 };
 
@@ -48,9 +50,11 @@ export const AllVariants: Story = {
 
 export const Interactive: Story = {
   args: { children: 'Clique Aqui', variant: 'primary', disabled: false },
-  argTypes: {
-    children: { control: 'text' },
-    variant: { control: 'radio', options: ['primary', 'secondary', 'accent'] },
-    disabled: { control: 'boolean' }
+
+  play: async ({ canvas, userEvent }) => {
+    const btn = canvas.getByRole('button');
+
+    await expect(btn).toBeVisible();
+    await userEvent.click(btn);
   }
 };

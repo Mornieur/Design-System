@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ],
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "allowJs": false,
@@ -11,9 +15,11 @@
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     },
     "types": [
       "vitest/globals",
@@ -23,8 +29,23 @@
       "node",
       "vitest",
       "react"
+    ],
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
     ]
   },
-  "include": ["src", "vite.config.ts", "src/__tests__/setup/setup.tsx"],
-  "exclude": ["node_modules", "dist", "coverage"]
+  "include": [
+    "src",
+    "src/tests/setup/setup.tsx",
+    "vite.config.ts",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "coverage"
+  ]
 }

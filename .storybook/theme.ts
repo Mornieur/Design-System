@@ -1,8 +1,11 @@
-import { create } from 'storybook/theming';
+import { create } from 'storybook/theming/create';
 import { fonts } from '../src/design-tokens/fonts';
 
 export default create({
   base: 'dark',
+  brandTitle: 'Ayumi Design System',
+  brandUrl: 'https://github.com/Mornieur/Design-System',
+  brandImage: '/logo.png',
 
   colorPrimary: '#7928CA',
   colorSecondary: '#FF3366',
