@@ -1,5 +1,6 @@
-import { FormPage } from "@/components/templates/FormPage";
+
 
 export default function Page() {
-  return <FormPage />;
-}
+  return (
+    <h1>hello world</h1>
+  )}
