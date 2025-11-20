@@ -25,6 +25,6 @@
       "react"
     ]
   },
-  "include": ["src", "vite.config.ts", "src/__tests__/setup/setup.tsx"],
+  "include": ["src", "vite.config.ts", "src/tests/setup/setup.tsx"],
   "exclude": ["node_modules", "dist", "coverage"]
 }
