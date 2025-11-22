@@ -1,0 +1,110 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { radii } from '../radii';
+
+<Meta title="Design Tokens/Radii" />
+
+# 🟦 Ayumi Design Token — Radius Tokens
+
+Corner radius tokens ensure consistency across buttons, cards, inputs and all UI surfaces.  
+They define how rounded or sharp components should look throughout the design system.
+
+---
+
+# 📏 Radius Scale
+
+- **small — {radii.small}**
+- **medium — {radii.medium}**
+- **large — {radii.large}**
+- **round — {radii.round}** (perfect circle)
+
+---
+
+# 🎨 Visual Samples
+
+## Small — `{radii.small}`
+
+<div
+  style={{
+    width: '80px',
+    height: '40px',
+    background: '#e5e5e5',
+    borderRadius: radii.small,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: '12px',
+    marginBottom: '16px'
+  }}
+>
+  {radii.small}
+</div>
+
+---
+
+## Medium — `{radii.medium}`
+
+<div
+  style={{
+    width: '80px',
+    height: '40px',
+    background: '#e5e5e5',
+    borderRadius: radii.medium,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: '12px',
+    marginBottom: '16px'
+  }}
+>
+  {radii.medium}
+</div>
+
+---
+
+## Large — `{radii.large}`
+
+<div
+  style={{
+    width: '80px',
+    height: '40px',
+    background: '#e5e5e5',
+    borderRadius: radii.large,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: '12px',
+    marginBottom: '16px'
+  }}
+>
+  {radii.large}
+</div>
+
+---
+
+## Round — `{radii.round}`
+
+<div
+  style={{
+    width: '60px',
+    height: '60px',
+    background: '#e5e5e5',
+    borderRadius: radii.round,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: '18px'
+  }}
+>
+  ●
+</div>
+
+---
+
+# 📐 Usage Guidelines
+
+- **small** → subtle rounding for inputs, badges, micro UI  
+- **medium** → default rounding for cards, buttons, fields  
+- **large** → expressive rounding for surfaces (modals, elevated UI)  
+- **round** → icons, avatars, and circular interactive elements
+
+---

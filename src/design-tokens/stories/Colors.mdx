@@ -1,0 +1,91 @@
+import { Meta, ColorItem, ColorPalette } from '@storybook/addon-docs/blocks';
+import { colors } from '../colors';
+
+<Meta title="Design Tokens/Colors" />
+
+# 🎨 Ayumi Design Token — Color Tokens
+
+The Ayumi Design Token color palette is inspired by handcrafted tattoo aesthetics:  
+strong contrasts, expressive reds, pure ink blacks, and warm tones reminiscent of skin and the studio environment.
+
+These colors serve as the foundation of the design system — guiding everything from the artist’s website to future internal tools.
+
+---
+
+## 🖤 Brand Colors
+
+<ColorPalette>
+  <ColorItem 
+    title="Primary — Ayumi Red"
+    subtitle={colors.primary}
+    colors={[colors.primary]}
+  />
+  <ColorItem 
+    title="Secondary — Deep Violet"
+    subtitle={colors.secondary}
+    colors={[colors.secondary]}
+  />
+  <ColorItem 
+    title="Accent — Golden Touch"
+    subtitle={colors.accent}
+    colors={[colors.accent]}
+  />
+  <ColorItem 
+    title="Japanese Red — Traditional Ink"
+    subtitle={colors.japaneseRed}
+    colors={[colors.japaneseRed]}
+  />
+</ColorPalette>
+
+These core tones represent the artist’s identity:  
+traditional reds, deep violet, and gold tones inspired by Japanese tattoo culture.
+
+---
+
+## 🧩 Neutral Palette
+
+<ColorPalette>
+  <ColorItem 
+    title="Background — Soft Canvas"
+    subtitle={colors.background}
+    colors={[colors.background]}
+  />
+  <ColorItem 
+    title="Text — Deep Shadow"
+    subtitle={colors.text}
+    colors={[colors.text]}
+  />
+  <ColorItem
+    title="White — Studio Light"
+    subtitle={colors.white}
+    colors={[colors.white]}
+  />
+  <ColorItem
+    title="Black — Solid Black"
+    subtitle={colors.black}
+    colors={[colors.black]}
+  />
+  <ColorItem
+    title="Tattoo Ink — Pure Ink Black"
+    subtitle={colors.tattooInk}
+    colors={[colors.tattooInk]}
+  />
+</ColorPalette>
+
+This neutral palette balances the brand’s strong colors,  
+providing readability, contrast, and structural stability across layouts.
+
+---
+
+## 📝 Optional — Feedback System (future tokens)
+
+> *These tokens are **not yet part of `colors.ts`**, but can be introduced later.*
+
+```tsx
+// Example only (does not render because tokens do not exist yet)
+// <ColorPalette>
+//   <ColorItem title="Success" subtitle="#4caf50" colors={['#4caf50']} />
+//   <ColorItem title="Warning" subtitle="#ff9800" colors={['#ff9800']} />
+//   <ColorItem title="Error" subtitle="#f44336" colors={['#f44336']} />
+//   <ColorItem title="Info" subtitle="#2196f3" colors={['#2196f3']} />
+// </ColorPalette>
