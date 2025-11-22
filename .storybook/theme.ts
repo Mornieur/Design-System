@@ -1,5 +1,5 @@
 import { create } from 'storybook/theming/create';
-import { fonts } from '../src/design-tokens/fonts';
+import { typography } from '../src/design-tokens/typography';
 
 export default create({
   base: 'dark',
@@ -15,7 +15,7 @@ export default create({
   appBorderColor: '#333333',
   appBorderRadius: 8,
 
-  fontBase: fonts.body,
+  fontBase: typography.body,
   fontCode: 'monospace',
 
   textColor: '#FFFFFF',
