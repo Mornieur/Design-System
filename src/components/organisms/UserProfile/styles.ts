@@ -1,5 +1,5 @@
 import { styled } from '@stitches/react';
-import { colors, space, radii, fonts } from '@/design-tokens';
+import { colors, space, radii, typography } from '@/design-tokens';
 
 export const ProfileContainer = styled('div', {
   display: 'flex',
@@ -24,13 +24,13 @@ export const Info = styled('div', {
 });
 
 export const Name = styled('span', {
-  fontFamily: fonts.heading,
+  fontFamily: typography.heading,
   fontSize: '16px',
   color: colors.text
 });
 
 export const Role = styled('span', {
-  fontFamily: fonts.body,
+  fontFamily: typography.body,
   fontSize: '14px',
   color: colors.secondary
 });
