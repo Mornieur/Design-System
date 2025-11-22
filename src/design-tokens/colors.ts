@@ -7,5 +7,8 @@ export const colors = {
   white: '#ffffff',
   black: '#000000',
   tattooInk: '#2b2b2b',
-  japaneseRed: '#e60026'
+  japaneseRed: '#e60026', 
+
+  //TODO: atualizar storie e configuração do storybook para refletir essa mudança
+  textSecondary: '#555555'
 };

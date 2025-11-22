@@ -1,6 +1,8 @@
 import { ReactNode } from 'react';
 import * as S from './styles';
 
+//TODO: criar testes unitários
+
 export type CardProps = {
   title: string;
   children: ReactNode;

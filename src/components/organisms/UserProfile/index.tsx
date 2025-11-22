@@ -1,6 +1,8 @@
 import * as S from './styles';
 import { Button } from '@/components/atoms/Button';
 
+//TODO: criar testes unitários
+
 type UserProfileProps = {
   name: string;
   role: string;
