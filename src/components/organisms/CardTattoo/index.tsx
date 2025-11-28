@@ -2,7 +2,6 @@ import { Card } from '@/components/molecules/Card';
 import { Carousel } from '@/components/molecules/Carousel';
 import * as S from './styles';
 
-//TODO: criar testes unitários
 
 export type CardTattooProps = {
   title: string;

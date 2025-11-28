@@ -2,7 +2,6 @@ import React, { useCallback } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import * as S from './styles';
 
-//TODO: criar testes unitários
 
 export type CarouselProps = {
   images: string[];

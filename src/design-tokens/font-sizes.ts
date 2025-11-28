@@ -5,4 +5,4 @@ export const fontSizes = {
   xl: '1.5rem'
 };
 
-// TODO: Criação de stories para os tokens de fontSizes
+// TODO: Criação de mdx para os tokens de fontSizes
