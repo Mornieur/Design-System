@@ -3,9 +3,9 @@ import { typography } from '../src/design-tokens/typography';
 
 export default create({
   base: 'dark',
-  brandTitle: 'Ayumi Design System',
+  brandTitle: 'Feitoza Design System',
   brandUrl: 'https://github.com/Mornieur/Design-System',
-  brandImage: '/logo.png',
+  brandImage: '/logo.jpg',
 
   colorPrimary: '#7928CA',
   colorSecondary: '#FF3366',

@@ -1,92 +1,32 @@
-import { Typeset, Meta } from '@storybook/addon-docs/blocks';
+import { Meta, Typeset } from '@storybook/addon-docs/blocks';
 import { typography } from '../typography';
 
-<Meta title="Design Tokens/Typography" />
+<Meta title="Foundations/Typography" />
 
-# ✒️ Ayumi Design Token — Typography Tokens
-
-Ayumi Design Token’s typography uses three main font families:  
-**Body**, **Heading**, and **Accent**, each representing clarity, hierarchy, and personality.
-
----
-
-# 🧩 Font Families
-
----
-
-## ✍️ Body Font — `{typography.body}`
-
-<Typeset
-  fontFamily={typography.body}
-  sampleText="The quick brown fox jumps over the lazy dog."
-  fontSizes={[
-    '0.75rem',
-    '0.875rem',
-    '1rem',
-    '1.25rem',
-    '1.5rem',
-    '1.875rem',
-    '2.25rem',
-    '3rem'
-  ]}
-/>
-
----
-
-## 🖋 Heading Font — `{typography.heading}`
+## Heading — Outfit
 
 <Typeset
   fontFamily={typography.heading}
-  fontWeight={600}
   sampleText="The quick brown fox jumps over the lazy dog."
-  fontSizes={[
-    '0.875rem',
-    '1rem',
-    '1.25rem',
-    '1.5rem',
-    '1.875rem',
-    '2.25rem',
-    '3rem'
-  ]}
+  fontSizes={['48px', '40px', '32px', '28px', '24px', '20px']}
 />
 
 ---
 
-## 🎎 Accent Font — `{typography.accent}`
+## Body — Inter
+
+<Typeset
+  fontFamily={typography.body}
+  sampleText="The quick brown fox jumps over the lazy dog. This is the base body text used for paragraphs, labels and UI copy."
+  fontSizes={['16px']}
+/>
+
+---
+
+## Accent — Space Grotesk
 
 <Typeset
   fontFamily={typography.accent}
-  sampleText="The quick brown fox jumps over the lazy dog."
-  fontSizes={[
-    '0.875rem',
-    '1rem',
-    '1.25rem',
-    '1.5rem'
-  ]}
+  sampleText="Accent text — used for highlights, metrics and emphasis."
+  fontSizes={['20px']}
 />
-
----
-
-# 📏 Scale Reference
-
-For reference, this is the adopted type scale:
-
-- **100 — 0.75rem**  
-- **200 — 0.875rem**  
-- **300 — 1rem**  
-- **400 — 1.25rem**  
-- **500 — 1.5rem**  
-- **600 — 1.875rem**  
-- **700 — 2.25rem**  
-- **800 — 3rem**
-
----
-
-# 📐 Usage Guidelines
-
-- **Body** → texts, labels, paragraphs, and reading areas.  
-- **Heading** → titles, sections, and content hierarchy.  
-- **Accent** → stylized details and microtypography.
-
----
-

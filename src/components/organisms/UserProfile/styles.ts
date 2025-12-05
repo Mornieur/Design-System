@@ -14,7 +14,7 @@ export const Avatar = styled('div', {
   width: '64px',
   height: '64px',
   borderRadius: radii.round,
-  backgroundColor: colors.tattooInk
+  backgroundColor: colors.background
 });
 
 export const Info = styled('div', {

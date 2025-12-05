@@ -12,6 +12,6 @@ const Template: StoryFn<typeof UserProfile> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-  name: 'Ayumi',
+  name: 'Feitoza',
   role: 'Tatuadora'
 };

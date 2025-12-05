@@ -1,91 +1,46 @@
-import { Meta, ColorItem, ColorPalette } from '@storybook/addon-docs/blocks';
+import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs/blocks';
 import { colors } from '../colors';
 
-<Meta title="Design Tokens/Colors" />
+<Meta title="Foundations/Colors" />
 
-# 🎨 Ayumi Design Token — Color Tokens
+# 🎨 Colors
 
-The Ayumi Design Token color palette is inspired by handcrafted tattoo aesthetics:  
-strong contrasts, expressive reds, pure ink blacks, and warm tones reminiscent of skin and the studio environment.
-
-These colors serve as the foundation of the design system — guiding everything from the artist’s website to future internal tools.
+The FeitozaUI color system is focused on clarity, contrast and scalability.  
+It provides a clean foundation for components, ensuring consistency across themes and interfaces.
 
 ---
 
-## 🖤 Brand Colors
+## Brand Colors
 
 <ColorPalette>
-  <ColorItem 
-    title="Primary — Ayumi Red"
-    subtitle={colors.primary}
-    colors={[colors.primary]}
-  />
-  <ColorItem 
-    title="Secondary — Deep Violet"
-    subtitle={colors.secondary}
-    colors={[colors.secondary]}
-  />
-  <ColorItem 
-    title="Accent — Golden Touch"
-    subtitle={colors.accent}
-    colors={[colors.accent]}
-  />
-  <ColorItem 
-    title="Japanese Red — Traditional Ink"
-    subtitle={colors.japaneseRed}
-    colors={[colors.japaneseRed]}
-  />
+  <ColorItem title="Primary" subtitle={colors.primary} colors={[colors.primary]} />
+  <ColorItem title="Primary Dark" subtitle={colors.primaryDark} colors={[colors.primaryDark]} />
+  <ColorItem title="Secondary" subtitle={colors.secondary} colors={[colors.secondary]} />
+  <ColorItem title="Accent" subtitle={colors.accent} colors={[colors.accent]} />
+  <ColorItem title="Gradient Start" subtitle={colors.gradientStart} colors={[colors.gradientStart]} />
+  <ColorItem title="Gradient End" subtitle={colors.gradientEnd} colors={[colors.gradientEnd]} />
 </ColorPalette>
-
-These core tones represent the artist’s identity:  
-traditional reds, deep violet, and gold tones inspired by Japanese tattoo culture.
 
 ---
 
-## 🧩 Neutral Palette
+## Neutral Colors
 
 <ColorPalette>
-  <ColorItem 
-    title="Background — Soft Canvas"
-    subtitle={colors.background}
-    colors={[colors.background]}
-  />
-  <ColorItem 
-    title="Text — Deep Shadow"
-    subtitle={colors.text}
-    colors={[colors.text]}
-  />
-  <ColorItem
-    title="White — Studio Light"
-    subtitle={colors.white}
-    colors={[colors.white]}
-  />
-  <ColorItem
-    title="Black — Solid Black"
-    subtitle={colors.black}
-    colors={[colors.black]}
-  />
-  <ColorItem
-    title="Tattoo Ink — Pure Ink Black"
-    subtitle={colors.tattooInk}
-    colors={[colors.tattooInk]}
-  />
+  <ColorItem title="Background" subtitle={colors.background} colors={[colors.background]} />
+  <ColorItem title="Background Alt" subtitle={colors.backgroundAlt} colors={[colors.backgroundAlt]} />
+  <ColorItem title="Text" subtitle={colors.text} colors={[colors.text]} />
+  <ColorItem title="Text Secondary" subtitle={colors.textSecondary} colors={[colors.textSecondary]} />
+  <ColorItem title="White" subtitle={colors.white} colors={[colors.white]} />
+  <ColorItem title="Black" subtitle={colors.black} colors={[colors.black]} />
 </ColorPalette>
-
-This neutral palette balances the brand’s strong colors,  
-providing readability, contrast, and structural stability across layouts.
 
 ---
 
-## 📝 Optional — Feedback System (future tokens)
+## Feedback Colors
 
-> *These tokens are **not yet part of `colors.ts`**, but can be introduced later.*
-
-```tsx
-// Example only (does not render because tokens do not exist yet)
-// <ColorPalette>
-//   <ColorItem title="Success" subtitle="#4caf50" colors={['#4caf50']} />
-//   <ColorItem title="Warning" subtitle="#ff9800" colors={['#ff9800']} />
-//   <ColorItem title="Error" subtitle="#f44336" colors={['#f44336']} />
-//   <ColorItem title="Info" subtitle="#2196f3" colors={['#2196f3']} />
-// </ColorPalette>
+<ColorPalette>
+  <ColorItem title="Success" subtitle={colors.success} colors={[colors.success]} />
+  <ColorItem title="Warning" subtitle={colors.warning} colors={[colors.warning]} />
+  <ColorItem title="Error" subtitle={colors.error} colors={[colors.error]} />
+  <ColorItem title="Info" subtitle={colors.info} colors={[colors.info]} />
+</ColorPalette>

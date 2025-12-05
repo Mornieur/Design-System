@@ -1,7 +1,5 @@
 export const typography = {
   body: "'Inter', sans-serif",
-  heading: "'Montserrat', sans-serif",
-  accent: "'Sawarabi Gothic', sans-serif",
-
-
+  heading: "'Outfit', sans-serif",
+  accent: "'Space Grotesk', sans-serif"
 };

@@ -1,14 +1,24 @@
 export const colors = {
-  primary: '#c44844',
-  secondary: '#3b1e5f',
-  accent: '#f5d142',
-  background: '#fdf6f0',
-  text: '#1a1a1a',
-  white: '#ffffff',
-  black: '#000000',
-  tattooInk: '#2b2b2b',
-  japaneseRed: '#e60026', 
+  // Brand
+  primary: '#FF6B6F',
+  primaryDark: '#D5485A',
+  secondary: '#FF8A3D',
+  accent: '#FFC347',
 
-  //TODO: atualizar storie e configuração do storybook para refletir essa mudança
-  textSecondary: '#555555'
+  gradientStart: '#FF4F79',
+  gradientEnd: '#FFCA5F',
+
+  // Neutrals
+  background: '#0E1A24',
+  backgroundAlt: '#142330',
+  text: '#F2F6FA',
+  textSecondary: '#AAB8C5',
+  white: '#FFFFFF',
+  black: '#000000',
+
+  // Feedback
+  success: '#28C76F',
+  warning: '#FFB547',
+  error: '#FF4C4C',
+  info: '#3EB7FF'
 };
