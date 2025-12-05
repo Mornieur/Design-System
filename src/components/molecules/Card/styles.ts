@@ -1,5 +1,5 @@
 import { styled } from '@stitches/react';
-import { colors, space, radii, fonts } from '@/design-tokens';
+import { colors, space, radii, typography } from '@/design-tokens';
 
 export const CardContainer = styled('div', {
   backgroundColor: colors.white,
@@ -8,7 +8,7 @@ export const CardContainer = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   gap: space[3],
-  fontFamily: fonts.body,
+  fontFamily: typography.body,
 
   variants: {
     elevation: {
@@ -25,7 +25,7 @@ export const CardContainer = styled('div', {
 });
 
 export const CardTitle = styled('h3', {
-  fontFamily: fonts.heading,
+  fontFamily: typography.heading,
   fontSize: '18px',
   fontWeight: 600,
   color: colors.text,

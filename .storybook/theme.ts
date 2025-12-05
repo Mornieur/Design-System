@@ -1,11 +1,11 @@
 import { create } from 'storybook/theming/create';
-import { fonts } from '../src/design-tokens/fonts';
+import { typography } from '../src/design-tokens/typography';
 
 export default create({
   base: 'dark',
-  brandTitle: 'Ayumi Design System',
+  brandTitle: 'Feitoza Design System',
   brandUrl: 'https://github.com/Mornieur/Design-System',
-  brandImage: '/logo.png',
+  brandImage: '/logo.jpg',
 
   colorPrimary: '#7928CA',
   colorSecondary: '#FF3366',
@@ -15,7 +15,7 @@ export default create({
   appBorderColor: '#333333',
   appBorderRadius: 8,
 
-  fontBase: fonts.body,
+  fontBase: typography.body,
   fontCode: 'monospace',
 
   textColor: '#FFFFFF',

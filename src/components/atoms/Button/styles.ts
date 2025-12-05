@@ -1,8 +1,8 @@
 import { styled } from '@stitches/react';
-import { colors, space, radii, fonts } from '@/design-tokens';
+import { colors, space, radii, typography } from '@/design-tokens';
 
 export const StyledButton = styled('button', {
-  fontFamily: fonts.body,
+  fontFamily: typography.body,
   borderRadius: radii.medium,
   padding: `${space[3]} ${space[4]}`,
   border: 'none',

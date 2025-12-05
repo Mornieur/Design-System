@@ -1,0 +1,46 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs/blocks';
+import { colors } from '../colors';
+
+<Meta title="Foundations/Colors" />
+
+# 🎨 Colors
+
+The FeitozaUI color system is focused on clarity, contrast and scalability.  
+It provides a clean foundation for components, ensuring consistency across themes and interfaces.
+
+---
+
+## Brand Colors
+
+<ColorPalette>
+  <ColorItem title="Primary" subtitle={colors.primary} colors={[colors.primary]} />
+  <ColorItem title="Primary Dark" subtitle={colors.primaryDark} colors={[colors.primaryDark]} />
+  <ColorItem title="Secondary" subtitle={colors.secondary} colors={[colors.secondary]} />
+  <ColorItem title="Accent" subtitle={colors.accent} colors={[colors.accent]} />
+  <ColorItem title="Gradient Start" subtitle={colors.gradientStart} colors={[colors.gradientStart]} />
+  <ColorItem title="Gradient End" subtitle={colors.gradientEnd} colors={[colors.gradientEnd]} />
+</ColorPalette>
+
+---
+
+## Neutral Colors
+
+<ColorPalette>
+  <ColorItem title="Background" subtitle={colors.background} colors={[colors.background]} />
+  <ColorItem title="Background Alt" subtitle={colors.backgroundAlt} colors={[colors.backgroundAlt]} />
+  <ColorItem title="Text" subtitle={colors.text} colors={[colors.text]} />
+  <ColorItem title="Text Secondary" subtitle={colors.textSecondary} colors={[colors.textSecondary]} />
+  <ColorItem title="White" subtitle={colors.white} colors={[colors.white]} />
+  <ColorItem title="Black" subtitle={colors.black} colors={[colors.black]} />
+</ColorPalette>
+
+---
+
+## Feedback Colors
+
+<ColorPalette>
+  <ColorItem title="Success" subtitle={colors.success} colors={[colors.success]} />
+  <ColorItem title="Warning" subtitle={colors.warning} colors={[colors.warning]} />
+  <ColorItem title="Error" subtitle={colors.error} colors={[colors.error]} />
+  <ColorItem title="Info" subtitle={colors.info} colors={[colors.info]} />
+</ColorPalette>

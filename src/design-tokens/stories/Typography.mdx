@@ -1,0 +1,32 @@
+import { Meta, Typeset } from '@storybook/addon-docs/blocks';
+import { typography } from '../typography';
+
+<Meta title="Foundations/Typography" />
+
+## Heading — Outfit
+
+<Typeset
+  fontFamily={typography.heading}
+  sampleText="The quick brown fox jumps over the lazy dog."
+  fontSizes={['48px', '40px', '32px', '28px', '24px', '20px']}
+/>
+
+---
+
+## Body — Inter
+
+<Typeset
+  fontFamily={typography.body}
+  sampleText="The quick brown fox jumps over the lazy dog. This is the base body text used for paragraphs, labels and UI copy."
+  fontSizes={['16px']}
+/>
+
+---
+
+## Accent — Space Grotesk
+
+<Typeset
+  fontFamily={typography.accent}
+  sampleText="Accent text — used for highlights, metrics and emphasis."
+  fontSizes={['20px']}
+/>

@@ -1,6 +1,7 @@
 import * as S from './styles';
 import { Button } from '@/components/atoms/Button';
 
+
 type UserProfileProps = {
   name: string;
   role: string;
@@ -9,7 +10,7 @@ type UserProfileProps = {
 export const UserProfile = ({ name, role }: UserProfileProps) => {
   return (
     <S.ProfileContainer>
-      <S.Avatar />
+      <S.Avatar data-testid="avatar" />
       <S.Info>
         <S.Name>{name}</S.Name>
         <S.Role>{role}</S.Role>
