@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
-import { Button } from '..';
+import Button from '..';
 import { colors } from '@/design-tokens';
 
 describe('Button', () => {

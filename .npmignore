@@ -1,0 +1,9 @@
+node_modules
+storybook-static
+.storybook
+src/**/*.stories.*
+src/**/*.test.*
+coverage
+.vite
+dist/storybook
+*.log

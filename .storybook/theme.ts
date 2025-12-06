@@ -3,7 +3,7 @@ import { typography } from '../src/design-tokens/typography';
 
 export default create({
   base: 'dark',
-  brandTitle: 'Feitoza Design System',
+  brandTitle: 'Mornieur Design System',
   brandUrl: 'https://github.com/Mornieur/Design-System',
   brandImage: '/logo.jpg',
 
