@@ -10,7 +10,7 @@ export type CardProps = {
 
 export const Card = ({ title, children, elevation = 'md' }: CardProps) => {
   return (
-    <S.CardContainer data-testid="card-container" elevation={elevation} role="region" aria-label={title}>
+    <S.CardContainer data-elevation={elevation}  data-testid="card-container" elevation={elevation} role="region" aria-label={title}>
       <S.CardTitle>{title}</S.CardTitle>
       <S.CardBody>{children}</S.CardBody>
     </S.CardContainer>

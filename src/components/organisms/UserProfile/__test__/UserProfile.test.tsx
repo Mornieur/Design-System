@@ -2,11 +2,10 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import { UserProfile } from '..';
 
-// Mock do botão para evitar dependência visual
 const mockOnClick = vi.fn();
 
 vi.mock('@/components/atoms/Button', () => ({
-  Button: ({ children, onClick }: { children: string; onClick?: () => void }) => (
+  default: ({ children, onClick }: { children: string; onClick?: () => void }) => (
     <button data-testid="mock-button" onClick={onClick}>
       {children}
     </button>
@@ -47,8 +46,6 @@ describe('UserProfile', () => {
     const button = screen.getByTestId('mock-button');
     fireEvent.click(button);
 
-    // Como o Button real não recebe onClick, não chamará.
-    // Mas deixamos pronto caso você adicione no futuro.
     expect(mockOnClick).not.toHaveBeenCalled();
   });
 });
