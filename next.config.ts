@@ -1,12 +1,15 @@
 import createMDX from '@next/mdx';
+import type { NextConfig } from 'next';
 
 const withMDX = createMDX({
   extension: /\.mdx?$/
 });
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  pageExtensions: ['ts', 'tsx', 'md', 'mdx']
-};
+const nextConfig: NextConfig = withMDX({
+  pageExtensions: ['ts', 'tsx', 'md', 'mdx'],
+  webpack(config) {
+    return config;
+  }
+});
 
-export default withMDX(nextConfig);
+export default nextConfig;

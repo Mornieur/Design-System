@@ -1,4 +1,4 @@
-import { Button } from '..';
+import Button  from '..';
 import type { Meta, StoryObj } from '@storybook/nextjs';
 import { expect } from 'storybook/test';
 

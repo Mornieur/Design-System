@@ -1,8 +1,8 @@
 <Meta title="Design System / Overview" />
 
-# FeitozaUI — Design System
+# MornieurUI — Design System
 
-**FeitozaUI** is a scalable, modern, corporate-style **Design System**, built with **Next.js**, **TypeScript**, and **Atomic Design** principles.  
+**MornieurUI** is a scalable, modern, corporate-style **Design System**, built with **Next.js**, **TypeScript**, and **Atomic Design** principles.  
 The system provides a unified set of **design tokens**, **reusable components**, **theme support**, and **complete documentation** through Storybook.
 
 This project is evolving into a fully installable **UI library**, ideal for real-world apps and professional portfolio use.
@@ -11,7 +11,7 @@ This project is evolving into a fully installable **UI library**, ideal for real
 
 ## 🚀 Purpose
 
-FeitozaUI was created to:
+MornieurUI was created to:
 
 - Centralize design decisions (colors, typography, spacing, motion).
 - Provide UI consistency across multiple applications.
@@ -26,7 +26,7 @@ FeitozaUI was created to:
 
 - **Next.js** — app architecture and documentation playground  
 - **TypeScript** — safety, consistency, and autocompletion  
-- **Stitches** — performant CSS-in-JS with design token support  
+- **Styled-Components** — performant CSS-in-JS with design token support  
 - **Storybook** — component documentation and visual testing  
 - **Vitest + Testing Library** — unit and interaction tests  
 - **Lucide React** — customizable icons  
@@ -69,9 +69,9 @@ src/
 
 ## 📦 Future: Library Publishing
 
-FeitozaUI will be packaged and published as:
+MornieurUI will be packaged and published as:
 
-@feitozaui/core
+@Mornieurui/core
 
 with installation via npm, Yarn or pnpm.
 

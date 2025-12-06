@@ -1,39 +1,46 @@
-import { styled } from '@stitches/react';
-import { colors, space, radii, typography } from '@/design-tokens';
+import styled, { css } from 'styled-components';
+import { colors, typography, radii, space } from '@/design-tokens';
 
-export const CardContainer = styled('div', {
-  backgroundColor: colors.white,
-  borderRadius: radii.large,
-  padding: space[4],
-  display: 'flex',
-  flexDirection: 'column',
-  gap: space[3],
-  fontFamily: typography.body,
+type CardElevation = 'none' | 'sm' | 'md' | 'lg';
 
-  variants: {
-    elevation: {
-      none: { boxShadow: 'none' },
-      sm: { boxShadow: '0 1px 4px rgba(0,0,0,0.08)' },
-      md: { boxShadow: '0 2px 12px rgba(0,0,0,0.10)' },
-      lg: { boxShadow: '0 4px 20px rgba(0,0,0,0.12)' }
+interface CardProps {
+  elevation?: CardElevation;
+}
+
+export const CardContainer = styled.div<CardProps>`
+  background-color: ${colors.white};
+  border-radius: ${radii.large};
+  padding: ${space[4]};
+  display: flex;
+  flex-direction: column;
+  gap: ${space[3]};
+  font-family: ${typography.body};
+
+  ${({ elevation = 'md' }) => {
+    switch (elevation) {
+      case 'none':
+        return css`box-shadow: none;`;
+      case 'sm':
+        return css`box-shadow: 0 1px 4px rgba(0,0,0,0.08);`;
+      case 'lg':
+        return css`box-shadow: 0 4px 20px rgba(0,0,0,0.12);`;
+      case 'md':
+      default:
+        return css`box-shadow: 0 2px 12px rgba(0,0,0,0.1);`;
     }
-  },
+  }}
+`;
 
-  defaultVariants: {
-    elevation: 'md'
-  }
-});
+export const CardTitle = styled.h3`
+  font-family: ${typography.heading};
+  font-size: 18px;
+  font-weight: 600;
+  color: ${colors.text};
+  margin: 0;
+`;
 
-export const CardTitle = styled('h3', {
-  fontFamily: typography.heading,
-  fontSize: '18px',
-  fontWeight: 600,
-  color: colors.text,
-  margin: 0
-});
-
-export const CardBody = styled('div', {
-  fontSize: '14px',
-  lineHeight: 1.5,
-  color: colors.text
-});
+export const CardBody = styled.div`
+  font-size: 14px;
+  line-height: 1.5;
+  color: ${colors.text};
+`;

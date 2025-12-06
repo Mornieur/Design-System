@@ -1,5 +1,5 @@
 import * as S from './styles';
-import { Button } from '@/components/atoms/Button';
+import Button  from '@/components/atoms/Button';
 
 
 type UserProfileProps = {

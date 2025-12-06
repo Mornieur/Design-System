@@ -4,6 +4,8 @@ type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: 'primary' | 'secondary' | 'accent';
 };
 
-export const Button = ({ variant = 'primary', ...props }: ButtonProps) => {
+const Button = ({ variant = 'primary', ...props }: ButtonProps) => {
   return <S.StyledButton variant={variant} {...props} />;
 };
+
+export default Button;

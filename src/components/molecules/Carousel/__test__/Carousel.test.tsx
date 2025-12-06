@@ -6,7 +6,6 @@ import { Carousel } from '..';
 const scrollPrevMock = vi.fn();
 const scrollNextMock = vi.fn();
 
-// Mock do embla-carousel-react
 vi.mock('embla-carousel-react', () => ({
   default: vi.fn(() => {
     return [

@@ -9,28 +9,38 @@ export default defineConfig({
     react(),
     tsconfigPaths(),
     dts({
+      tsconfigPath: 'tsconfig.lib.json',
       insertTypesEntry: true,
-      rollupTypes: true
+      rollupTypes: true,
+      copyDtsFiles: true
     })
   ],
+
+  optimizeDeps: {},
 
   server: {
     port: 3000
   },
 
   build: {
+    commonjsOptions: {
+      include: [/node_modules/]
+    },
+
     lib: {
       entry: path.resolve(__dirname, 'src/index.ts'),
-      name: 'DesignSystem',
+      name: 'MornieurUI',
       formats: ['es', 'cjs', 'umd'],
-      fileName: (format) => `design-system.${format}.js`
+      fileName: (format) => `mornieur-ui.${format}.js`
     },
+
     rollupOptions: {
-      external: ['react', 'react-dom'],
+      external: ['react', 'react-dom', 'styled-components'],
       output: {
         globals: {
           react: 'React',
-          'react-dom': 'ReactDOM'
+          'react-dom': 'ReactDOM',
+          'styled-components': 'styled'
         }
       }
     }
@@ -42,6 +52,7 @@ export default defineConfig({
     setupFiles: ['src/tests/setup.ts'],
     include: ['**/*.test.{ts,tsx}'],
     reporters: ['verbose'],
+
     coverage: {
       provider: 'v8',
       reporter: ['html', 'lcov', 'text-summary'],
