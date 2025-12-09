@@ -1,6 +1,6 @@
 {
   "name": "@mornieur/core",
-  "version": "0.2.1",
+  "version": "0.2.3",
   "sideEffects": false,
   "private": false,
   "type": "module",
