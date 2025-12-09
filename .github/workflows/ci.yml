@@ -20,7 +20,7 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: yarn install --immutable
+        run: npm install --legacy-peer-deps
 
       - name: Lint
         run: yarn lint
