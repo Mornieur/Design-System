@@ -5,12 +5,13 @@ import dts from 'vite-plugin-dts';
 import path from 'path';
 
 export default defineConfig({
+  publicDir: false,
+
   plugins: [
     react(),
     tsconfigPaths(),
     dts({
       tsconfigPath: 'tsconfig.lib.json',
-      insertTypesEntry: true,
       rollupTypes: true,
       copyDtsFiles: true
     })

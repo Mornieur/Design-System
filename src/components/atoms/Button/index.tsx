@@ -1,6 +1,7 @@
+import type { ButtonHTMLAttributes } from 'react';
 import * as S from './styles';
 
-type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: 'primary' | 'secondary' | 'accent';
 };
 

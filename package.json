@@ -4,14 +4,14 @@
   "sideEffects": false,
   "private": false,
   "type": "module",
-  "main": "./dist/design-system.cjs.js",
-  "module": "./dist/design-system.es.js",
-  "types": "./dist/types/index.d.ts",
+  "main": "./dist/feitoza-ui.cjs.js",
+  "module": "./dist/feitoza-ui.es.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/types/index.d.ts",
-      "import": "./dist/design-system.es.js",
-      "require": "./dist/design-system.cjs.js"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/feitoza-ui.es.js",
+      "require": "./dist/feitoza-ui.cjs.js"
     }
   },
   "files": [
@@ -19,7 +19,8 @@
   ],
   "peerDependencies": {
     "react": "^18 || ^19",
-    "react-dom": "^18 || ^19"
+    "react-dom": "^18 || ^19",
+    "styled-components": "^6.1.19"
   },
   "scripts": {
     "dev": "next dev --turbopack",
@@ -66,7 +67,6 @@
     "next": "15.5.4",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "styled-components": "^6.1.19",
     "vite-plugin-dts": "^4.5.4",
     "vite-tsconfig-paths": "^5.1.4"
   },
@@ -114,11 +114,12 @@
     "lint-staged": "^16.2.6",
     "prettier": "^3.6.2",
     "storybook": "10.1.0-alpha.14",
+    "styled-components": "^6.1.19",
     "typescript": "^5",
     "typescript-eslint": "^8.46.4",
     "vitest": "^4.0.8"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+    "access": "public"
   }
 }
