@@ -2,34 +2,48 @@ name: CI
 
 on:
   pull_request:
-    branches: [develop, main]
+    branches: [main, develop]
   push:
-    branches: [develop]
+    branches: [main, develop]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  build:
+  quality:
+    name: Quality checks
     runs-on: ubuntu-latest
+    timeout-minutes: 15
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install Node
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: yarn
+          cache-dependency-path: yarn.lock
 
       - name: Install dependencies
-        run: npm install --legacy-peer-deps
+        run: yarn install --frozen-lockfile
+
+      - name: Type check
+        run: yarn type-check
 
       - name: Lint
         run: yarn lint
 
-      - name: Type Check
-        run: yarn type-check
-
       - name: Tests
         run: yarn test --run
 
-      - name: Build
+      - name: Build package
         run: yarn build
+
+      - name: Build Storybook
+        run: yarn build-storybook
