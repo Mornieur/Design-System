@@ -16,7 +16,7 @@ Do not open a public issue for sensitive security reports.
 
 Until a dedicated security contact is configured, use a private channel with the maintainer.
 
-TODO: add a dedicated security contact before publishing.
+Before publishing, add a dedicated security contact in the GitHub repository settings.
 
 ## Secrets
 

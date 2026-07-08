@@ -12,7 +12,7 @@ This document describes the intended future publishing process. It does not enab
 
 ## Registry
 
-The intended registry is npm, but this should be confirmed before the first release.
+The intended registry is public npm.
 
 ## Versioning
 

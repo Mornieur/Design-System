@@ -1,6 +1,6 @@
 # Releases
 
-FeitozaUI is not ready for publication yet. This document defines the intended release direction.
+FeitozaUI is not ready for publication yet. This document defines the intended release direction for future public npm releases.
 
 ## Semantic Versioning
 

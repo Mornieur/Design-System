@@ -4,8 +4,8 @@
   "description": "React and TypeScript UI Engineering Platform focused on foundations, primitives, accessibility, testing, and documentation.",
   "sideEffects": false,
   "private": false,
-  "license": "UNLICENSED",
-  "author": "TODO: add author",
+  "license": "MIT",
+  "author": "Maria Fernanda",
   "type": "module",
   "main": "./dist/feitoza-ui.cjs.js",
   "module": "./dist/feitoza-ui.es.js",
@@ -32,11 +32,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "TODO: add repository URL"
+    "url": "git+https://github.com/Mornieur/design-system.git"
   },
-  "homepage": "TODO: add project homepage or Storybook URL",
   "bugs": {
-    "url": "TODO: add issue tracker URL"
+    "url": "https://github.com/Mornieur/design-system/issues"
   },
   "engines": {
     "node": ">=20"

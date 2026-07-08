@@ -6,9 +6,8 @@
 ![React](https://img.shields.io/badge/React-19-61dafb)
 ![Storybook](https://img.shields.io/badge/Storybook-10-ff4785)
 ![Vitest](https://img.shields.io/badge/Vitest-4-6e9f18)
-![License](https://img.shields.io/badge/License-TODO-lightgrey)
-![npm](https://img.shields.io/badge/npm-planned-lightgrey)
-![CI](https://img.shields.io/badge/CI-planned-lightgrey)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+![npm](https://img.shields.io/badge/npm-not%20published-lightgrey)
 
 FeitozaUI is not just a set of isolated components. It is being built as a small but professional component platform that documents engineering decisions, public APIs, design foundations, accessibility rules, testing strategy, and package readiness.
 
@@ -142,19 +141,19 @@ See [Core Principles](docs/philosophy/CORE_PRINCIPLES.md).
 
 ```txt
 .
-├── .storybook/              # Storybook configuration
-├── docs/                    # Project documentation
-├── public/                  # Static assets used by the app/docs
-├── src/
-│   ├── app/                 # Next.js app, future showcase surface
-│   ├── components/          # Current components and internal examples
-│   ├── design-tokens/       # Token definitions and token docs
-│   ├── stories/             # Storybook MDX pages
-│   ├── styles/              # Shared style helpers
-│   └── tests/               # Test setup
-├── vite.config.ts           # Library build and Vitest configuration
-├── tsconfig.lib.json        # Type declaration build scope
-└── package.json
+|-- .storybook/              # Storybook configuration
+|-- docs/                    # Project documentation
+|-- public/                  # Static assets used by the app/docs
+|-- src/
+|   |-- app/                 # Next.js app, future showcase surface
+|   |-- components/          # Current components and internal examples
+|   |-- design-tokens/       # Token definitions and token docs
+|   |-- stories/             # Storybook MDX pages
+|   |-- styles/              # Shared style helpers
+|   `-- tests/               # Test setup
+|-- vite.config.ts           # Library build and Vitest configuration
+|-- tsconfig.lib.json        # Type declaration build scope
+`-- package.json
 ```
 
 ## Testing
@@ -216,4 +215,5 @@ See [Contributing](docs/CONTRIBUTING.md), [Code Style](docs/CODE_STYLE.md), and 
 
 ## License
 
-No license file is currently provided. Add a `LICENSE` file before publishing or accepting external contributions.
+[MIT](LICENSE) (c) 2026 Maria Fernanda.
+
