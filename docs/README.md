@@ -1,0 +1,42 @@
+# FeitozaUI Documentation
+
+This directory is the documentation portal for FeitozaUI.
+
+Use it to understand the project vision, architecture, component platform decisions, design system rules, release planning, and future roadmap.
+
+## Philosophy
+
+- [Vision](philosophy/VISION.md): project purpose, audience, and platform boundaries.
+- [Core Principles](philosophy/CORE_PRINCIPLES.md): required principles for components and platform work.
+- [Engineering Values](philosophy/ENGINEERING_VALUES.md): engineering habits expected in the project.
+
+## Architecture
+
+- [Architecture](architecture/ARCHITECTURE.md): current architecture and intended platform structure.
+- [Decisions](architecture/DECISIONS.md): ADR index and decision process.
+- [API Conventions](architecture/API_CONVENTIONS.md): public component API rules.
+- [ADRs](architecture/adr): architecture decision records.
+
+## Design System
+
+- [Foundations](design-system/FOUNDATIONS.md): token categories and token strategy.
+- [Component Guidelines](design-system/COMPONENT_GUIDELINES.md): how and when to create components.
+- [Component Checklist](design-system/COMPONENT_CHECKLIST.md): readiness checklist for public components.
+- [Accessibility](design-system/ACCESSIBILITY.md): accessibility standards.
+- [Developer Experience](design-system/DX.md): API and usage quality expectations.
+
+## Roadmap And Releases
+
+- [Roadmap](roadmap/ROADMAP.md): maturity-based implementation plan.
+- [Future Roadmap](roadmap/FUTURE.md): ideas outside the current scope.
+- [Releases](roadmap/RELEASES.md): versioning and release strategy.
+
+## Quality And Maintenance
+
+- [Storybook](STORYBOOK.md): Storybook as documentation product.
+- [Testing Strategy](TESTING_STRATEGY.md): test scope and expectations.
+- [Performance](PERFORMANCE.md): bundle and runtime performance direction.
+- [Maintenance](MAINTENANCE.md): bug fixes, deprecations, and review process.
+- [Contributing](CONTRIBUTING.md): contribution workflow.
+- [Code Style](CODE_STYLE.md): naming, organization, tests, and stories.
+- [FAQ](FAQ.md): common project questions.

@@ -1,8 +1,11 @@
 {
   "name": "@feitoza-ui/core",
   "version": "0.2.3",
+  "description": "React and TypeScript UI Engineering Platform focused on foundations, primitives, accessibility, testing, and documentation.",
   "sideEffects": false,
   "private": false,
+  "license": "UNLICENSED",
+  "author": "TODO: add author",
   "type": "module",
   "main": "./dist/feitoza-ui.cjs.js",
   "module": "./dist/feitoza-ui.es.js",
@@ -17,6 +20,27 @@
   "files": [
     "dist"
   ],
+  "keywords": [
+    "react",
+    "typescript",
+    "design-system",
+    "component-library",
+    "ui-platform",
+    "storybook",
+    "accessibility",
+    "frontend"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "TODO: add repository URL"
+  },
+  "homepage": "TODO: add project homepage or Storybook URL",
+  "bugs": {
+    "url": "TODO: add issue tracker URL"
+  },
+  "engines": {
+    "node": ">=20"
+  },
   "peerDependencies": {
     "react": "^18 || ^19",
     "react-dom": "^18 || ^19",
