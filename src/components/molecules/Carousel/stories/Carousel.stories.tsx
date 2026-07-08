@@ -1,12 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/nextjs';
 import { Carousel } from '..';
 
-//FIXME: consertar carrossel com loop (ler doc)
-
 const meta = {
-  title: 'Molecules/Carousel',
+  title: 'Internal/Carousel',
   component: Carousel,
-  parameters: { layout: 'centered' },
+  parameters: {
+    layout: 'centered',
+    docs: {
+      description: {
+        component:
+          'Carousel is currently internal and is not part of the public package API. It needs a dedicated accessibility and interaction review before promotion.'
+      }
+    }
+  },
   tags: ['autodocs'],
   argTypes: {
     images: { control: 'object' },
@@ -24,8 +30,7 @@ export const Default: Story = {
     images: [
       'https://picsum.photos/600/400?random=1',
       'https://picsum.photos/600/400?random=2',
-      'https://picsum.photos/600/400?random=3',
-
+      'https://picsum.photos/600/400?random=3'
     ],
     width: 260,
     height: 260,
@@ -38,8 +43,7 @@ export const Looping: Story = {
     images: [
       'https://picsum.photos/600/400?random=1',
       'https://picsum.photos/600/400?random=2',
-      'https://picsum.photos/600/400?random=3',
-
+      'https://picsum.photos/600/400?random=3'
     ],
     width: 300,
     height: 200,

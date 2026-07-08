@@ -1,0 +1,45 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Guidelines" />
+
+# Guidelines
+
+FeitozaUI components should be predictable, accessible, typed, and documented.
+
+## Principles
+
+- Use semantic HTML first.
+- Prefer tokens over repeated hardcoded values.
+- Keep APIs small and consistent.
+- Preserve native props when they are part of the component contract.
+- Forward refs for public primitives and controls.
+- Add tests for observable behavior.
+- Do not add ARIA unless it improves the pattern.
+
+## When To Use
+
+### Button
+
+Use `Button` for actions triggered by user interaction. It renders a native `button` and supports native props such as `disabled`, `className`, `style`, and `onClick`.
+
+### Box
+
+Use `Box` as a surface or spacing primitive. It should not add semantic meaning by default.
+
+### Flex
+
+Use `Flex` for simple flex layouts. It should not be used to encode product-specific behavior.
+
+## Do
+
+- Use `variant`, `padding`, `gap`, and token-based props consistently.
+- Keep text labels clear.
+- Use native disabled behavior for disabled buttons.
+- Keep primitives presentational unless the caller adds semantics.
+
+## Don't
+
+- Do not use `Box` or `Flex` as landmarks by default.
+- Do not add one-off visual props for a single screen.
+- Do not use ARIA to replace native HTML.
+- Do not expose product-specific components through the core package.

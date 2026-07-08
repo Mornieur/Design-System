@@ -4,10 +4,16 @@ import { expect } from 'storybook/test';
 import { Card } from '..';
 
 const meta = {
-  title: 'Molecules/Card',
+  title: 'Internal/Card',
   component: Card,
   parameters: {
-    layout: 'centered'
+    layout: 'centered',
+    docs: {
+      description: {
+        component:
+          'Card is currently internal and is not part of the public package API. It remains visible for evaluation before a future component API review.'
+      }
+    }
   },
   tags: ['autodocs'],
   argTypes: {

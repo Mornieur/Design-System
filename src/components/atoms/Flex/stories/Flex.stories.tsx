@@ -1,11 +1,20 @@
 import Flex from '..';
 import type { Meta, StoryObj } from '@storybook/nextjs';
 import Box from '../../Box';
+import { colors, space } from '@/design-tokens';
 
 const meta = {
-  title: 'Atoms/Flex',
+  title: 'Components/Flex',
   component: Flex,
-  parameters: { layout: 'centered' },
+  parameters: {
+    layout: 'centered',
+    docs: {
+      description: {
+        component:
+          'Flex is a presentational layout primitive for simple flexbox composition. It supports token-based gaps and does not add semantic roles by default.'
+      }
+    }
+  },
   tags: ['autodocs'],
   argTypes: {
     direction: {
@@ -59,4 +68,51 @@ export const Default: Story = {
       </>
     )
   }
+};
+
+export const Column: Story = {
+  args: {
+    direction: 'column',
+    align: 'stretch',
+    gap: 3,
+    children: (
+      <>
+        <Box padding={3} bg="backgroundAlt" radius="medium">
+          Summary
+        </Box>
+        <Box padding={3} bg="backgroundAlt" radius="medium">
+          Transactions
+        </Box>
+        <Box padding={3} bg="backgroundAlt" radius="medium">
+          Settings
+        </Box>
+      </>
+    )
+  }
+};
+
+export const RealisticToolbar: Story = {
+  render: () => (
+    <Flex
+      align="center"
+      justify="space-between"
+      gap={4}
+      style={{
+        width: 420,
+        padding: space[4],
+        border: `1px solid ${colors.backgroundAlt}`,
+        borderRadius: 8
+      }}
+    >
+      <strong>Statement</strong>
+      <Flex gap={2}>
+        <Box padding={2} bg="backgroundAlt" radius="small">
+          Export
+        </Box>
+        <Box padding={2} bg="primary" radius="small">
+          Filter
+        </Box>
+      </Flex>
+    </Flex>
+  )
 };

@@ -1,110 +1,38 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 import { radii } from '../radii';
 
-<Meta title="Design Tokens/Radii" />
+<Meta title="Foundations/Radii" />
 
-# 🟦 FeitozaUI Design Token — Radius Tokens
+# Radii
 
-Corner radius tokens ensure consistency across buttons, cards, inputs and all UI surfaces.  
-They define how rounded or sharp components should look throughout the design system.
+Radius tokens define corner treatment for controls, surfaces, and circular elements.
 
----
+## Scale
 
-# 📏 Radius Scale
+| Token | Value | Intended usage |
+| --- | --- | --- |
+| `radii.small` | {radii.small} | Compact UI and subtle rounding |
+| `radii.medium` | {radii.medium} | Default controls and primitives |
+| `radii.large` | {radii.large} | Larger surfaces |
+| `radii.round` | {radii.round} | Circular UI such as avatars or icon controls |
 
-- **small — {radii.small}**
-- **medium — {radii.medium}**
-- **large — {radii.large}**
-- **round — {radii.round}** (perfect circle)
+## Visual Reference
 
----
+{Object.entries(radii).map(([token, value]) => (
+  <div key={token} style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
+    <div
+      style={{
+        width: token === 'round' ? 48 : 96,
+        height: 48,
+        background: '#FF6B6F',
+        borderRadius: value
+      }}
+    />
+    <span>{`radii.${token} - ${value}`}</span>
+  </div>
+))}
 
-# 🎨 Visual Samples
+## Usage Notes
 
-## Small — `{radii.small}`
-
-<div
-  style={{
-    width: '80px',
-    height: '40px',
-    background: '#e5e5e5',
-    borderRadius: radii.small,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontSize: '12px',
-    marginBottom: '16px'
-  }}
->
-  {radii.small}
-</div>
-
----
-
-## Medium — `{radii.medium}`
-
-<div
-  style={{
-    width: '80px',
-    height: '40px',
-    background: '#e5e5e5',
-    borderRadius: radii.medium,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontSize: '12px',
-    marginBottom: '16px'
-  }}
->
-  {radii.medium}
-</div>
-
----
-
-## Large — `{radii.large}`
-
-<div
-  style={{
-    width: '80px',
-    height: '40px',
-    background: '#e5e5e5',
-    borderRadius: radii.large,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontSize: '12px',
-    marginBottom: '16px'
-  }}
->
-  {radii.large}
-</div>
-
----
-
-## Round — `{radii.round}`
-
-<div
-  style={{
-    width: '60px',
-    height: '60px',
-    background: '#e5e5e5',
-    borderRadius: radii.round,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontSize: '18px'
-  }}
->
-  ●
-</div>
-
----
-
-# 📐 Usage Guidelines
-
-- **small** → subtle rounding for inputs, badges, micro UI  
-- **medium** → default rounding for cards, buttons, fields  
-- **large** → expressive rounding for surfaces (modals, elevated UI)  
-- **round** → icons, avatars, and circular interactive elements
-
----
+- Use radius tokens instead of ad hoc pixel values in reusable components.
+- Prefer `medium` as the default radius for controls unless the component has a specific reason.

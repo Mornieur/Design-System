@@ -1,131 +1,41 @@
-# 🚀 FeitozaUI — Design System
+import { Meta } from '@storybook/addon-docs/blocks';
 
-A modern, scalable and developer-friendly Design System built with clarity, precision, and consistency.
+<Meta title="Overview" />
 
-FeitozaUI was created to serve as a **professional, portfolio-ready design system**, showcasing real-world architecture, reusable components, strict design foundations and a strong visual identity — all crafted with modern frontend engineering practices.
+# FeitozaUI
 
----
+FeitozaUI is a React and TypeScript UI Engineering Platform focused on foundations, primitives, component APIs, accessibility, testing, package build, and documentation.
 
-## ✨ What is FeitozaUI?
+The current public API is intentionally small:
 
-FeitozaUI unifies:
+- `Button`
+- `Box`
+- `Flex`
+- design tokens
 
-- **Design Tokens** (colors, typography, spacing, radii, elevation)
-- **Reusable React Components**
-- **Visual Documentation via Storybook**
-- **Code standards & UI guidelines**
+This Storybook is the technical documentation surface for the platform. It should show what exists today, explain why decisions were made, and keep future work clearly separated from current capabilities.
 
-Its purpose is to provide a reliable foundation for building interfaces that are:
+## Current Scope
 
-- consistent  
-- accessible  
-- scalable  
-- visually modern  
-- easy for both designers and developers to adopt  
+- Foundations: colors, typography, spacing, and radii.
+- Primitives: Button, Box, and Flex.
+- Developer Experience: typed public exports and predictable props.
+- Accessibility baseline: semantic HTML, native disabled behavior, focus visibility, and no unnecessary landmark roles on primitives.
+- Testing baseline: Vitest and Testing Library coverage for public primitives.
 
----
+## Not Current Scope
 
-## 🎨 Brand Vision & Identity
+- BFF
+- Micro-frontends
+- Full theme system
+- Complete component catalog
+- Production showcase application
 
-FeitozaUI follows a visual direction inspired by **modern UI design**, with emphasis on:
+These ideas are documented as future directions, not as current features.
 
-- clean geometry  
-- soft gradients  
-- strong contrast & clarity  
-- minimalist shapes  
-- expressive but functional color combinations  
+## How To Read This Storybook
 
-The brand identity is intentionally crafted to feel **polished, technical and contemporary**, suitable for dashboards, products, platforms and web applications.
-
----
-
-## ⚙️ Why use FeitozaUI?
-
-### ✔ Consistency  
-Unified tokens and reusable components create a stable and predictable UI across the entire product.
-
-### ✔ Developer Experience  
-Built with scalable architecture and strongly typed foundations.
-
-### ✔ Maintainability  
-Every component is isolated, documented and easily testable.
-
-### ✔ Scalability  
-Tokens, themes and components evolve without breaking the existing interface.
-
-### ✔ Accessibility  
-WCAG-focused design choices, semantic structure and keyboard-safe components.
-
----
-
-## 🧩 What’s included?
-
-- **Component Library** (Buttons, Inputs, Typography, Layout, Icons, Form Elements…)
-- **Design Tokens** (Colors, Typography, Spacing, Radii, Elevation)
-- **Theme System** (light/dark-ready)
-- **Icon System** (Lucide-based + custom)
-- **Storybook Docs** (MDX + CSF)
-- **Examples, guidelines and best practices**
-- **Testing environment (Vitest)**
-
-Everything is structured for professional real-world usage.
-
----
-
-## 🛠 Technologies
-
-FeitozaUI is built using:
-
-- **Next.js** — app architecture  
-- **TypeScript** — strict typing  
-- **Styled-Components** — CSS-in-JS with tokens & themes  
-- **Storybook** — interactive component documentation  
-- **Lucide React** — icon framework  
-- **Vitest** — testing suite  
-
-This combination provides performance, clarity, and scalability.
-
----
-
-## 📘 Purpose of the Project
-
-FeitozaUI has two goals:
-
-### **1) Serve as a real Design System**
-A ready-to-use UI foundation for any modern project.
-
-### **2) Be a professional portfolio showcase**
-Demonstrating:
-
-- UI architecture  
-- Design reasoning  
-- Clean, reusable components  
-- Documentation skills  
-- Frontend engineering expertise  
-
----
-
-## 🎯 The Vision
-
-FeitozaUI aims to be:
-
-- approachable  
-- flexible  
-- visually strong  
-- well-structured  
-- easy to extend  
-
-A design system that begins simple — but is built with a **big vision and high-quality foundation**.
-
----
-
-## 🧭 Start Exploring
-
-Use the sidebar navigation to explore:
-
-- **Foundations** (colors, typography, spacing…)  
-- **Components**  
-- **Examples & Patterns**  
-- **Guidelines**  
-
-Welcome to **FeitozaUI** — and enjoy building beautifully consistent interfaces.
+- Start with Foundations to understand available tokens.
+- Review Components for current public primitives.
+- Use Guidelines and Accessibility before adding or changing components.
+- Treat Roadmap as future direction, not as shipped capability.

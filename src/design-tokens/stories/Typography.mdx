@@ -1,32 +1,46 @@
 import { Meta, Typeset } from '@storybook/addon-docs/blocks';
 import { typography } from '../typography';
+import { fontSizes } from '../font-sizes';
 
 <Meta title="Foundations/Typography" />
 
-## Heading — Outfit
+# Typography
+
+Typography tokens currently define font families and a small font-size scale.
+
+This is not a full text component system yet. Dedicated `Text` or `Heading` components may be added later after the foundation is stable.
+
+## Font Families
 
 <Typeset
   fontFamily={typography.heading}
-  sampleText="The quick brown fox jumps over the lazy dog."
-  fontSizes={['48px', '40px', '32px', '28px', '24px', '20px']}
+  sampleText="FeitozaUI heading family"
+  fontSizes={['48px', '40px', '32px', '24px']}
 />
-
----
-
-## Body — Inter
 
 <Typeset
   fontFamily={typography.body}
-  sampleText="The quick brown fox jumps over the lazy dog. This is the base body text used for paragraphs, labels and UI copy."
+  sampleText="FeitozaUI body family for interface copy and readable content."
   fontSizes={['16px']}
 />
 
----
-
-## Accent — Space Grotesk
-
 <Typeset
   fontFamily={typography.accent}
-  sampleText="Accent text — used for highlights, metrics and emphasis."
+  sampleText="Accent family for controlled emphasis."
   fontSizes={['20px']}
 />
+
+## Font Sizes
+
+| Token | Value |
+| --- | --- |
+| `fontSizes.sm` | {fontSizes.sm} |
+| `fontSizes.md` | {fontSizes.md} |
+| `fontSizes.lg` | {fontSizes.lg} |
+| `fontSizes.xl` | {fontSizes.xl} |
+
+## Usage Notes
+
+- Keep component typography token-based.
+- Avoid introducing new font families in component code.
+- Treat full type scale and text components as future work.

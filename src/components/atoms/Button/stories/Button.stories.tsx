@@ -1,12 +1,19 @@
 import Button from '..';
 import type { Meta, StoryObj } from '@storybook/nextjs';
 import { expect } from 'storybook/test';
+import { space } from '@/design-tokens';
 
 const meta = {
-  title: 'Atoms/Button',
+  title: 'Components/Button',
   component: Button,
   parameters: {
-    layout: 'centered'
+    layout: 'centered',
+    docs: {
+      description: {
+        component:
+          'Button is the core action primitive. It renders a native button, preserves native button props, forwards refs, and supports visible focus and native disabled behavior.'
+      }
+    }
   },
   tags: ['autodocs'],
   argTypes: {
@@ -47,13 +54,28 @@ export const Disabled: Story = {
 
 export const AllVariants: Story = {
   render: () => (
-    <div style={{ display: 'flex', gap: 12 }}>
+    <div style={{ display: 'flex', gap: space[3], flexWrap: 'wrap' }}>
       <Button variant="primary">Primary</Button>
       <Button variant="secondary">Secondary</Button>
       <Button variant="accent">Accent</Button>
       <Button variant="primary" disabled>
         Disabled
       </Button>
+    </div>
+  )
+};
+
+export const RealisticUsage: Story = {
+  render: () => (
+    <div
+      style={{
+        display: 'flex',
+        gap: space[3],
+        alignItems: 'center'
+      }}
+    >
+      <Button variant="primary">Save changes</Button>
+      <Button variant="secondary">Review later</Button>
     </div>
   )
 };

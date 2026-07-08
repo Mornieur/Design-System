@@ -1,0 +1,46 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Getting Started" />
+
+# Getting Started
+
+FeitozaUI is being prepared as a future package named `@feitoza-ui/core`.
+
+The package is not being published in this phase. The current build is validated locally through Vite and `npm pack --dry-run`.
+
+## Future Installation
+
+```bash
+npm install @feitoza-ui/core
+```
+
+## Future Usage
+
+```tsx
+import { Button, Box, Flex, colors, space } from '@feitoza-ui/core';
+
+export function Example() {
+  return (
+    <Flex align="center" gap={3}>
+      <Box padding={4} radius="medium" bg="backgroundAlt">
+        Account summary
+      </Box>
+      <Button variant="primary">Continue</Button>
+    </Flex>
+  );
+}
+```
+
+## Development Scripts
+
+```bash
+yarn.cmd type-check
+yarn.cmd lint
+yarn.cmd test --run
+yarn.cmd build
+yarn.cmd storybook
+```
+
+## Current Package Surface
+
+Only the core primitives and design tokens are part of the public API right now. Product-specific examples, molecules, organisms, BFF, and micro-frontends are intentionally outside the current package surface.

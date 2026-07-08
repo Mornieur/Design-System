@@ -1,148 +1,45 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 import { space } from '../spacing';
 
-<Meta title="Design Tokens/Spacing" />
+<Meta title="Foundations/Spacing" />
 
-# 📐 FeitozaUI Design Token — Spacing Tokens
+# Spacing
 
-The spacing scale defines consistent paddings, margins, and gaps used throughout the interface.  
-These values help maintain visual rhythm and layout structure across components and pages.
+The spacing scale defines consistent distances for layout, component padding, margins, and gaps.
 
----
+The current scale is intentionally small and numeric.
 
-# 📏 Spacing Scale
+## Scale
 
-- **1 — {space[1]}**
-- **2 — {space[2]}**
-- **3 — {space[3]}**
-- **4 — {space[4]}**
-- **5 — {space[5]}**
-- **6 — {space[6]}**
-- **7 — {space[7]}**
-- **8 — {space[8]}**
+| Token | Value |
+| --- | --- |
+| `space[1]` | {space[1]} |
+| `space[2]` | {space[2]} |
+| `space[3]` | {space[3]} |
+| `space[4]` | {space[4]} |
+| `space[5]` | {space[5]} |
+| `space[6]` | {space[6]} |
+| `space[7]` | {space[7]} |
+| `space[8]` | {space[8]} |
 
----
+## Visual Reference
 
-# 🔍 Visual Samples
+{Object.entries(space).map(([token, value]) => (
+  <div key={token} style={{ display: 'grid', gap: 6, marginBottom: 16 }}>
+    <strong>{`space[${token}] - ${value}`}</strong>
+    <div
+      style={{
+        width: value,
+        height: 12,
+        background: '#FF6B6F',
+        borderRadius: 4
+      }}
+    />
+  </div>
+))}
 
-Below is a visual reference of each spacing value represented as a horizontal bar.
+## Usage Notes
 
-### **1 — `{space[1]}`**
-
-<div
-  style={{
-    width: space[1],
-    height: '12px',
-    background: '#e5e5e5',
-    borderRadius: '4px',
-    marginBottom: '8px'
-  }}
-/>
-
----
-
-### **2 — `{space[2]}`**
-
-<div
-  style={{
-    width: space[2],
-    height: '12px',
-    background: '#e5e5e5',
-    borderRadius: '4px',
-    marginBottom: '8px'
-  }}
-/>
-
----
-
-### **3 — `{space[3]}`**
-
-<div
-  style={{
-    width: space[3],
-    height: '12px',
-    background: '#e5e5e5',
-    borderRadius: '4px',
-    marginBottom: '8px'
-  }}
-/>
-
----
-
-### **4 — `{space[4]}`**
-
-<div
-  style={{
-    width: space[4],
-    height: '12px',
-    background: '#e5e5e5',
-    borderRadius: '4px',
-    marginBottom: '8px'
-  }}
-/>
-
----
-
-### **5 — `{space[5]}`**
-
-<div
-  style={{
-    width: space[5],
-    height: '12px',
-    background: '#e5e5e5',
-    borderRadius: '4px',
-    marginBottom: '8px'
-  }}
-/>
-
----
-
-### **6 — `{space[6]}`**
-
-<div
-  style={{
-    width: space[6],
-    height: '12px',
-    background: '#e5e5e5',
-    borderRadius: '4px',
-    marginBottom: '8px'
-  }}
-/>
-
----
-
-### **7 — `{space[7]}`**
-
-<div
-  style={{
-    width: space[7],
-    height: '12px',
-    background: '#e5e5e5',
-    borderRadius: '4px',
-    marginBottom: '8px'
-  }}
-/>
-
----
-
-### **8 — `{space[8]}`**
-
-<div
-  style={{
-    width: space[8],
-    height: '12px',
-    background: '#e5e5e5',
-    borderRadius: '4px',
-    marginBottom: '8px'
-  }}
-/>
-
----
-
-# 📘 Usage Guidelines
-
-- Use smaller values (1–3) for compact internal spacing such as badges, icons, and tight UI layouts.  
-- Use medium values (4–6) for component padding, grid gaps, and standard layout spacing.  
-- Use larger values (7–8) for page sections, containers, and generous whitespace.
-
----
+- Use smaller values for compact UI.
+- Use middle values for component padding and grid gaps.
+- Use larger values for page sections and larger layout spacing.

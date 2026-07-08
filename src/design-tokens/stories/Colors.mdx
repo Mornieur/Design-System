@@ -3,14 +3,13 @@ import { colors } from '../colors';
 
 <Meta title="Foundations/Colors" />
 
-# 🎨 Colors
+# Colors
 
-The FeitozaUI color system is focused on clarity, contrast and scalability.  
-It provides a clean foundation for components, ensuring consistency across themes and interfaces.
+FeitozaUI currently exposes a small color foundation for brand, neutral, and feedback decisions.
 
----
+These tokens are available to consumers today. A broader primitive/semantic token model is future work and should not be assumed to exist yet.
 
-## Brand Colors
+## Brand
 
 <ColorPalette>
   <ColorItem title="Primary" subtitle={colors.primary} colors={[colors.primary]} />
@@ -21,9 +20,7 @@ It provides a clean foundation for components, ensuring consistency across theme
   <ColorItem title="Gradient End" subtitle={colors.gradientEnd} colors={[colors.gradientEnd]} />
 </ColorPalette>
 
----
-
-## Neutral Colors
+## Neutral
 
 <ColorPalette>
   <ColorItem title="Background" subtitle={colors.background} colors={[colors.background]} />
@@ -34,9 +31,7 @@ It provides a clean foundation for components, ensuring consistency across theme
   <ColorItem title="Black" subtitle={colors.black} colors={[colors.black]} />
 </ColorPalette>
 
----
-
-## Feedback Colors
+## Feedback
 
 <ColorPalette>
   <ColorItem title="Success" subtitle={colors.success} colors={[colors.success]} />
@@ -44,3 +39,9 @@ It provides a clean foundation for components, ensuring consistency across theme
   <ColorItem title="Error" subtitle={colors.error} colors={[colors.error]} />
   <ColorItem title="Info" subtitle={colors.info} colors={[colors.info]} />
 </ColorPalette>
+
+## Usage Notes
+
+- Use color tokens through components when possible.
+- Do not introduce new hardcoded colors inside reusable components without documenting the reason.
+- Treat theme support as future work until semantic theme tokens are implemented.
