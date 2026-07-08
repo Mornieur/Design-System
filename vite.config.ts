@@ -29,9 +29,9 @@ export default defineConfig({
 
     lib: {
       entry: path.resolve(__dirname, 'src/index.ts'),
-      name: 'MornieurUI',
+      name: 'FeitozaUI',
       formats: ['es', 'cjs', 'umd'],
-      fileName: (format) => `mornieur-ui.${format}.js`
+      fileName: (format) => `feitoza-ui.${format}.js`
     },
 
     rollupOptions: {

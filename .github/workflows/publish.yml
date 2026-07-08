@@ -1,4 +1,4 @@
-name: Publish @mornieur/core to GitHub Packages
+name: Publish @feitoza-ui/core to GitHub Packages
 
 on:
   push:

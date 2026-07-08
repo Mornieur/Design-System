@@ -3,8 +3,8 @@ import { typography } from '../src/design-tokens/typography';
 
 export default create({
   base: 'dark',
-  brandTitle: 'Mornieur Design System',
-  brandUrl: 'https://github.com/Mornieur/Design-System',
+  brandTitle: 'FeitozaUI Design System',
+  brandUrl: 'https://github.com/feitoza-ui/feitozaui',
   brandImage: '/logo.jpg',
 
   colorPrimary: '#7928CA',
