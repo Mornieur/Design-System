@@ -1,4 +1,4 @@
-import type { HTMLAttributes } from 'react';
+import { forwardRef, type HTMLAttributes } from 'react';
 import * as S from './styles';
 import { space } from '@/design-tokens';
 
@@ -16,24 +16,22 @@ export type FlexProps = HTMLAttributes<HTMLDivElement> & {
   wrap?: 'nowrap' | 'wrap' | 'wrap-reverse';
 };
 
-const Flex = ({
-  direction = 'row',
-  justify,
-  align,
-  gap,
-  wrap,
-  ...props
-}: FlexProps) => {
-  return (
-    <S.StyledFlex
-      direction={direction}
-      justify={justify}
-      align={align}
-      gap={gap}
-      wrap={wrap}
-      {...props}
-    />
-  );
-};
+const Flex = forwardRef<HTMLDivElement, FlexProps>(
+  ({ direction = 'row', justify, align, gap, wrap, ...props }, ref) => {
+    return (
+      <S.StyledFlex
+        ref={ref}
+        $direction={direction}
+        $justify={justify}
+        $align={align}
+        $gap={gap}
+        $wrap={wrap}
+        {...props}
+      />
+    );
+  }
+);
+
+Flex.displayName = 'Flex';
 
 export default Flex;

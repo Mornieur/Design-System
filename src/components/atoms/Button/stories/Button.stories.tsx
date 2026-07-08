@@ -1,4 +1,4 @@
-import Button  from '..';
+import Button from '..';
 import type { Meta, StoryObj } from '@storybook/nextjs';
 import { expect } from 'storybook/test';
 
@@ -21,10 +21,10 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
-  args: { children: 'Clique Aqui', variant: 'primary' },
+  args: { children: 'Create account', variant: 'primary' },
 
   play: async ({ canvas }) => {
-    const button = canvas.getByRole('button', { name: /clique aqui/i });
+    const button = canvas.getByRole('button', { name: /create account/i });
 
     await expect(button).toBeVisible();
     await expect(button).not.toBeDisabled();
@@ -32,7 +32,17 @@ export const Primary: Story = {
 };
 
 export const Secondary: Story = {
-  args: { children: 'Cancelar', variant: 'secondary' }
+  args: { children: 'Cancel', variant: 'secondary' }
+};
+
+export const Disabled: Story = {
+  args: { children: 'Unavailable action', variant: 'primary', disabled: true },
+
+  play: async ({ canvas }) => {
+    const button = canvas.getByRole('button', { name: /unavailable action/i });
+
+    await expect(button).toBeDisabled();
+  }
 };
 
 export const AllVariants: Story = {
@@ -49,7 +59,7 @@ export const AllVariants: Story = {
 };
 
 export const Interactive: Story = {
-  args: { children: 'Clique Aqui', variant: 'primary', disabled: false },
+  args: { children: 'Submit', variant: 'primary', disabled: false },
 
   play: async ({ canvas, userEvent }) => {
     const btn = canvas.getByRole('button');

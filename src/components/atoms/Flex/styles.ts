@@ -3,36 +3,44 @@ import { space } from '@/design-tokens';
 
 import type { FlexProps } from './index';
 
-export const StyledFlex = styled.div<FlexProps>`
+type FlexStyleProps = {
+  $direction?: FlexProps['direction'];
+  $justify?: FlexProps['justify'];
+  $align?: FlexProps['align'];
+  $gap?: FlexProps['gap'];
+  $wrap?: FlexProps['wrap'];
+};
+
+export const StyledFlex = styled.div<FlexStyleProps>`
   display: flex;
 
-  ${({ direction }) =>
-    direction &&
+  ${({ $direction }) =>
+    $direction &&
     css`
-      flex-direction: ${direction};
+      flex-direction: ${$direction};
     `}
 
-  ${({ justify }) =>
-    justify &&
+  ${({ $justify }) =>
+    $justify &&
     css`
-      justify-content: ${justify};
+      justify-content: ${$justify};
     `}
 
-  ${({ align }) =>
-    align &&
+  ${({ $align }) =>
+    $align &&
     css`
-      align-items: ${align};
+      align-items: ${$align};
     `}
 
-  ${({ wrap }) =>
-    wrap &&
+  ${({ $wrap }) =>
+    $wrap &&
     css`
-      flex-wrap: ${wrap};
+      flex-wrap: ${$wrap};
     `}
 
-  ${({ gap }) =>
-    gap &&
+  ${({ $gap }) =>
+    $gap &&
     css`
-      gap: ${space[gap]};
+      gap: ${space[$gap]};
     `}
 `;

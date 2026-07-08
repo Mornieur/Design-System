@@ -13,6 +13,7 @@ Use this checklist before treating a component as part of the public platform.
 - [ ] Empty state exists when applicable.
 - [ ] Dark theme decision is documented.
 - [ ] Types are clear and exported when useful.
+- [ ] Native props and refs are preserved when they are part of the API.
 - [ ] Public export is intentional.
 - [ ] Accessibility review is complete.
 - [ ] Responsive behavior is considered.

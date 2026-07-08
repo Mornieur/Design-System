@@ -2,36 +2,36 @@ import styled, { css } from 'styled-components';
 import { space, colors, radii } from '@/design-tokens';
 
 interface BoxStyleProps {
-  padding?: keyof typeof space;
-  margin?: keyof typeof space;
-  bg?: keyof typeof colors;
-  radius?: keyof typeof radii;
+  $padding?: keyof typeof space;
+  $margin?: keyof typeof space;
+  $bg?: keyof typeof colors;
+  $radius?: keyof typeof radii;
 }
 
 export const StyledBox = styled.div<BoxStyleProps>`
   box-sizing: border-box;
 
-  ${({ padding }) =>
-    padding &&
+  ${({ $padding }) =>
+    $padding &&
     css`
-      padding: ${space[padding]};
+      padding: ${space[$padding]};
     `};
 
-  ${({ margin }) =>
-    margin &&
+  ${({ $margin }) =>
+    $margin &&
     css`
-      margin: ${space[margin]};
+      margin: ${space[$margin]};
     `};
 
-  ${({ bg }) =>
-    bg &&
+  ${({ $bg }) =>
+    $bg &&
     css`
-      background-color: ${colors[bg]};
+      background-color: ${colors[$bg]};
     `};
 
-  ${({ radius }) =>
-    radius &&
+  ${({ $radius }) =>
+    $radius &&
     css`
-      border-radius: ${radii[radius]};
+      border-radius: ${radii[$radius]};
     `};
 `;

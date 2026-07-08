@@ -26,6 +26,14 @@ When a component holds state, document whether it is controlled, uncontrolled, o
 
 Prefer composition for complex UI. A component should not hide unrelated layout, data fetching, or product behavior.
 
+## DOM Pass-Through
+
+Public primitives should preserve native props such as `className`, `style`, and `data-*` attributes. Internal style props should not leak to the DOM. Use implementation-specific transient props when needed.
+
+## Ref Forwarding
+
+Public primitives and controls should forward refs to their underlying DOM element when that element is part of the component contract.
+
 ## Type Exports
 
 Public component props should be exported when useful:

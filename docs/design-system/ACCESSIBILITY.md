@@ -26,6 +26,10 @@ Inputs and controls need accessible names. Use visible labels when possible. Ico
 
 Disabled controls should communicate state visually and programmatically. Native `disabled` should be preferred when available.
 
+## Presentational Primitives
+
+Layout and surface primitives should not add landmarks or ARIA roles by default. Consumers may pass semantic props when the surrounding product context requires them.
+
 ## Contrast
 
 Text, icons, focus indicators, and important UI states should meet reasonable contrast expectations.
