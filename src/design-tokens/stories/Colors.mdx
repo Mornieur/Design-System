@@ -9,13 +9,28 @@ FeitozaUI colors follow the Quiet Future / Neon Infrastructure direction: dark i
 
 `colors` remains available as the default compatibility export. New work should prefer `primitiveColors` for raw values and `semanticColors` for intent.
 
+<div className="fzui-doc-hero">
+  <p className="fzui-doc-eyebrow">Foundations / Color System</p>
+  <p className="fzui-doc-lede">
+    Dark mode is the primary expression of FeitozaUI. Cyan is the action and focus signal. Coral is an expressive accent, not the default action color.
+  </p>
+  <div className="fzui-doc-meta">
+    <span className="fzui-doc-pill">Dark first</span>
+    <span className="fzui-doc-pill">Semantic roles</span>
+    <span className="fzui-doc-pill">Accessible contrast</span>
+  </div>
+</div>
+
 ## Primitive Colors
 
 <ColorPalette>
-  <ColorItem title="Coral" subtitle="Primary brand action" colors={Object.values(primitiveColors.coral)} />
-  <ColorItem title="Amber" subtitle="Secondary action and accent" colors={Object.values(primitiveColors.amber)} />
-  <ColorItem title="Neon" subtitle="Controlled accent colors" colors={Object.values(primitiveColors.neon)} />
-  <ColorItem title="Navy" subtitle="Dark infrastructure surfaces" colors={Object.values(primitiveColors.navy)} />
+  <ColorItem title="Blue Gray" subtitle="Infrastructure surfaces and text hierarchy" colors={Object.values(primitiveColors.blueGray)} />
+  <ColorItem title="Cyan" subtitle="Action, focus, selection, and technical signal" colors={Object.values(primitiveColors.cyan)} />
+  <ColorItem title="Coral" subtitle="Expressive brand accent" colors={Object.values(primitiveColors.coral)} />
+  <ColorItem title="Amber" subtitle="Warning and caution" colors={Object.values(primitiveColors.amber)} />
+  <ColorItem title="Green" subtitle="Success and healthy state" colors={Object.values(primitiveColors.green)} />
+  <ColorItem title="Red" subtitle="Error, danger, and destructive state" colors={Object.values(primitiveColors.red)} />
+  <ColorItem title="Indigo" subtitle="Informational signal" colors={Object.values(primitiveColors.indigo)} />
   <ColorItem title="Gray" subtitle="Light surfaces and secondary text" colors={Object.values(primitiveColors.gray)} />
 </ColorPalette>
 
@@ -40,15 +55,13 @@ FeitozaUI colors follow the Quiet Future / Neon Infrastructure direction: dark i
   <ColorItem title="Focus" subtitle={semanticColors.light.focus} colors={[semanticColors.light.focus]} />
 </ColorPalette>
 
-## Brand
+## Compatibility Aliases
 
 <ColorPalette>
-  <ColorItem title="Primary" subtitle={colors.primary} colors={[colors.primary]} />
-  <ColorItem title="Primary Dark" subtitle={colors.primaryDark} colors={[colors.primaryDark]} />
-  <ColorItem title="Secondary" subtitle={colors.secondary} colors={[colors.secondary]} />
-  <ColorItem title="Accent" subtitle={colors.accent} colors={[colors.accent]} />
-  <ColorItem title="Gradient Start" subtitle={colors.gradientStart} colors={[colors.gradientStart]} />
-  <ColorItem title="Gradient End" subtitle={colors.gradientEnd} colors={[colors.gradientEnd]} />
+  <ColorItem title="Legacy Primary" subtitle={colors.primary} colors={[colors.primary]} />
+  <ColorItem title="Legacy Primary Dark" subtitle={colors.primaryDark} colors={[colors.primaryDark]} />
+  <ColorItem title="Legacy Secondary" subtitle={colors.secondary} colors={[colors.secondary]} />
+  <ColorItem title="Legacy Accent" subtitle={colors.accent} colors={[colors.accent]} />
 </ColorPalette>
 
 ## Neutral

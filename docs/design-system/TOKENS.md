@@ -122,7 +122,7 @@ Future evolution:
 - Preserve Inter for interface and reading.
 - Preserve Space Grotesk for display, brand, and identity.
 - Keep Outfit as the heading family until a dedicated typography migration is approved.
-- Use the system monospace stack for code and data roles until font loading is reviewed.
+- Use JetBrains Mono for code and data roles in FeitozaUI product surfaces, with system monospace fallbacks for consumers that do not load it.
 
 ### Spacing
 
@@ -332,7 +332,7 @@ Current compatibility implication:
 
 ### Typography Direction
 
-Current typography tokens preserve existing font families and introduce roles.
+Current typography tokens preserve existing font-family aliases and introduce roles.
 
 Impact of changing typography later:
 
@@ -343,7 +343,7 @@ Impact of changing typography later:
 
 Open question:
 
-- Whether Outfit should remain the long-term heading family once Space Grotesk owns display and identity.
+- Outfit remains a compatibility heading family for now. New identity work should prefer Space Grotesk for display and brand roles.
 
 ## Review Rules
 

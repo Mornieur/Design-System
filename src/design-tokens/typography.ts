@@ -8,8 +8,8 @@ export const typography = {
     heading: "'Outfit', sans-serif",
     display: "'Space Grotesk', sans-serif",
     brand: "'Space Grotesk', sans-serif",
-    code: "ui-monospace, 'SFMono-Regular', 'Consolas', 'Liberation Mono', monospace",
-    data: "ui-monospace, 'SFMono-Regular', 'Consolas', 'Liberation Mono', monospace"
+    code: "'JetBrains Mono', ui-monospace, 'SFMono-Regular', 'Consolas', 'Liberation Mono', monospace",
+    data: "'JetBrains Mono', ui-monospace, 'SFMono-Regular', 'Consolas', 'Liberation Mono', monospace"
   },
   weights: {
     regular: 400,

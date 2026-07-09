@@ -6,28 +6,60 @@ import { fontSizes } from '../font-sizes';
 
 # Typography
 
-Typography tokens currently define font families and a small font-size scale.
+Typography defines reading rhythm and hierarchy for FeitozaUI. It should make technical interfaces feel precise and readable before it expresses brand personality.
 
 This is not a full text component system yet. Dedicated `Text` or `Heading` components may be added later after the foundation is stable.
+
+<div className="fzui-doc-hero">
+  <p className="fzui-doc-eyebrow">Foundations / Typography</p>
+  <p className="fzui-doc-lede">
+    Interface text stays readable, display text carries identity, and JetBrains Mono is reserved for technical data. Typography should clarify infrastructure, not decorate it.
+  </p>
+  <div className="fzui-doc-meta">
+    <span className="fzui-doc-pill">Inter for interface</span>
+    <span className="fzui-doc-pill">Space Grotesk for display</span>
+    <span className="fzui-doc-pill">JetBrains Mono for data</span>
+  </div>
+</div>
+
+## Responsibilities
+
+| Role | Token | Responsibility |
+| --- | --- | --- |
+| Interface | `typography.roles.interface` | Controls, labels, body copy, documentation, and repeated reading. |
+| Reading | `typography.roles.reading` | Longer copy and prose-like documentation. |
+| Heading | `typography.roles.heading` | Current heading compatibility role. |
+| Display | `typography.roles.display` | Expressive titles and identity moments. |
+| Brand | `typography.roles.brand` | Controlled brand emphasis. |
+| Code | `typography.roles.code` | Code, commands, identifiers, endpoints, and logs. |
+| Data | `typography.roles.data` | Metrics, IDs, timestamps, versions, and technical metadata. |
+
+Inter remains the default family for interface and reading. Space Grotesk owns display and brand expression. JetBrains Mono owns code and data. Outfit remains as a compatibility heading role and should not be expanded for new identity work.
 
 ## Font Families
 
 <Typeset
-  fontFamily={typography.heading}
-  sampleText="FeitozaUI heading family"
+  fontFamily={typography.roles.interface}
+  sampleText="Interface text stays quiet, readable, and precise across controls and documentation."
+  fontSizes={['16px', '14px', '12px']}
+/>
+
+<Typeset
+  fontFamily={typography.roles.display}
+  sampleText="Quiet Future display language"
   fontSizes={['48px', '40px', '32px', '24px']}
 />
 
 <Typeset
-  fontFamily={typography.body}
-  sampleText="FeitozaUI body family for interface copy and readable content."
-  fontSizes={['16px']}
+  fontFamily={typography.roles.heading}
+  sampleText="Heading compatibility remains stable while typography migration is evaluated."
+  fontSizes={['32px', '24px', '20px']}
 />
 
 <Typeset
-  fontFamily={typography.accent}
-  sampleText="Accent family for controlled emphasis."
-  fontSizes={['20px']}
+  fontFamily={typography.roles.data}
+  sampleText="api-gateway-7f4d - p95 182ms - deploy v2.4.1"
+  fontSizes={['16px', '14px', '12px']}
 />
 
 ## Font Sizes
@@ -52,6 +84,10 @@ This is not a full text component system yet. Dedicated `Text` or `Heading` comp
 
 ## Usage Notes
 
-- Keep component typography token-based.
+- Use Inter roles for controls, labels, body copy, and documentation.
+- Use Space Grotesk roles only for display, brand, and deliberate identity moments.
+- Use JetBrains Mono roles for code, identifiers, metrics, logs, timestamps, and technical metadata.
+- Keep Outfit as heading compatibility for now; do not add new responsibilities to it.
 - Avoid introducing new font families in component code.
-- Treat full type scale and text components as future work.
+- Treat full text components and font-loading changes as future work.
+- Do not use typography as cyberpunk decoration. Legibility comes first.
