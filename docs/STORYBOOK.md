@@ -39,3 +39,33 @@ Storybook docs should be honest. If a feature is planned but not implemented, it
 ## Visual Quality
 
 The Storybook UI should feel consistent with the FeitozaUI identity, but visual polish should not hide incomplete APIs or missing accessibility work.
+
+## Visual Experience
+
+Storybook is the first product surface for FeitozaUI. It should use the approved **Quiet Future / Neon Infrastructure** direction without becoming a showcase or landing page.
+
+Rules:
+
+- Dark mode is the default documentation and canvas background.
+- Light background remains available for future validation.
+- Manager, docs, and canvas should use blue-gray infrastructure surfaces.
+- Cyan is used for selection, focus, links, and active technical signals.
+- Coral is rare and reserved for expressive accent moments.
+- Docs should rely on typography, hierarchy, borders, and surface lightness before decoration.
+- Code, token names, package names, IDs, and metrics should use monospace.
+- Controls and ArgsTable must remain readable and usable.
+- Internal Storybook selectors may be used only for the documentation shell, not for component implementation.
+
+The Storybook visual layer does not introduce a library ThemeProvider, runtime theme switching, component tokens, or public API.
+
+## Fonts
+
+Storybook loads Inter, Space Grotesk, JetBrains Mono, and Outfit through `manager-head.html` and `preview-head.html`.
+
+Reason:
+
+- The current repository does not include local font files.
+- No font package dependency is installed.
+- Manager and preview run outside the Next app layout, so `next/font` does not automatically cover them.
+
+This is a Storybook product-surface decision. The library package still exports font-family tokens only and does not force consumers to download fonts.

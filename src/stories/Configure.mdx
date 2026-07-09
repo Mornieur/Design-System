@@ -4,7 +4,17 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # FeitozaUI
 
-FeitozaUI is a React and TypeScript UI Engineering Platform focused on foundations, primitives, component APIs, accessibility, testing, package build, and documentation.
+<div className="fzui-doc-hero">
+  <p className="fzui-doc-eyebrow">UI Engineering Platform</p>
+  <p className="fzui-doc-lede">
+    FeitozaUI is a React and TypeScript component platform focused on foundations, primitives, component APIs, accessibility, testing, package build, and documentation.
+  </p>
+  <div className="fzui-doc-meta">
+    <span className="fzui-doc-pill">Quiet Future</span>
+    <span className="fzui-doc-pill">Neon Infrastructure</span>
+    <span className="fzui-doc-pill">Dark first</span>
+  </div>
+</div>
 
 The current public API is intentionally small:
 
@@ -17,11 +27,24 @@ This Storybook is the technical documentation surface for the platform. It shoul
 
 ## Current Scope
 
-- Foundations: colors, typography, spacing, and radii.
-- Primitives: Button, Box, and Flex.
-- Developer Experience: typed public exports and predictable props.
-- Accessibility baseline: semantic HTML, native disabled behavior, focus visibility, and no unnecessary landmark roles on primitives.
-- Testing baseline: Vitest and Testing Library coverage for public primitives.
+<div className="fzui-doc-grid">
+  <div className="fzui-doc-panel">
+    <strong>Foundations</strong>
+    <p>Colors, typography, spacing, radius, motion, elevation, and token architecture.</p>
+  </div>
+  <div className="fzui-doc-panel">
+    <strong>Primitives</strong>
+    <p>Button, Box, and Flex define the initial public component surface.</p>
+  </div>
+  <div className="fzui-doc-panel">
+    <strong>Engineering</strong>
+    <p>Typed exports, predictable props, ref forwarding, tests, and package build.</p>
+  </div>
+  <div className="fzui-doc-panel">
+    <strong>Accessibility</strong>
+    <p>Semantic HTML, visible focus, native disabled behavior, and restrained motion.</p>
+  </div>
+</div>
 
 ## Not Current Scope
 
