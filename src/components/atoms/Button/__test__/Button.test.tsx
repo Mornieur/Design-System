@@ -2,7 +2,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { createRef } from 'react';
 import { describe, it, expect, vi } from 'vitest';
 import Button from '..';
-import { colors } from '@/design-tokens';
+import { semanticColors } from '@/design-tokens';
 
 describe('Button', () => {
   it('renders with text', () => {
@@ -57,18 +57,35 @@ describe('Button', () => {
   it('applies variant primary', () => {
     render(<Button variant="primary">Primary</Button>);
     const btn = screen.getByText('Primary');
-    expect(btn).toHaveStyle({ backgroundColor: colors.primary });
+    expect(btn).toHaveStyle({
+      backgroundColor: semanticColors.dark.actionPrimary,
+      color: semanticColors.dark.actionPrimaryText
+    });
   });
 
   it('applies variant secondary', () => {
     render(<Button variant="secondary">Secondary</Button>);
     const btn = screen.getByText('Secondary');
-    expect(btn).toHaveStyle({ backgroundColor: colors.secondary });
+    expect(btn).toHaveStyle({
+      backgroundColor: semanticColors.dark.actionSecondary,
+      color: semanticColors.dark.actionSecondaryText
+    });
   });
 
   it('applies variant accent', () => {
     render(<Button variant="accent">Accent</Button>);
     const btn = screen.getByText('Accent');
-    expect(btn).toHaveStyle({ backgroundColor: colors.accent });
+    expect(btn).toHaveStyle({
+      backgroundColor: semanticColors.dark.surface,
+      color: semanticColors.dark.accent
+    });
+  });
+
+  it('does not leak transient style props to the DOM', () => {
+    render(<Button variant="primary">Transient props</Button>);
+
+    expect(screen.getByRole('button', { name: 'Transient props' })).not.toHaveAttribute(
+      '$variant'
+    );
   });
 });
