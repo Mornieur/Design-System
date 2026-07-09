@@ -11,9 +11,12 @@ Radius tokens define corner treatment for controls, surfaces, and circular eleme
 
 | Token | Value | Intended usage |
 | --- | --- | --- |
+| `radii.none` | {radii.none} | Reset or square composition |
 | `radii.small` | {radii.small} | Compact UI and subtle rounding |
 | `radii.medium` | {radii.medium} | Default controls and primitives |
-| `radii.large` | {radii.large} | Larger surfaces |
+| `radii.large` | {radii.large} | Default panels and larger controls |
+| `radii.xlarge` | {radii.xlarge} | Larger surfaces |
+| `radii.pill` | {radii.pill} | Badges and pill controls |
 | `radii.round` | {radii.round} | Circular UI such as avatars or icon controls |
 
 ## Visual Reference
@@ -36,3 +39,4 @@ Radius tokens define corner treatment for controls, surfaces, and circular eleme
 
 - Use radius tokens instead of ad hoc pixel values in reusable components.
 - Prefer `medium` as the default radius for controls unless the component has a specific reason.
+- Keep surfaces controlled; avoid overly soft rounding unless the component is intentionally pill-shaped.

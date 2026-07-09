@@ -1,13 +1,44 @@
 import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs/blocks';
-import { colors } from '../colors';
+import { colors, primitiveColors, semanticColors } from '../colors';
 
 <Meta title="Foundations/Colors" />
 
 # Colors
 
-FeitozaUI currently exposes a small color foundation for brand, neutral, and feedback decisions.
+FeitozaUI colors follow the Quiet Future / Neon Infrastructure direction: dark infrastructure surfaces, quiet text roles, and controlled neon accents.
 
-These tokens are available to consumers today. A broader primitive/semantic token model is future work and should not be assumed to exist yet.
+`colors` remains available as the default compatibility export. New work should prefer `primitiveColors` for raw values and `semanticColors` for intent.
+
+## Primitive Colors
+
+<ColorPalette>
+  <ColorItem title="Coral" subtitle="Primary brand action" colors={Object.values(primitiveColors.coral)} />
+  <ColorItem title="Amber" subtitle="Secondary action and accent" colors={Object.values(primitiveColors.amber)} />
+  <ColorItem title="Neon" subtitle="Controlled accent colors" colors={Object.values(primitiveColors.neon)} />
+  <ColorItem title="Navy" subtitle="Dark infrastructure surfaces" colors={Object.values(primitiveColors.navy)} />
+  <ColorItem title="Gray" subtitle="Light surfaces and secondary text" colors={Object.values(primitiveColors.gray)} />
+</ColorPalette>
+
+## Semantic Dark Mode
+
+<ColorPalette>
+  <ColorItem title="Background" subtitle={semanticColors.dark.background} colors={[semanticColors.dark.background]} />
+  <ColorItem title="Surface" subtitle={semanticColors.dark.surface} colors={[semanticColors.dark.surface]} />
+  <ColorItem title="Surface Raised" subtitle={semanticColors.dark.surfaceRaised} colors={[semanticColors.dark.surfaceRaised]} />
+  <ColorItem title="Text" subtitle={semanticColors.dark.text} colors={[semanticColors.dark.text]} />
+  <ColorItem title="Text Secondary" subtitle={semanticColors.dark.textSecondary} colors={[semanticColors.dark.textSecondary]} />
+  <ColorItem title="Focus" subtitle={semanticColors.dark.focus} colors={[semanticColors.dark.focus]} />
+</ColorPalette>
+
+## Semantic Light Mode
+
+<ColorPalette>
+  <ColorItem title="Background" subtitle={semanticColors.light.background} colors={[semanticColors.light.background]} />
+  <ColorItem title="Surface" subtitle={semanticColors.light.surface} colors={[semanticColors.light.surface]} />
+  <ColorItem title="Text" subtitle={semanticColors.light.text} colors={[semanticColors.light.text]} />
+  <ColorItem title="Text Secondary" subtitle={semanticColors.light.textSecondary} colors={[semanticColors.light.textSecondary]} />
+  <ColorItem title="Focus" subtitle={semanticColors.light.focus} colors={[semanticColors.light.focus]} />
+</ColorPalette>
 
 ## Brand
 
@@ -44,4 +75,5 @@ These tokens are available to consumers today. A broader primitive/semantic toke
 
 - Use color tokens through components when possible.
 - Do not introduce new hardcoded colors inside reusable components without documenting the reason.
-- Treat theme support as future work until semantic theme tokens are implemented.
+- Treat runtime theme switching as future work until a ThemeProvider exists.
+- Use semantic contrast text tokens for saturated action backgrounds.
