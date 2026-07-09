@@ -2,6 +2,8 @@
 
 Components should be added only when they solve a reusable UI problem.
 
+Use [Component Language](COMPONENT_LANGUAGE.md) for visual and behavioral language before designing or implementing a component. This document remains focused on implementation guidance.
+
 ## When To Create A Component
 
 - The same UI pattern appears in more than one place.

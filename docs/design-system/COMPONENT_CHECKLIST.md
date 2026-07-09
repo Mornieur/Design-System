@@ -2,6 +2,8 @@
 
 Use this checklist before treating a component as part of the public platform.
 
+Before using this checklist, confirm the component follows the visual and behavioral expectations in [Component Language](COMPONENT_LANGUAGE.md).
+
 - [ ] Story exists.
 - [ ] Tests exist.
 - [ ] Docs exist or the story explains usage clearly.
