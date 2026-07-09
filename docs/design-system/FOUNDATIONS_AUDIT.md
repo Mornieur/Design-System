@@ -35,7 +35,7 @@ The gap is not component count. The gap is visual language consistency.
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Button | Public atom with `primary`, `secondary`, `accent`; currently warm brand direction; native button API preserved. | Primary cyan, secondary neutral, outline, ghost, destructive; compact radius; subtle glow only on hover/focus. | Current Button is simpler and visually warmer. Figma is more technical and state-rich. | Align later through tokens only; preserve API. Do not add variants in this phase. | High | Button is the most visible primitive and sets action language. | Strong visual identity improvement when tokens are approved. | Changing primary color may affect brand perception and tests. |
 | Card | Internal molecule with title, body, elevation prop, surface styling. | Border-first panel, small radius, no dark-mode shadow by default, optional active top edge/accent. | Current Card treats elevation more like shadow; Figma treats elevation as surface hierarchy. | Align later by reducing shadow reliance and documenting active/selected card patterns. | High | Cards define platform surfaces and dashboard density. | Better infrastructure feel. | May change existing visual snapshots if added later. |
-| Typography | Current docs/tokens use Inter, Outfit, Space Grotesk. | Barlow for display/headings, DM Sans for body, JetBrains Mono for data/code/labels. | Different type personality and different technical data strategy. | Decision Pending. Do not change font tokens yet. | High | Typography affects every component and brand signal. | Large identity impact. | Font change may cause layout shifts and require Storybook/doc updates. |
+| Typography | Current docs/tokens use Inter, Outfit, Space Grotesk, and JetBrains Mono roles. | Barlow for display/headings, DM Sans for body, JetBrains Mono for data/code/labels. | FeitozaUI keeps Inter for interface, Space Grotesk for brand/display, JetBrains Mono for technical data, and Outfit as compatibility. | Resolved for current phase. Preserve compatibility; do not expand Outfit. | High | Typography affects every component and brand signal. | Stronger identity without a destructive font migration. | Storybook uses remote font loading until local/self-hosted font strategy is approved. |
 | Spacing | Numeric 4px-based scale, compact and simple. | 4px base with a 2px micro step and 11 stops through 64px. | Mostly aligned; Figma includes smaller micro spacing. | Consider adding a micro step in token phase if API shape allows it. | Medium | Dense platform UI benefits from a 2px micro token. | Better fit for badges, dots, table cells. | Numeric token keys like `0.5` may complicate typing and DX. |
 | Radius | Current scale includes larger values suitable for general UI. | Minimal radius: 0, 2px, 4px, 6px, full. | Current project is softer than Figma. | Decision Pending: reduce default radius scale later. | High | Radius is a visible identity marker. | More technical and precise visual language. | Reducing radius changes perceived component friendliness. |
 | Motion | Current motion tokens are simple and functional. | Short transitions, `duration-150`/`duration-200`, overlay entrance/exit, loading spinners. | Compatible direction. | Keep motion minimal; no new dependency. | Low | Existing architecture can express this with tokens. | Consistent feedback. | Over-animating would make the UI feel less professional. |
@@ -57,45 +57,16 @@ Compatibility note:
 - Future component work should migrate toward semantic roles instead of raw `colors.primary`.
 - Documentation must distinguish semantic primary from compatibility aliases.
 
-## Decision Pending: Typography Direction
+## Resolved Decision: Typography Direction
 
-### Option A: Keep Current Families
+Decision:
 
-- Heading: Outfit.
-- Body: Inter.
-- Accent: Space Grotesk.
+- Inter owns interface, controls, labels, body copy, documentation, and reading.
+- Space Grotesk owns display, brand, and expressive headings.
+- JetBrains Mono owns code, tokens, IDs, logs, metrics, and technical metadata.
+- Outfit remains a compatibility heading family while existing consumers still reference `typography.heading`.
 
-Advantages:
-
-- Lower implementation cost.
-- Stable layout.
-- Existing docs and tokens remain valid.
-
-Disadvantages:
-
-- Less aligned with the Figma Make technical/data language.
-- Space Grotesk is not a true monospace data font.
-
-### Option B: Adopt Figma Make Families
-
-- Heading/display: Barlow.
-- Body: DM Sans.
-- Data/code/labels: JetBrains Mono.
-
-Advantages:
-
-- Stronger developer-tool identity.
-- Better fit for metrics and observability.
-- Clearer separation between content and data.
-
-Disadvantages:
-
-- Requires font sourcing strategy.
-- May affect layout, rendering, and Storybook examples.
-
-### Recommendation
-
-Approve the typography direction before token implementation. If the goal is a stronger UI Engineering Platform identity, introduce a true monospace role even if body/headings remain unchanged initially.
+Do not expand Outfit usage. Future component and documentation work should prefer semantic roles over the older `typography.heading` alias.
 
 ## Resolved Decision: Radius Scale
 

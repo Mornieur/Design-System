@@ -194,7 +194,7 @@ Approved for the current token phase:
 - Preserve `Inter` for interface and reading.
 - Preserve `Space Grotesk` for display, brand, and identity moments.
 - Preserve `Outfit` as the current heading family until a dedicated typography migration is approved.
-- Use the system monospace stack for code and data roles until a font-loading decision exists.
+- Use JetBrains Mono for code and data roles in FeitozaUI product surfaces, with system monospace fallbacks for consumers that do not load it.
 
 Recommended direction:
 

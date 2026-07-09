@@ -23,6 +23,10 @@ This document describes the intended foundation structure. It does not mean ever
 - Z-index: layering rules for overlays and fixed elements.
 - Opacity: disabled, overlay, and emphasis treatment.
 
+Detailed typography rules are documented in [Typography](TYPOGRAPHY.md).
+
+Detailed iconography rules are documented in [Iconography](ICONOGRAPHY.md).
+
 ## Token Layers
 
 Large design systems usually separate tokens into layers.
@@ -34,7 +38,7 @@ Primitive tokens are raw values such as color families, spacing steps, and font 
 Example:
 
 ```ts
-primitiveColors.navy[900]
+primitiveColors.blueGray[900]
 space.4
 fontSize.md
 ```
