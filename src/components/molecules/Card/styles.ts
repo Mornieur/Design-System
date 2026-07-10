@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { colors, typography, radii, space } from '@/design-tokens';
+import { colors, typography, radii, space, shadows } from '@/design-tokens';
 
 type CardElevation = 'none' | 'sm' | 'md' | 'lg';
 
@@ -8,7 +8,8 @@ interface CardProps {
 }
 
 export const CardContainer = styled.div<CardProps>`
-  background-color: ${colors.white};
+  background-color: ${colors.surface};
+  border: 1px solid ${colors.border};
   border-radius: ${radii.large};
   padding: ${space[4]};
   display: flex;
@@ -19,14 +20,14 @@ export const CardContainer = styled.div<CardProps>`
   ${({ elevation = 'md' }) => {
     switch (elevation) {
       case 'none':
-        return css`box-shadow: none;`;
+        return css`box-shadow: ${shadows.none};`;
       case 'sm':
-        return css`box-shadow: 0 1px 4px rgba(0,0,0,0.08);`;
+        return css`box-shadow: ${shadows.sm};`;
       case 'lg':
-        return css`box-shadow: 0 4px 20px rgba(0,0,0,0.12);`;
+        return css`box-shadow: ${shadows.lg};`;
       case 'md':
       default:
-        return css`box-shadow: 0 2px 12px rgba(0,0,0,0.1);`;
+        return css`box-shadow: ${shadows.md};`;
     }
   }}
 `;
