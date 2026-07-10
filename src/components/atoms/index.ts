@@ -8,3 +8,5 @@ export { default as Input } from './Input';
 export type { InputProps, InputSize } from './Input';
 export { default as Textarea } from './Textarea';
 export type { TextareaProps, TextareaResize, TextareaSize } from './Textarea';
+export { default as Select } from './Select';
+export type { SelectProps, SelectSize } from './Select';
