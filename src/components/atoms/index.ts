@@ -12,6 +12,8 @@ export { default as Spinner } from './Spinner';
 export type { SpinnerProps, SpinnerSize, SpinnerTone } from './Spinner';
 export { default as Skeleton } from './Skeleton';
 export type { SkeletonProps, SkeletonRadius } from './Skeleton';
+export { default as Progress } from './Progress';
+export type { ProgressProps, ProgressSize, ProgressTone } from './Progress';
 export { default as Input } from './Input';
 export type { InputProps, InputSize } from './Input';
 export { default as Textarea } from './Textarea';
