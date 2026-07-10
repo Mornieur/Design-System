@@ -66,7 +66,7 @@ const badgeVariantStyles = {
 const sizeStyles = {
   sm: css`
     min-height: 20px;
-    padding: calc(${space[1]} / 2) ${space[2]};
+    padding: ${space[0]} ${space[2]};
     font-size: 0.6875rem;
   `,
   md: css`
