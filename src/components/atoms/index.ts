@@ -6,6 +6,8 @@ export { default as Flex } from './Flex';
 export type { FlexProps } from './Flex';
 export { default as Badge } from './Badge';
 export type { BadgeProps, BadgeSize, BadgeVariant } from './Badge';
+export { default as Divider } from './Divider';
+export type { DividerOrientation, DividerProps } from './Divider';
 export { default as Input } from './Input';
 export type { InputProps, InputSize } from './Input';
 export { default as Textarea } from './Textarea';
