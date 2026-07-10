@@ -26,6 +26,8 @@
     "src/index.ts",
     "src/components/atoms/**/*.ts",
     "src/components/atoms/**/*.tsx",
+    "src/components/molecules/**/*.ts",
+    "src/components/molecules/**/*.tsx",
     "src/design-tokens/**/*.ts"
   ],
   "exclude": [
