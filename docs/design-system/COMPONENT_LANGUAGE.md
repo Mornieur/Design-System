@@ -31,12 +31,11 @@ This prevents future components from becoming a random collection of styles. Com
 
 ### Current Problem
 
-The project currently exposes a small public atom set and includes a few internal or example components. The implementation is useful, but the visual language is still uneven:
+The project currently exposes a compact public atom set, a small public molecule set, and a Storybook showcase used as the main visual validation surface. The implementation is useful, but the visual language is still uneven:
 
 - Some components use compatibility color aliases instead of semantic roles.
 - Button is public but still reflects the older warm primary direction.
-- Card is useful but still needs clearer surface/elevation language.
-- Carousel and UserProfile are product/example-like and not aligned with the core platform language.
+- Surface primitives still need official documentation before Card 2.0.
 - Badge, Table, overlays, and several form controls are still pending or partial.
 
 ### Restrictions
@@ -76,10 +75,6 @@ The project currently exposes a small public atom set and includes a few interna
 | Button | Public action primitive. Preserves native button props and ref. | Useful API baseline, but visual variants still rely on compatibility aliases and the older warm primary direction. Needs semantic action mapping and sharper state language later. | Public but requires alignment |
 | Box | Public presentational surface/layout primitive. Token props for padding, margin, background, and radius. | Small, composable, and useful. API exposes `colors` keys, so future migration must be careful. It should remain visually neutral. | Public and aligned |
 | Flex | Public layout primitive. Token gap and native div pass-through. | Strong primitive. It should remain unstyled except for layout. | Public and aligned |
-| Card | Internal molecule for grouped content. | Useful as a future surface pattern, but current API is narrow and elevation model should move toward surface hierarchy. | Internal and useful |
-| Carousel | Molecule for image carousel behavior. | Product/demo-like and less central to UI Engineering Platform foundations. Visual language is not aligned with the new identity. | Experimental |
-| UserProfile | Organism example composed with Button. | Product-specific example. Useful for tests/composition, not a platform component candidate right now. | Experimental |
-
 ### Current Gaps
 
 - No Checkbox, Radio, or Switch yet.
@@ -1996,7 +1991,7 @@ Component tokens should be introduced only when semantic tokens cannot express a
 | 3 | Input | Focus, border, feedback rules. | Foundational for forms. | Accessibility and label/error association. | High. | Define field anatomy and tests. |
 | 4 | Form controls | Input language, focus, feedback. | Enables real product workflows. | Keyboard/ARIA complexity. | High. | Choose native/headless strategy. |
 | 5 | Badge | Feedback tokens and status language. | Observability/platform identity. | Color-only status. | Medium-high. | Define neutral/status variants. |
-| 6 | Card | Surface hierarchy and elevation. | Current internal component exists. | Over-carded UI. | Medium-high. | Decide Card API scope. |
+| 6 | Card | Surface hierarchy and elevation. | Surface primitives and Card 2.0 must start from the documented surface system, not from a legacy component. | Over-carded UI. | Medium-high. | Decide Card API scope. |
 | 7 | Feedback | Badge, alert/accessibility rules. | Loading, error, empty states are platform essentials. | Announcement semantics. | Medium-high. | Define Alert/Skeleton/Progress boundaries. |
 | 8 | Overlays | Focus/z-index/elevation rules. | Needed for complex workflows. | Keyboard/focus traps. | High. | Choose headless strategy. |
 | 9 | Navigation | Tabs/menu/link language. | Product/platform navigation. | Pattern misuse. | Medium. | Define navigation vs action boundaries. |

@@ -20,6 +20,8 @@ Use it to understand the project vision, architecture, component platform decisi
 ## Design System
 
 - [Foundations](design-system/FOUNDATIONS.md): token categories and token strategy.
+- [Surface System](design-system/SURFACE_SYSTEM.md): official surface hierarchy and visual weight model.
+- [Layout Principles](design-system/LAYOUT_PRINCIPLES.md): layout, spacing, density, and reading-order rules.
 - [Component Guidelines](design-system/COMPONENT_GUIDELINES.md): how and when to create components.
 - [Component Checklist](design-system/COMPONENT_CHECKLIST.md): readiness checklist for public components.
 - [Accessibility](design-system/ACCESSIBILITY.md): accessibility standards.
@@ -30,6 +32,10 @@ Use it to understand the project vision, architecture, component platform decisi
 - [Roadmap](roadmap/ROADMAP.md): maturity-based implementation plan.
 - [Future Roadmap](roadmap/FUTURE.md): ideas outside the current scope.
 - [Releases](roadmap/RELEASES.md): versioning and release strategy.
+
+## References
+
+- [Figma Make Reference](references/design-system/figma-make-reference.md): external visual and architectural reference kept for comparison, not as the official source of truth.
 
 ## Quality And Maintenance
 
