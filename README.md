@@ -26,7 +26,7 @@ FeitozaUI is a work in progress. The current package surface is intentionally sm
 
 Current:
 
-- Public components: `Button`, `Box`, `Flex`, `Badge`, `Divider`, `Spinner`, `Skeleton`, `Progress`, `Input`, `Textarea`, `Select`, `Alert`, `EmptyState`, `Tabs`.
+- Public components: `Button`, `Box`, `Flex`, `Surface`, `Badge`, `Divider`, `Spinner`, `Skeleton`, `Progress`, `Input`, `Textarea`, `Select`, `Alert`, `EmptyState`, `Tabs`.
 - Foundations: colors, typography, spacing, radii, motion, borders, focus, states, and semantic mappings.
 - Package build validated locally.
 - Storybook structured as the documentation surface.
@@ -73,6 +73,7 @@ export {
   Select,
   Skeleton,
   Spinner,
+  Surface,
   Tabs,
   Textarea
 } from '@feitoza-ui/core';
@@ -231,4 +232,3 @@ See [Contributing](docs/CONTRIBUTING.md), [Code Style](docs/CODE_STYLE.md), and 
 ## License
 
 [MIT](LICENSE) (c) 2026 Maria Fernanda.
-

@@ -191,6 +191,9 @@ If a lower-level surface visually outweighs a higher-level one, the hierarchy is
 
 ## Applied Guidance Before Card 2.0
 
+- `Surface` is the first public Level 1 containment primitive.
+- `Surface` defines containment only. It does not define layout, spacing, interaction, or card composition.
+- `Box` remains a neutral utility primitive and should not replace `Surface` when the UI is expressing public surface hierarchy.
 - Inputs, Textarea, Select, and Tabs belong to Level 2.
 - Buttons and badges belong to Level 3.
 - Alerts and Empty States usually live inside Level 1 containers while carrying local emphasis.

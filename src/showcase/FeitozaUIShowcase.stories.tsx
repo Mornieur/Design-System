@@ -10,6 +10,7 @@ import {
   Select,
   Skeleton,
   Spinner,
+  Surface,
   Tabs,
   Textarea
 } from '@/index';
@@ -26,7 +27,6 @@ import {
   ShieldCheck
 } from 'lucide-react';
 import {
-  radii,
   semanticColors,
   space,
   typography
@@ -84,16 +84,12 @@ const sectionMetaStyle: CSSProperties = {
   lineHeight: 1.5
 };
 
-const panelStyle: CSSProperties = {
-  border: `1px solid ${semanticColors.dark.border}`,
-  borderRadius: radii.small,
-  background: semanticColors.dark.surface,
+const panelContentStyle: CSSProperties = {
   padding: space[4]
 };
 
-const subtlePanelStyle: CSSProperties = {
-  ...panelStyle,
-  background: semanticColors.dark.backgroundAlt
+const subtlePanelContentStyle: CSSProperties = {
+  padding: space[4]
 };
 
 const metricGridStyle: CSSProperties = {
@@ -110,10 +106,10 @@ const contentGridStyle: CSSProperties = {
 };
 
 const metricPanelStyle: CSSProperties = {
-  ...subtlePanelStyle,
   display: 'grid',
   gap: space[2],
-  minHeight: 132
+  minHeight: 132,
+  padding: space[4]
 };
 
 const tableStyle: CSSProperties = {
@@ -149,7 +145,7 @@ const srOnlyStyle: CSSProperties = {
   border: 0
 };
 
-const Surface = ({
+const DashboardSection = ({
   title,
   description,
   children,
@@ -160,7 +156,7 @@ const Surface = ({
   children: ReactNode;
   style?: CSSProperties;
 }) => (
-  <section style={{ ...panelStyle, ...style }}>
+  <Surface style={{ ...panelContentStyle, ...style }}>
     <Flex direction="column" gap={3}>
       <div>
         <h2 style={sectionTitleStyle}>{title}</h2>
@@ -168,7 +164,7 @@ const Surface = ({
       </div>
       {children}
     </Flex>
-  </section>
+  </Surface>
 );
 
 const Metric = ({
@@ -182,7 +178,7 @@ const Metric = ({
   meta: string;
   tone?: 'neutral' | 'primary' | 'success' | 'warning' | 'danger' | 'info';
 }) => (
-  <div style={metricPanelStyle}>
+  <Surface variant="secondary" style={metricPanelStyle}>
     <Flex justify="space-between" align="center">
       <span
         style={{
@@ -208,7 +204,7 @@ const Metric = ({
       {value}
     </strong>
     <span style={{ color: semanticColors.dark.textSecondary, fontSize: '0.875rem' }}>{meta}</span>
-  </div>
+  </Surface>
 );
 
 const OperationsTable = () => (
@@ -291,7 +287,7 @@ const OperationsTable = () => (
 );
 
 const Filters = () => (
-  <Surface
+  <DashboardSection
     title="Operational controls"
     description="Native inputs and selection components establish a consistent form language for dense technical surfaces."
   >
@@ -348,11 +344,11 @@ const Filters = () => (
         </Tabs.Content>
       </Tabs.Root>
     </Flex>
-  </Surface>
+  </DashboardSection>
 );
 
 const ChangeRequestForm = () => (
-  <Surface
+  <DashboardSection
     title="Change request"
     description="A compact form surface validates Input, Textarea, Select, helper text, and action hierarchy inside the same visual system."
   >
@@ -382,7 +378,7 @@ const ChangeRequestForm = () => (
         </div>
       </Flex>
     </div>
-  </Surface>
+  </DashboardSection>
 );
 
 const DashboardLayout = ({
@@ -394,60 +390,57 @@ const DashboardLayout = ({
 }) => (
   <div style={pageStyle}>
     <main style={shellStyle}>
-      <header
-        style={{
-          ...panelStyle,
-          background: semanticColors.dark.backgroundAlt
-        }}
-      >
-        <Flex justify="space-between" align="center" style={{ gap: space[4], flexWrap: 'wrap' }}>
-          <div style={{ display: 'grid', gap: space[2] }}>
-            <Flex align="center" gap={2} style={{ flexWrap: 'wrap' }}>
-              <Badge variant="primary">production</Badge>
-              <Badge variant="success">all zones reachable</Badge>
-              <Badge variant="neutral">updated 41s ago</Badge>
-            </Flex>
+      <header>
+        <Surface variant="secondary" style={panelContentStyle}>
+          <Flex justify="space-between" align="center" style={{ gap: space[4], flexWrap: 'wrap' }}>
+            <div style={{ display: 'grid', gap: space[2] }}>
+              <Flex align="center" gap={2} style={{ flexWrap: 'wrap' }}>
+                <Badge variant="primary">production</Badge>
+                <Badge variant="success">all zones reachable</Badge>
+                <Badge variant="neutral">updated 41s ago</Badge>
+              </Flex>
 
-            <div>
-              <h1
-                style={{
-                  margin: 0,
-                  fontFamily: heading,
-                  fontSize: '1.875rem',
-                  lineHeight: 1.1,
-                  color: semanticColors.dark.text
-                }}
-              >
-                Infrastructure control plane
-              </h1>
-              <p
-                style={{
-                  margin: `${space[2]} 0 0`,
-                  color: semanticColors.dark.textSecondary,
-                  maxWidth: 760
-                }}
-              >
-                Quiet technical surfaces, restrained signal color, and dense operational context
-                combined through public FeitozaUI components only.
-              </p>
+              <div>
+                <h1
+                  style={{
+                    margin: 0,
+                    fontFamily: heading,
+                    fontSize: '1.875rem',
+                    lineHeight: 1.1,
+                    color: semanticColors.dark.text
+                  }}
+                >
+                  Infrastructure control plane
+                </h1>
+                <p
+                  style={{
+                    margin: `${space[2]} 0 0`,
+                    color: semanticColors.dark.textSecondary,
+                    maxWidth: 760
+                  }}
+                >
+                  Quiet technical surfaces, restrained signal color, and dense operational context
+                  combined through public FeitozaUI components only.
+                </p>
+              </div>
             </div>
-          </div>
 
-          <Flex align="center" gap={2} style={{ flexWrap: 'wrap' }}>
-            <Badge
-              variant="info"
-              outlined
-              style={{ color: semanticColors.dark.accent, borderColor: semanticColors.dark.accent }}
-            >
-              release candidate
-            </Badge>
-            <Button variant="secondary">Open logs</Button>
-            <Button>
-              <RefreshCw aria-hidden="true" size={16} />
-              Refresh
-            </Button>
+            <Flex align="center" gap={2} style={{ flexWrap: 'wrap' }}>
+              <Badge
+                variant="info"
+                outlined
+                style={{ color: semanticColors.dark.accent, borderColor: semanticColors.dark.accent }}
+              >
+                release candidate
+              </Badge>
+              <Button variant="secondary">Open logs</Button>
+              <Button>
+                <RefreshCw aria-hidden="true" size={16} />
+                Refresh
+              </Button>
+            </Flex>
           </Flex>
-        </Flex>
+        </Surface>
       </header>
 
       <Alert
@@ -483,8 +476,8 @@ const DashboardLayout = ({
       <Filters />
 
       <div style={contentGridStyle}>
-        <Surface
-          title="Service operations"
+      <DashboardSection
+        title="Service operations"
           description="A semantic data surface built only for this story. It validates whether public components still feel coherent when embedded inside a denser operational layout."
         >
           <Flex direction="column" gap={3}>
@@ -497,7 +490,7 @@ const DashboardLayout = ({
                 gap: space[3]
               }}
             >
-              <div style={subtlePanelStyle}>
+              <Surface variant="secondary" style={subtlePanelContentStyle}>
                 <Flex direction="column" gap={2}>
                   <Flex justify="space-between" align="center">
                     <span style={{ fontFamily: mono, fontSize: '0.75rem', color: semanticColors.dark.textMuted }}>
@@ -510,9 +503,9 @@ const DashboardLayout = ({
                     Rolling out `auth-service` v2.8.0-rc2 across three availability zones.
                   </span>
                 </Flex>
-              </div>
+              </Surface>
 
-              <div style={subtlePanelStyle}>
+              <Surface variant="secondary" style={subtlePanelContentStyle}>
                 <Flex direction="column" gap={2}>
                   <Flex align="center" gap={2}>
                     <Database aria-hidden="true" size={16} color={semanticColors.dark.textMuted} />
@@ -525,10 +518,10 @@ const DashboardLayout = ({
                     </span>
                   </Flex>
                 </Flex>
-              </div>
+              </Surface>
             </div>
           </Flex>
-        </Surface>
+        </DashboardSection>
 
         <aside style={{ display: 'grid', gap: space[4] }}>
           {empty ? (
@@ -540,7 +533,7 @@ const DashboardLayout = ({
               action={<Button variant="secondary">Open runbooks</Button>}
             />
           ) : (
-            <Surface
+            <DashboardSection
               title="Queue health"
               description="Secondary surfaces should remain useful without competing with the primary operational view."
             >
@@ -581,7 +574,7 @@ const DashboardLayout = ({
                   </Flex>
                 </div>
               </div>
-            </Surface>
+            </DashboardSection>
           )}
 
           <ChangeRequestForm />
@@ -589,7 +582,7 @@ const DashboardLayout = ({
       </div>
 
       {loading ? (
-        <Surface
+        <DashboardSection
           title="Loading surfaces"
           description="A loading composition checks whether skeleton, progress, and inline status remain quiet and legible on dark infrastructure backgrounds."
         >
@@ -599,7 +592,7 @@ const DashboardLayout = ({
             <Skeleton height={14} width="88%" />
             <Progress label="Environment sync" />
           </div>
-        </Surface>
+        </DashboardSection>
       ) : null}
     </main>
   </div>

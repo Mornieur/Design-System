@@ -75,6 +75,7 @@ The project currently exposes a compact public atom set, a small public molecule
 | Button | Public action primitive. Preserves native button props and ref. | Useful API baseline, but visual variants still rely on compatibility aliases and the older warm primary direction. Needs semantic action mapping and sharper state language later. | Public but requires alignment |
 | Box | Public presentational surface/layout primitive. Token props for padding, margin, background, and radius. | Small, composable, and useful. API exposes `colors` keys, so future migration must be careful. It should remain visually neutral. | Public and aligned |
 | Flex | Public layout primitive. Token gap and native div pass-through. | Strong primitive. It should remain unstyled except for layout. | Public and aligned |
+| Surface | Public Level 1 containment primitive. Expresses grouping through background, border, and radius only. | Distinct from Box because it represents public surface hierarchy instead of utility styling. It must stay layout-neutral and avoid becoming Card prematurely. | Public and aligned |
 ### Current Gaps
 
 - No Checkbox, Radio, or Switch yet.
