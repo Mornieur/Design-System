@@ -80,6 +80,26 @@ describe('Tabs', () => {
     expect(screen.getByRole('tab', { name: 'Metrics' })).toHaveAttribute('aria-selected', 'true');
   });
 
+  it('supports Home and End keyboard navigation', () => {
+    render(<Example />);
+
+    const overview = screen.getByRole('tab', { name: 'Overview' });
+    const metrics = screen.getByRole('tab', { name: 'Metrics' });
+    const logs = screen.getByRole('tab', { name: 'Logs' });
+
+    overview.focus();
+    fireEvent.keyDown(overview, { key: 'End' });
+
+    expect(logs).toHaveFocus();
+    expect(logs).toHaveAttribute('aria-selected', 'true');
+
+    fireEvent.keyDown(logs, { key: 'Home' });
+
+    expect(metrics).not.toHaveFocus();
+    expect(overview).toHaveFocus();
+    expect(overview).toHaveAttribute('aria-selected', 'true');
+  });
+
   it('skips disabled tabs in keyboard navigation', () => {
     render(
       <Tabs.Root defaultValue="one">
@@ -123,6 +143,20 @@ describe('Tabs', () => {
     expect(rootRef.current).toHaveAttribute('data-state', 'ready');
     expect(triggerRef.current).toBe(screen.getByRole('tab', { name: 'One' }));
     expect(triggerRef.current).toHaveStyle({ opacity: '0.9' });
+  });
+
+  it('keeps only the selected panel visible', async () => {
+    const user = userEvent.setup();
+
+    render(<Example />);
+
+    expect(screen.getByText('Overview content')).toBeVisible();
+    expect(screen.getByText('Metrics content')).not.toBeVisible();
+
+    await user.click(screen.getByRole('tab', { name: 'Metrics' }));
+
+    expect(screen.getByText('Overview content')).not.toBeVisible();
+    expect(screen.getByText('Metrics content')).toBeVisible();
   });
 
   it('throws when compound parts are used outside root', () => {

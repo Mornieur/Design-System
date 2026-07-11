@@ -60,7 +60,24 @@ export const Default: Story = {
   }
 };
 
-export const DisabledTab: Story = {
+export const KeyboardNavigation: Story = {
+  render: () => (
+    <Panel>
+      <Tabs.Root defaultValue="overview">
+        <Tabs.List aria-label="Keyboard sections">
+          <Tabs.Trigger value="overview">Overview</Tabs.Trigger>
+          <Tabs.Trigger value="metrics">Metrics</Tabs.Trigger>
+          <Tabs.Trigger value="logs">Logs</Tabs.Trigger>
+        </Tabs.List>
+        <Tabs.Content value="overview">Use Arrow keys, Home, and End to move between tabs.</Tabs.Content>
+        <Tabs.Content value="metrics">Keyboard navigation should feel predictable in dense interfaces.</Tabs.Content>
+        <Tabs.Content value="logs">Focus-visible remains separate from the selected state.</Tabs.Content>
+      </Tabs.Root>
+    </Panel>
+  )
+};
+
+export const Disabled: Story = {
   render: () => (
     <Panel>
       <Tabs.Root defaultValue="summary">
@@ -79,7 +96,24 @@ export const DisabledTab: Story = {
   )
 };
 
-export const DenseOperationalView: Story = {
+export const LongLabelsOverflow: Story = {
+  render: () => (
+    <Panel>
+      <Tabs.Root defaultValue="deployments">
+        <Tabs.List aria-label="Long operational sections">
+          <Tabs.Trigger value="deployments">Deployment readiness and rollout gates</Tabs.Trigger>
+          <Tabs.Trigger value="incidents">Open incidents and degraded service paths</Tabs.Trigger>
+          <Tabs.Trigger value="compliance">Audit trails and operational compliance</Tabs.Trigger>
+        </Tabs.List>
+        <Tabs.Content value="deployments">Long labels should remain readable without collapsing the tab structure.</Tabs.Content>
+        <Tabs.Content value="incidents">Overflow should stay predictable inside dashboard surfaces.</Tabs.Content>
+        <Tabs.Content value="compliance">Dense product copy should not force a redesign of the component.</Tabs.Content>
+      </Tabs.Root>
+    </Panel>
+  )
+};
+
+export const DashboardContext: Story = {
   render: () => (
     <Panel>
       <Tabs.Root defaultValue="deployments">
@@ -96,6 +130,29 @@ export const DenseOperationalView: Story = {
         </Tabs.Content>
         <Tabs.Content value="incidents">No active incidents.</Tabs.Content>
         <Tabs.Content value="access">3 maintainers can approve production changes.</Tabs.Content>
+      </Tabs.Root>
+    </Panel>
+  )
+};
+
+export const Accessibility: Story = {
+  render: () => (
+    <Panel>
+      <Tabs.Root defaultValue="summary">
+        <Tabs.List aria-label="Accessible sections">
+          <Tabs.Trigger value="summary">Summary</Tabs.Trigger>
+          <Tabs.Trigger value="details">Details</Tabs.Trigger>
+          <Tabs.Trigger value="history">History</Tabs.Trigger>
+        </Tabs.List>
+        <Tabs.Content value="summary">
+          Tabs keep semantic roles, keyboard navigation, and explicit panel ownership.
+        </Tabs.Content>
+        <Tabs.Content value="details">
+          Selected state, hover, and focus-visible must remain visually distinct.
+        </Tabs.Content>
+        <Tabs.Content value="history">
+          Long-lived dashboard usage depends on low cognitive load and clear focus recovery.
+        </Tabs.Content>
       </Tabs.Root>
     </Panel>
   )

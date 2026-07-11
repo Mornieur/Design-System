@@ -25,11 +25,13 @@ export const List = styled.div`
   padding: ${space[1]};
   border: ${borders.width.hairline} ${borders.style.solid} ${semanticColors.dark.border};
   border-radius: ${radiusRoles.surface};
-  background-color: color-mix(in srgb, ${semanticColors.dark.surfaceRaised} 54%, transparent);
+  background-color: color-mix(in srgb, ${semanticColors.dark.backgroundAlt} 82%, transparent);
+  overflow-x: auto;
+  scrollbar-width: thin;
 `;
 
 export const Trigger = styled.button<TriggerStyleProps>`
-  min-height: 32px;
+  min-height: 36px;
   padding: ${space[2]} ${space[3]};
   border: ${borders.width.hairline} ${borders.style.solid} transparent;
   border-radius: ${radiusRoles.dense};
@@ -48,12 +50,12 @@ export const Trigger = styled.button<TriggerStyleProps>`
 
   &:not(:disabled):hover {
     color: ${semanticColors.dark.text};
-    background-color: color-mix(in srgb, ${semanticColors.dark.surfaceFloating} 36%, transparent);
+    background-color: color-mix(in srgb, ${semanticColors.dark.surfaceRaised} 52%, transparent);
   }
 
   &:focus-visible {
-    outline: 2px solid ${semanticColors.dark.focus};
-    outline-offset: 2px;
+    outline: 0;
+    border-color: ${semanticColors.dark.focus};
     box-shadow: 0 0 0 4px ${colorRoles.dark.focus.shadow};
   }
 
@@ -66,7 +68,7 @@ export const Trigger = styled.button<TriggerStyleProps>`
   ${({ $selected = false }) =>
     $selected
       ? css`
-          color: ${semanticColors.dark.actionPrimary};
+          color: ${semanticColors.dark.text};
           border-color: ${colorRoles.dark.selection.border};
           background-color: ${colorRoles.dark.selection.background};
         `
