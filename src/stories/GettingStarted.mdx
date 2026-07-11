@@ -29,7 +29,7 @@ npm install @feitoza-ui/core
 ```tsx
 import { Button, Box, Flex, colors, space } from '@feitoza-ui/core';
 
-export function Example() {
+export function AccountSummaryPanel() {
   return (
     <Flex align="center" gap={3}>
       <Box padding={4} radius="medium" bg="backgroundAlt">
@@ -53,4 +53,4 @@ yarn.cmd storybook
 
 ## Current Package Surface
 
-Only the core primitives and design tokens are part of the public API right now. Product-specific examples, molecules, organisms, BFF, and micro-frontends are intentionally outside the current package surface.
+The public package surface currently includes foundational atoms, core molecules, and design tokens. Product-specific examples, runtime theming, BFF, and micro-frontends are intentionally outside the current package surface.

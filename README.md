@@ -14,10 +14,10 @@ FeitozaUI is not just a set of isolated components. It is being built as a small
 ## Features
 
 - React and TypeScript-first component APIs.
-- Public package surface with `Button`, `Box`, `Flex`, and design tokens.
+- Public package surface with foundational atoms, core molecules, and design tokens.
 - Storybook documentation for foundations, primitives, guidelines, accessibility, and roadmap.
 - Vite library build with ESM, CJS, UMD, and bundled TypeScript declarations.
-- Vitest and Testing Library coverage for public primitives.
+- Vitest and Testing Library coverage for public components.
 - Architecture docs, ADRs, component guidelines, release planning, and maintenance docs.
 
 ## Current Status
@@ -26,11 +26,11 @@ FeitozaUI is a work in progress. The current package surface is intentionally sm
 
 Current:
 
-- Core primitives: `Button`, `Box`, `Flex`.
-- Foundations: colors, typography, spacing, and radii.
+- Public components: `Button`, `Box`, `Flex`, `Badge`, `Divider`, `Spinner`, `Skeleton`, `Progress`, `Input`, `Textarea`, `Select`, `Alert`, `EmptyState`, `Tabs`.
+- Foundations: colors, typography, spacing, radii, motion, borders, focus, states, and semantic mappings.
 - Package build validated locally.
 - Storybook structured as the documentation surface.
-- Basic API consistency and accessibility coverage.
+- Accessibility and behavior coverage across the active public surface.
 
 Not current:
 
@@ -60,9 +60,22 @@ The future package name is:
 Current public exports:
 
 ```ts
-export { Button, Box, Flex } from '@feitoza-ui/core';
-export type { ButtonProps, BoxProps, FlexProps } from '@feitoza-ui/core';
-export { colors, space, radii, typography, fontSizes } from '@feitoza-ui/core';
+export {
+  Alert,
+  Badge,
+  Box,
+  Button,
+  Divider,
+  EmptyState,
+  Flex,
+  Input,
+  Progress,
+  Select,
+  Skeleton,
+  Spinner,
+  Tabs,
+  Textarea
+} from '@feitoza-ui/core';
 ```
 
 ## Installation
@@ -100,7 +113,7 @@ Future package usage:
 ```tsx
 import { Button, Box, Flex } from '@feitoza-ui/core';
 
-export function Example() {
+export function AccountSummaryPanel() {
   return (
     <Flex align="center" gap={3}>
       <Box padding={4} radius="medium" bg="backgroundAlt">
@@ -116,6 +129,7 @@ export function Example() {
 
 FeitozaUI currently exposes a small token set:
 
+- `semanticColors`
 - `colors`
 - `space`
 - `radii`
@@ -146,11 +160,10 @@ See [Core Principles](docs/philosophy/CORE_PRINCIPLES.md).
 |-- public/                  # Static assets used by the app/docs
 |-- src/
 |   |-- app/                 # Next.js app, future showcase surface
-|   |-- components/          # Current components and internal examples
+|   |-- components/          # Public components under active platform scope
 |   |-- design-tokens/       # Token definitions and token docs
-|   |-- stories/             # Storybook MDX pages
-|   |-- styles/              # Shared style helpers
-|   `-- tests/               # Test setup
+|   |-- showcase/            # Storybook-only showcase compositions
+|   `-- stories/             # Storybook MDX pages
 |-- vite.config.ts           # Library build and Vitest configuration
 |-- tsconfig.lib.json        # Type declaration build scope
 `-- package.json
@@ -187,10 +200,10 @@ The roadmap is maintained in [docs/roadmap/ROADMAP.md](docs/roadmap/ROADMAP.md).
 
 Short-term focus:
 
-- Improve repository documentation.
-- Refine foundations and token naming.
-- Strengthen accessibility and behavior coverage.
-- Prepare release/versioning workflow before publishing.
+- Surface primitives and Card 2.0.
+- Documentation and repository polish.
+- Continued accessibility and behavior coverage.
+- Release/versioning workflow before publishing.
 
 Future ideas such as BFF, micro-frontends, monorepo, CLI, and React Native are documented separately in [Future Roadmap](docs/roadmap/FUTURE.md).
 
@@ -202,6 +215,8 @@ Key documents:
 
 - [Vision](docs/philosophy/VISION.md)
 - [Architecture](docs/architecture/ARCHITECTURE.md)
+- [Surface System](docs/design-system/SURFACE_SYSTEM.md)
+- [Layout Principles](docs/design-system/LAYOUT_PRINCIPLES.md)
 - [Component Guidelines](docs/design-system/COMPONENT_GUIDELINES.md)
 - [Accessibility](docs/design-system/ACCESSIBILITY.md)
 - [Releases](docs/roadmap/RELEASES.md)

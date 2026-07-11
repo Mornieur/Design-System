@@ -12,7 +12,7 @@ The new architecture files are internal in this phase. They are not exported thr
 
 ## Source References
 
-- `docs/docs/design-system/figma-make-reference.md`
+- `docs/references/design-system/figma-make-reference.md`
 - `docs/design-system/VISUAL_IDENTITY.md`
 - `docs/design-system/FOUNDATIONS.md`
 - `docs/design-system/FOUNDATIONS_AUDIT.md`

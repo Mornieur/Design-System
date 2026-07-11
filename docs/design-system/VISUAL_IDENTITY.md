@@ -5,7 +5,7 @@
 The official visual reference for FeitozaUI is:
 
 ```text
-docs/docs/design-system/figma-make-reference.md
+docs/references/design-system/figma-make-reference.md
 ```
 
 That file is a reference artifact, not implementation code. It includes generated React, Tailwind, shadcn/ui, Radix, example dashboards, CSS variables, and dependency metadata. FeitozaUI should not copy that code literally. The approved work is to translate the visual direction into FeitozaUI foundations, documentation, tokens, and component decisions that fit the current React, TypeScript, styled-components, Storybook, and library-build architecture.
