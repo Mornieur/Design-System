@@ -1,0 +1,56 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Getting Started" />
+
+# Getting Started
+
+<div className="fzui-doc-hero">
+  <p className="fzui-doc-eyebrow">Developer Workflow</p>
+  <p className="fzui-doc-lede">
+    FeitozaUI is being prepared as a future package named `@feitoza-ui/core`. This page documents the intended consumption path without pretending that publishing is complete.
+  </p>
+  <div className="fzui-doc-meta">
+    <span className="fzui-doc-pill">React</span>
+    <span className="fzui-doc-pill">TypeScript</span>
+    <span className="fzui-doc-pill">styled-components</span>
+  </div>
+</div>
+
+The package is not being published in this phase. The current build is validated locally through Vite and `npm pack --dry-run`.
+
+## Future Installation
+
+```bash
+npm install @feitoza-ui/core
+```
+
+## Future Usage
+
+```tsx
+import { Button, Box, Flex, colors, space } from '@feitoza-ui/core';
+
+export function AccountSummaryPanel() {
+  return (
+    <Flex align="center" gap={3}>
+      <Box padding={4} radius="medium" bg="backgroundAlt">
+        Account summary
+      </Box>
+      <Button variant="primary">Continue</Button>
+    </Flex>
+  );
+}
+```
+
+## Development Scripts
+
+```bash
+yarn.cmd type-check
+yarn.cmd lint
+yarn.cmd test --run
+yarn.cmd build
+yarn.cmd storybook
+```
+
+## Current Package Surface
+
+The public package surface currently includes foundational atoms, core molecules, and design tokens. Product-specific examples, runtime theming, BFF, and micro-frontends are intentionally outside the current package surface.

@@ -1,6 +1,8 @@
 import type { Preview } from '@storybook/nextjs';
 import { withThemeByClassName } from '@storybook/addon-themes';
+import { semanticColors } from '../src/design-tokens';
 import customTheme from './theme';
+import './preview.css';
 
 const preview: Preview = {
   decorators: [
@@ -20,11 +22,16 @@ const preview: Preview = {
       expanded: true
     },
 
+    docs: {
+      theme: customTheme
+    },
+
     backgrounds: {
-      default: 'dark',
+      default: 'FeitozaUI Dark',
       values: [
-        { name: 'light', value: '#FFFFFF' },
-        { name: 'dark', value: '#1A1A1A' }
+        { name: 'FeitozaUI Dark', value: semanticColors.dark.background },
+        { name: 'FeitozaUI Surface', value: semanticColors.dark.surface },
+        { name: 'FeitozaUI Light', value: semanticColors.light.background }
       ]
     },
 
@@ -34,8 +41,11 @@ const preview: Preview = {
       light: {
         ...customTheme,
         base: 'light',
-        appBg: '#FFFFFF',
-        textColor: '#000000'
+        appBg: semanticColors.light.background,
+        appContentBg: semanticColors.light.surface,
+        appBorderColor: semanticColors.light.border,
+        textColor: semanticColors.light.text,
+        barSelectedColor: semanticColors.light.actionPrimary
       }
     },
 

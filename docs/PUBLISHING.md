@@ -1,0 +1,77 @@
+# Publishing
+
+FeitozaUI is not published yet.
+
+This document describes the intended future publishing process. It does not enable automatic publishing and it should not be interpreted as a current release workflow.
+
+## Target Package
+
+```txt
+@feitoza-ui/core
+```
+
+## Registry
+
+The intended registry is public npm.
+
+## Current Guardrails
+
+- Automated publishing is disabled.
+- No workflow should run `npm publish`.
+- No npm token should be committed.
+- The existing publish workflow is informational only.
+- `npm pack --dry-run` should be used before any real publish.
+
+## Versioning
+
+Future releases should follow Semantic Versioning:
+
+- Patch: backwards-compatible fixes.
+- Minor: backwards-compatible features.
+- Major: breaking changes.
+
+See `docs/roadmap/RELEASES.md` for versioning rules and examples.
+
+## Manual Release Process
+
+The first public release should be manual.
+
+Recommended flow:
+
+1. Confirm the release scope.
+2. Confirm package metadata and ownership.
+3. Run the validation commands.
+4. Review package contents with `npm pack --dry-run`.
+5. Update `CHANGELOG.md`.
+6. Bump `package.json` version intentionally.
+7. Create release notes.
+8. Publish only from a clean working tree and an authenticated npm account.
+
+Use `docs/RELEASE_CHECKLIST.md` before publishing.
+
+## Changesets
+
+Changesets may be introduced later when publishing becomes active.
+
+Do not add Changesets yet. The project should first prove a manual release process and clarify whether future releases will be single-package or monorepo-based.
+
+## Release Notes
+
+Release notes should explain:
+
+- What changed.
+- Why it changed.
+- Whether consumers need to do anything.
+- Any migration steps for breaking changes.
+
+## Accidental Publish Prevention
+
+Before enabling automation, the project should have:
+
+- A documented release owner.
+- A verified npm organization or account.
+- A stable public API.
+- A release checklist used at least once.
+- A decision record approving automation.
+
+Until then, publishing remains manual and disabled in CI.

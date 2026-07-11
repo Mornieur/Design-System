@@ -1,0 +1,117 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import {
+  Activity,
+  AlertTriangle,
+  CheckCircle2,
+  Code2,
+  Database,
+  Search,
+  ShieldCheck,
+  Zap
+} from 'lucide-react';
+
+<Meta title="Foundations/Iconography" />
+
+# Iconography
+
+FeitozaUI uses iconography as technical signal, not decoration. Icons should support scanning, state recognition, and action clarity.
+
+<div className="fzui-doc-hero">
+  <p className="fzui-doc-eyebrow">Foundations / Iconography</p>
+  <p className="fzui-doc-lede">
+    Lucide is the default icon source for FeitozaUI products because its outline geometry, stroke consistency, and React integration fit the Quiet Future / Neon Infrastructure language.
+  </p>
+  <div className="fzui-doc-meta">
+    <span className="fzui-doc-pill">16px compact</span>
+    <span className="fzui-doc-pill">20px default</span>
+    <span className="fzui-doc-pill">24px emphasis</span>
+  </div>
+</div>
+
+## Usage
+
+<div className="fzui-icon-grid">
+  <div className="fzui-icon-sample">
+    <div className="fzui-icon-row">
+      <Search size={16} aria-hidden="true" />
+      <strong>Compact control</strong>
+    </div>
+    <p className="fzui-icon-note">16px / search, metadata, dense UI</p>
+  </div>
+
+  <div className="fzui-icon-sample">
+    <div className="fzui-icon-row" data-tone="signal">
+      <Activity size={20} aria-hidden="true" />
+      <strong>Technical signal</strong>
+    </div>
+    <p className="fzui-icon-note">20px / active, selected, focused</p>
+  </div>
+
+  <div className="fzui-icon-sample">
+    <div className="fzui-icon-row">
+      <ShieldCheck size={24} aria-hidden="true" />
+      <strong>Emphasis</strong>
+    </div>
+    <p className="fzui-icon-note">24px / navigation, prominent action</p>
+  </div>
+</div>
+
+## Tone
+
+<div className="fzui-icon-grid">
+  <div className="fzui-icon-sample">
+    <div className="fzui-icon-row">
+      <Database size={20} aria-hidden="true" />
+      <strong>Neutral</strong>
+    </div>
+    <p className="fzui-icon-note">Default icons use secondary or muted text.</p>
+  </div>
+
+  <div className="fzui-icon-sample">
+    <div className="fzui-icon-row" data-tone="signal">
+      <Zap size={20} aria-hidden="true" />
+      <strong>Cyan signal</strong>
+    </div>
+    <p className="fzui-icon-note">Use for active, selected, focus, or important action.</p>
+  </div>
+
+  <div className="fzui-icon-sample">
+    <div className="fzui-icon-row" data-tone="accent">
+      <Code2 size={20} aria-hidden="true" />
+      <strong>Coral accent</strong>
+    </div>
+    <p className="fzui-icon-note">Use rarely for expressive brand moments.</p>
+  </div>
+</div>
+
+## Status Examples
+
+<div className="fzui-icon-grid">
+  <div className="fzui-icon-sample">
+    <div className="fzui-icon-row">
+      <CheckCircle2 size={20} aria-hidden="true" />
+      <strong>Healthy</strong>
+    </div>
+    <p className="fzui-icon-note">Pair icon with text. Do not rely on color only.</p>
+  </div>
+
+  <div className="fzui-icon-sample">
+    <div className="fzui-icon-row">
+      <AlertTriangle size={20} aria-hidden="true" />
+      <strong>Warning</strong>
+    </div>
+    <p className="fzui-icon-note">Use semantic status color in components later.</p>
+  </div>
+</div>
+
+## Rules
+
+- Import icons directly from `lucide-react`; do not import a full icon bundle.
+- Use `16px` for compact controls, table cells, and metadata.
+- Use `20px` as the default component icon size.
+- Use `24px` for navigation, prominent actions, or empty states.
+- Keep stroke near `1.75` or the Lucide default unless optical correction is needed.
+- Use `aria-hidden="true"` for decorative icons.
+- Provide an accessible name for icon-only buttons through the interactive element.
+- Do not use cyan on every icon.
+- Do not use icons as the only state indicator.

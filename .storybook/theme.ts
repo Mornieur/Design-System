@@ -1,32 +1,38 @@
 import { create } from 'storybook/theming/create';
-import { typography } from '../src/design-tokens/typography';
+import {
+  colorRoles,
+  radii,
+  semanticColors,
+  typography
+} from '../src/design-tokens';
 
 export default create({
   base: 'dark',
-  brandTitle: 'Mornieur Design System',
-  brandUrl: 'https://github.com/Mornieur/Design-System',
+  brandTitle: 'FeitozaUI',
+  brandUrl: 'https://github.com/Mornieur/design-system',
   brandImage: '/logo.jpg',
 
-  colorPrimary: '#7928CA',
-  colorSecondary: '#FF3366',
+  colorPrimary: semanticColors.dark.actionPrimary,
+  colorSecondary: semanticColors.dark.accent,
 
-  appBg: '#1A1A1A',
-  appContentBg: '#1F1F1F',
-  appBorderColor: '#333333',
-  appBorderRadius: 8,
+  appBg: semanticColors.dark.background,
+  appContentBg: semanticColors.dark.surface,
+  appPreviewBg: semanticColors.dark.backgroundAlt,
+  appBorderColor: semanticColors.dark.border,
+  appBorderRadius: Number.parseInt(radii.small, 10),
 
-  fontBase: typography.body,
-  fontCode: 'monospace',
+  fontBase: typography.roles.interface,
+  fontCode: typography.roles.code,
 
-  textColor: '#FFFFFF',
-  textInverseColor: '#000000',
+  textColor: semanticColors.dark.text,
+  textInverseColor: semanticColors.dark.actionPrimaryText,
 
-  barTextColor: '#CCCCCC',
-  barSelectedColor: '#7928CA',
-  barBg: '#1F1F1F',
+  barTextColor: semanticColors.dark.textSecondary,
+  barSelectedColor: semanticColors.dark.actionPrimary,
+  barBg: colorRoles.dark.background.subtle,
 
-  inputBg: '#2A2A2A',
-  inputBorder: '#444444',
-  inputTextColor: '#FFFFFF',
-  inputBorderRadius: 4
+  inputBg: semanticColors.dark.surfaceRaised,
+  inputBorder: semanticColors.dark.border,
+  inputTextColor: semanticColors.dark.text,
+  inputBorderRadius: Number.parseInt(radii.small, 10)
 });

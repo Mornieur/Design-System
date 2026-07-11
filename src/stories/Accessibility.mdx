@@ -1,0 +1,28 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Accessibility" />
+
+# Accessibility
+
+Accessibility is part of the component contract, not a final polish step.
+
+## Current Baseline
+
+- `Button` renders a native `button`.
+- `Button` supports native disabled behavior.
+- `Button` has a visible `:focus-visible` state.
+- `Box` and `Flex` do not add landmark roles by default.
+- Public primitives preserve native props and forward refs.
+
+## Component Rules
+
+- Use native elements before custom behavior.
+- Provide accessible names for interactive controls.
+- Keep focus visible for keyboard users.
+- Use ARIA only when semantic HTML is not enough.
+- Do not add landmarks to layout primitives by default.
+- Document keyboard behavior for interactive components.
+
+## Future Work
+
+Complex components such as Dialog, Tooltip, Popover, Tabs, and Select should be evaluated with a headless accessibility foundation such as Radix UI before any custom implementation.
