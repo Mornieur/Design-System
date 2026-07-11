@@ -112,9 +112,12 @@ export const Field = styled.textarea<FieldProps>`
     }};
   }
 
-  &:focus-visible {
+  &:focus {
     border-color: ${({ $invalid }) =>
       $invalid ? semanticColors.dark.danger : semanticColors.dark.focus};
+  }
+
+  &:focus-visible {
     box-shadow: 0 0 0 ${focus.ringWidth}
       ${({ $invalid }) =>
         $invalid

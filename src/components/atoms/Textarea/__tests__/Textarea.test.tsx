@@ -182,6 +182,16 @@ describe('Textarea', () => {
     expect(screen.getByLabelText('Read only textarea')).toHaveAttribute('readonly');
   });
 
+  it('supports focus on the native textarea', () => {
+    render(<Textarea label="Focusable textarea" />);
+
+    const textarea = screen.getByLabelText('Focusable textarea');
+
+    textarea.focus();
+
+    expect(textarea).toHaveFocus();
+  });
+
   it('applies resize option through computed style', () => {
     render(<Textarea label="Resize none" resize="none" />);
 

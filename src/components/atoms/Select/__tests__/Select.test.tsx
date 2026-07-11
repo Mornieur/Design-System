@@ -153,6 +153,16 @@ describe('Select', () => {
     expect(screen.getByLabelText('Disabled select')).toBeDisabled();
   });
 
+  it('supports focus on the native select', () => {
+    render(<Select label="Focusable select">{options}</Select>);
+
+    const select = screen.getByLabelText('Focusable select');
+
+    select.focus();
+
+    expect(select).toHaveFocus();
+  });
+
   it('associates helper text through aria-describedby', () => {
     render(
       <Select label="Region" helperText="Choose the active region.">
