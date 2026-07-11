@@ -2,6 +2,7 @@ import {
   Alert,
   Badge,
   Button,
+  Card,
   Divider,
   EmptyState,
   Flex,
@@ -165,6 +166,26 @@ const DashboardSection = ({
       {children}
     </Flex>
   </Surface>
+);
+
+const DashboardCardSection = ({
+  title,
+  description,
+  children
+}: {
+  title: string;
+  description?: string;
+  children: ReactNode;
+}) => (
+  <Card>
+    <Flex direction="column" gap={3}>
+      <div>
+        <h2 style={sectionTitleStyle}>{title}</h2>
+        {description ? <p style={sectionMetaStyle}>{description}</p> : null}
+      </div>
+      {children}
+    </Flex>
+  </Card>
 );
 
 const Metric = ({
@@ -348,7 +369,7 @@ const Filters = () => (
 );
 
 const ChangeRequestForm = () => (
-  <DashboardSection
+  <DashboardCardSection
     title="Change request"
     description="A compact form surface validates Input, Textarea, Select, helper text, and action hierarchy inside the same visual system."
   >
@@ -378,7 +399,7 @@ const ChangeRequestForm = () => (
         </div>
       </Flex>
     </div>
-  </DashboardSection>
+  </DashboardCardSection>
 );
 
 const DashboardLayout = ({
@@ -533,7 +554,7 @@ const DashboardLayout = ({
               action={<Button variant="secondary">Open runbooks</Button>}
             />
           ) : (
-            <DashboardSection
+            <DashboardCardSection
               title="Queue health"
               description="Secondary surfaces should remain useful without competing with the primary operational view."
             >
@@ -574,7 +595,7 @@ const DashboardLayout = ({
                   </Flex>
                 </div>
               </div>
-            </DashboardSection>
+            </DashboardCardSection>
           )}
 
           <ChangeRequestForm />

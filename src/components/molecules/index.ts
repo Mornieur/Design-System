@@ -1,5 +1,7 @@
 export { default as Alert } from './Alert';
 export type { AlertProps, AlertVariant } from './Alert';
+export { default as Card } from './Card';
+export type { CardProps } from './Card';
 export { default as EmptyState } from './EmptyState';
 export type { EmptyStateProps, EmptyStateTone } from './EmptyState';
 export { default as Tabs } from './Tabs';

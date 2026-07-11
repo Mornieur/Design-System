@@ -19,6 +19,7 @@ Before using this checklist, confirm the component follows the visual and behavi
 - [ ] Public export is intentional.
 - [ ] Accessibility review is complete.
 - [ ] Responsive behavior is considered.
+- [ ] If the component is a composition primitive, its distinction from `Surface` or `Box` is documented clearly.
 - [ ] Final review is complete.
 
 If an item does not apply, document why in the component story or pull request.
