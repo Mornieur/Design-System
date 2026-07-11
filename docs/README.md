@@ -17,6 +17,15 @@ Use it to understand the project vision, architecture, component platform decisi
 - [API Conventions](architecture/API_CONVENTIONS.md): public component API rules.
 - [ADRs](architecture/adr): architecture decision records.
 
+## AI Guidance
+
+- [AI Docs Index](ai/README.md): agent-specific entrypoint for repository rules and workflow.
+- [Project Context](ai/PROJECT_CONTEXT.md): repository surfaces, source-of-truth boundaries, and package scope.
+- [Official Sources](ai/OFFICIAL_SOURCES.md): version-aware official references and compatibility notes.
+- [Next.js Guidelines](ai/NEXTJS_GUIDELINES.md): rules for the future showcase/documentation app.
+- [Component Workflow](ai/COMPONENT_WORKFLOW.md): required workflow for public component work.
+- [Review Checklist](ai/REVIEW_CHECKLIST.md): practical review questions before concluding a task.
+
 ## Design System
 
 - [Foundations](design-system/FOUNDATIONS.md): token categories and token strategy.
