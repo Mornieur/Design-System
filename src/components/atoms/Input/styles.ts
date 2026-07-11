@@ -27,17 +27,17 @@ type MessageProps = {
 
 const sizeStyles = {
   sm: css`
-    min-height: 36px;
-    padding: 0 ${space[3]};
-    font-size: 0.875rem;
-  `,
-  md: css`
     min-height: 40px;
     padding: 0 ${space[3]};
     font-size: 0.875rem;
   `,
-  lg: css`
+  md: css`
     min-height: 44px;
+    padding: 0 ${space[4]};
+    font-size: 0.875rem;
+  `,
+  lg: css`
+    min-height: 48px;
     padding: 0 ${space[4]};
     font-size: 0.9375rem;
   `
@@ -105,6 +105,9 @@ export const Control = styled.div<ControlProps>`
   &:focus-within {
     border-color: ${({ $invalid }) =>
       $invalid ? semanticColors.dark.danger : semanticColors.dark.focus};
+  }
+
+  &:has(input:focus-visible) {
     box-shadow: 0 0 0 ${focus.ringWidth}
       ${({ $invalid }) =>
         $invalid
@@ -159,6 +162,7 @@ export const IconSlot = styled.span`
   align-items: center;
   justify-content: center;
   color: ${semanticColors.dark.textMuted};
+  pointer-events: none;
 
   svg {
     width: 20px;

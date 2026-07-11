@@ -98,6 +98,20 @@ describe('Input', () => {
     expect(input).toHaveFocus();
   });
 
+  it('focuses the input when the control container is pressed', async () => {
+    const user = userEvent.setup();
+    render(<Input label="Container focus" startIcon={<svg />} />);
+
+    const input = screen.getByLabelText('Container focus');
+    const control = input.parentElement;
+
+    expect(control).not.toBeNull();
+
+    await user.pointer({ keys: '[MouseLeft]', target: control! });
+
+    expect(input).toHaveFocus();
+  });
+
   it('preserves native keyboard input behavior', async () => {
     const user = userEvent.setup();
 

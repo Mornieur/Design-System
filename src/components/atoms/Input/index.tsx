@@ -1,4 +1,11 @@
-import { forwardRef, useId, type InputHTMLAttributes, type ReactNode } from 'react';
+import {
+  forwardRef,
+  useId,
+  useRef,
+  type InputHTMLAttributes,
+  type MouseEvent,
+  type ReactNode
+} from 'react';
 import * as S from './styles';
 
 export type InputSize = 'sm' | 'md' | 'lg';
@@ -37,6 +44,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     },
     ref
   ) => {
+    const inputRef = useRef<HTMLInputElement | null>(null);
     const generatedId = useId();
     const inputId = id ?? `feitoza-input-${generatedId}`;
     const helperId = helperText ? `${inputId}-helper` : undefined;
@@ -45,6 +53,28 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     const describedBy = [ariaDescribedBy, helperId, isInvalid ? errorId : undefined]
       .filter(Boolean)
       .join(' ');
+
+    const setRefs = (node: HTMLInputElement | null) => {
+      inputRef.current = node;
+
+      if (typeof ref === 'function') {
+        ref(node);
+        return;
+      }
+
+      if (ref) {
+        ref.current = node;
+      }
+    };
+
+    const handleControlMouseDown = (event: MouseEvent<HTMLDivElement>) => {
+      if (disabled || event.target === inputRef.current) {
+        return;
+      }
+
+      event.preventDefault();
+      inputRef.current?.focus();
+    };
 
     return (
       <S.Root className={className} style={style} $fullWidth={fullWidth}>
@@ -56,6 +86,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         ) : null}
 
         <S.Control
+          onMouseDown={handleControlMouseDown}
           $disabled={disabled}
           $fullWidth={fullWidth}
           $invalid={isInvalid}
@@ -65,7 +96,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           {startIcon ? <S.IconSlot aria-hidden="true">{startIcon}</S.IconSlot> : null}
 
           <S.Field
-            ref={ref}
+            ref={setRefs}
             id={inputId}
             disabled={disabled}
             readOnly={readOnly}

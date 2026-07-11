@@ -37,7 +37,7 @@ The project currently exposes a small public atom set and includes a few interna
 - Button is public but still reflects the older warm primary direction.
 - Card is useful but still needs clearer surface/elevation language.
 - Carousel and UserProfile are product/example-like and not aligned with the core platform language.
-- Input, Badge, Table, overlays, feedback, and form controls are not implemented yet.
+- Badge, Table, overlays, and several form controls are still pending or partial.
 
 ### Restrictions
 
@@ -82,7 +82,7 @@ The project currently exposes a small public atom set and includes a few interna
 
 ### Current Gaps
 
-- No Input, Textarea, Select, Checkbox, Radio, Switch.
+- No Checkbox, Radio, or Switch yet.
 - No Badge or status language component.
 - No Table or data display component.
 - No overlays: Dialog, Popover, Dropdown Menu, Tooltip.
