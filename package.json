@@ -47,7 +47,9 @@
   },
   "scripts": {
     "dev": "next dev --turbopack",
+    "dev:webpack": "next dev",
     "build": "vite build",
+    "build:docs": "next build",
     "start": "next start",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "eslint \"src/**/*.{ts,tsx,js,jsx}\"",
