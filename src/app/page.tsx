@@ -1,34 +1,27 @@
-import styles from './page.module.css';
-
-const platformAreas = [
-  'Foundations',
-  'Primitives',
-  'Storybook',
-  'Accessibility',
-  'Testing'
-];
+import HomeEditorialPreviews from '@/app/_components/HomeEditorialPreviews';
+import HomeHeroPanel from '@/app/_components/HomeHeroPanel';
+import {
+  componentEntries,
+  featuredComponents
+} from '@/app/_content/components';
+import { foundationEntries } from '@/app/_content/foundations';
+import { homeHighlights, siteMetadata } from '@/app/_content/site';
 
 export default function Home() {
   return (
-    <main className={styles.page}>
-      <section className={styles.hero} aria-labelledby="home-title">
-        <p className={styles.status}>Work in progress</p>
-
-        <div className={styles.content}>
-          <h1 id="home-title">FeitozaUI</h1>
-          <p className={styles.lead}>
-            A React and TypeScript UI Engineering Platform focused on
-            foundations, primitives, component APIs, accessibility,
-            documentation, and long-term maintainability.
-          </p>
-        </div>
-
-        <ul className={styles.stack} aria-label="Platform focus areas">
-          {platformAreas.map((area) => (
-            <li key={area}>{area}</li>
-          ))}
-        </ul>
-      </section>
+    <main id="main-content" className="site-main">
+      <div className="page-shell">
+        <HomeHeroPanel
+          description={siteMetadata.description}
+          highlights={homeHighlights}
+          shortTitle={siteMetadata.shortTitle}
+        />
+        <HomeEditorialPreviews
+          componentEntries={componentEntries}
+          featuredComponents={featuredComponents}
+          foundationEntries={foundationEntries}
+        />
+      </div>
     </main>
   );
 }
