@@ -1,10 +1,15 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next';
 import {
   Inter,
   JetBrains_Mono,
   Outfit,
   Space_Grotesk
-} from "next/font/google";
+} from 'next/font/google';
+import StyledComponentsRegistry from '@/app/_components/StyledComponentsRegistry';
+import SiteFooter from '@/app/_components/SiteFooter';
+import SiteHeader from '@/app/_components/SiteHeader';
+import { siteMetadata, themeScript } from '@/app/_content/site';
+import './globals.css';
 
 const inter = Inter({
   variable: "--font-inter",
@@ -31,9 +36,11 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "FeitozaUI",
-  description:
-    "React and TypeScript UI Engineering Platform for design foundations, primitives, accessibility, testing, and documentation.",
+  title: {
+    default: siteMetadata.title,
+    template: `%s | ${siteMetadata.shortTitle}`
+  },
+  description: siteMetadata.description
 };
 
 export default function RootLayout({
@@ -42,11 +49,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${inter.variable} ${spaceGrotesk.variable} ${jetBrainsMono.variable} ${outfit.variable}`}
-      >
-        {children}
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.variable} ${spaceGrotesk.variable} ${jetBrainsMono.variable} ${outfit.variable}`}>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <StyledComponentsRegistry>
+          <div className="site-shell">
+            <a className="skip-link" href="#main-content">
+              Skip to content
+            </a>
+            <SiteHeader />
+            {children}
+            <SiteFooter />
+          </div>
+        </StyledComponentsRegistry>
       </body>
     </html>
   );
