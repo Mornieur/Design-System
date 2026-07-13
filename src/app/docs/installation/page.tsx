@@ -22,14 +22,14 @@ export default function InstallationPage() {
         />
         <PageHeader
           eyebrow="Core docs"
-          title="Installation readiness and package boundary"
-          description="The package is not published yet, but the documentation site can already describe the package target, peer dependencies, and what belongs to the library versus the Next app."
-          meta={['Package target: @feitoza-ui/core', 'No public API changes']}
+          title="Installation guidance and verified setup"
+          description="The package is still unpublished, but the install path, peer dependency expectations, and verified consumer boundaries are now documented from real external-package checks."
+          meta={['Package target: @feitoza-ui/core', 'Tarball consumers validated']}
         />
       </div>
 
       <section className="page-section">
-        <h2>Current package target</h2>
+        <h2>Package target</h2>
         <div className="note-box">
           <code>@feitoza-ui/core</code>
         </div>
@@ -42,15 +42,112 @@ export default function InstallationPage() {
             <li key={item}>{item}</li>
           ))}
         </ul>
+        <p className="table-note">
+          The core package does not require consumers to install <code>next</code>. Next remains a
+          dependency only of Next.js applications themselves.
+        </p>
       </section>
 
       <section className="page-section">
-        <h2>Framework support note</h2>
+        <h2>React + Vite setup</h2>
+        <div className="docs-code-stack">
+          <div className="docs-code-frame">
+            <div className="docs-code-header">
+              <span className="docs-code-label">npm</span>
+              <span className="docs-code-note">After publication</span>
+            </div>
+            <pre className="docs-code-block" tabIndex={0}>
+              <code>{`npm install @feitoza-ui/core styled-components`}</code>
+            </pre>
+          </div>
+
+          <div className="docs-code-frame">
+            <div className="docs-code-header">
+              <span className="docs-code-label">tsx</span>
+              <span className="docs-code-note">Validated root import pattern</span>
+            </div>
+            <pre className="docs-code-block" tabIndex={0}>
+              <code>{`import {
+  Badge,
+  Box,
+  Button,
+  Card,
+  Flex,
+  Surface,
+  colors,
+  space
+} from '@feitoza-ui/core';`}</code>
+            </pre>
+          </div>
+        </div>
+        <ul className="bullet-list">
+          <li>No CSS global import is required by the package in the verified Vite consumer.</li>
+          <li>The consumer remains responsible for any custom font loading if it wants the exact FeitozaUI typography stack.</li>
+          <li>Public tokens such as <code>colors</code> and <code>space</code> are available from the package root.</li>
+          <li>The verified dependency tree no longer relies on an implicit <code>next</code> installation coming from the core package.</li>
+        </ul>
+      </section>
+
+      <section className="page-section">
+        <h2>Next.js App Router setup</h2>
+        <div className="docs-code-stack">
+          <div className="docs-code-frame">
+            <div className="docs-code-header">
+              <span className="docs-code-label">next.config.ts</span>
+              <span className="docs-code-note">Validated config</span>
+            </div>
+            <pre className="docs-code-block" tabIndex={0}>
+              <code>{`import type { NextConfig } from 'next';
+
+const nextConfig: NextConfig = {
+  compiler: {
+    styledComponents: true
+  }
+};
+
+export default nextConfig;`}</code>
+            </pre>
+          </div>
+
+          <div className="docs-code-frame">
+            <div className="docs-code-header">
+              <span className="docs-code-label">tsx</span>
+              <span className="docs-code-note">Client island import pattern</span>
+            </div>
+            <pre className="docs-code-block" tabIndex={0}>
+              <code>{`'use client';
+
+import { Badge, Button, Card, Surface } from '@feitoza-ui/core';`}</code>
+            </pre>
+          </div>
+        </div>
+        <ul className="bullet-list">
+          <li>A styled-components registry is required for SSR of styles in the validated App Router setup.</li>
+          <li>The page shell can stay a Server Component, but the FeitozaUI preview should live in a small Client Component boundary.</li>
+          <li>The package root import worked inside the client island during verification.</li>
+          <li>The server page itself should not import the library directly in the current validated setup.</li>
+          <li>The app already owns its own <code>next</code> dependency; it is not expected to receive Next transitively from FeitozaUI.</li>
+        </ul>
+      </section>
+
+      <section className="page-section">
+        <h2>Internal tarball verification</h2>
         <p>
-          The Next documentation app is a repository surface, not a package requirement.
-          Consumers should continue to see FeitozaUI as a React component library rather than
-          a Next-specific system.
+          Until the package is published, FeitozaUI is validated internally through real tarball
+          installs in <code>consumer-tests/react-vite</code> and
+          <code> consumer-tests/next-app-router</code>. That tarball flow is a development
+          verification path, not the intended end-user installation experience.
         </p>
+      </section>
+
+      <section className="page-section">
+        <h2>Current limitations</h2>
+        <ul className="bullet-list">
+          <li>The package is not yet published, so npm registry availability is still unverified.</li>
+          <li>Next.js validation currently proves the library inside client islands, not direct imports from App Router Server Components.</li>
+          <li>Support for React Router, Remix, and Astro with React remains theoretical until separately validated.</li>
+          <li>Nuxt, Vue, Angular, and Svelte are not supported directly because the component package is React-specific.</li>
+        </ul>
       </section>
     </DocsScaffold>
   );

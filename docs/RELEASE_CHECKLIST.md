@@ -34,6 +34,9 @@ FeitozaUI is not published yet. Use this checklist only when preparing a future 
 - [ ] Confirm `exports` points to existing files.
 - [ ] Confirm `types` points to the generated declaration file.
 - [ ] Confirm peer dependencies are correct.
+- [ ] Confirm `dependencies` contains only true runtime requirements of the published package.
+- [ ] Confirm site, Storybook, consumer, and build-only packages are not published as runtime dependencies.
+- [ ] Confirm React + Vite does not install `next` through the core package.
 - [ ] Confirm `files` includes only intended package contents.
 
 ## Publish
