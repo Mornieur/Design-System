@@ -53,6 +53,8 @@ Rules:
 - do not mark whole pages as client components for convenience;
 - do not pull server-only concerns into client components;
 - library components must remain consumable outside Next.js.
+- if a documentation page needs to render the current styled-components-based package directly and that render is not server-safe in the current setup, isolate that preview in a small internal Client Component instead of promoting the whole page.
+- do not import the root public barrel from App Router Server Components while it re-exports hook-based client components such as `Input` and `Tabs`.
 
 ## Rendering strategy for FeitozaUI
 
@@ -112,6 +114,7 @@ Do not create HTTP APIs just to read content that already exists inside the repo
 - Decide explicitly what content is shared and what is surface-specific.
 - Do not import stories as if they were the Next app domain model.
 - Do not use internal package implementation files in ways that would compromise future distribution.
+- When data must cross a server/client boundary for documentation previews, pass only serializable content such as strings, arrays, and plain objects. Do not pass arbitrary React elements, callbacks, or component constructors from Server Components into preview islands.
 
 ## MDX
 
@@ -120,6 +123,15 @@ Do not create HTTP APIs just to read content that already exists inside the repo
 - Do not enable remote MDX without a concrete need and a security review.
 - Treat remote content as untrusted.
 - Do not assume the currently installed `@next/mdx` integration is aligned just because it compiles today.
+- If `src/app` does not currently contain `.md` or `.mdx` routes, do not keep Next MDX integration enabled only for future possibilities.
+- Storybook MDX and Next MDX are separate pipelines. Do not assume Storybook `.mdx` requires `@next/mdx` in `next.config.ts`.
+
+## Toolchain
+
+- The default development flow may use Turbopack when it is validated for the current app state.
+- A custom `webpack()` function should not remain in `next.config.ts` unless the app has a real active need for it.
+- If Turbopack warns that Webpack is configured, treat that as a real configuration audit, not as a warning to hide.
+- Keep the production docs build explicit and separate from the package library build when both surfaces coexist in the same repository.
 
 ## Styling
 

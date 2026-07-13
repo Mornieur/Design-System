@@ -1,0 +1,67 @@
+:root {
+  color-scheme: dark;
+  font-family: Inter, system-ui, sans-serif;
+  background: #050816;
+  color: #dde4f0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top, rgba(0, 180, 216, 0.12), transparent 30%),
+    #050816;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+.app-shell {
+  width: min(960px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 48px 0 64px;
+}
+
+.consumer-surface {
+  outline: none;
+}
+
+.consumer-card {
+  border: 1px solid rgba(148, 163, 184, 0.22);
+}
+
+.consumer-card h1 {
+  margin: 0 0 8px;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+}
+
+.consumer-card p {
+  margin: 0;
+  line-height: 1.7;
+}
+
+.token-box {
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.token-box code,
+.event-note code {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+}
+
+.consumer-button {
+  min-width: 180px;
+}
+
+.event-note {
+  min-height: 24px;
+}

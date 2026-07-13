@@ -31,6 +31,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+/tmp-dev-*.log
+/tmp-next-dev-*.log
 
 # env files (can opt-in for committing if needed)
 .env*
@@ -41,6 +43,13 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+!consumer-tests/next-app-router/next-env.d.ts
 
 *storybook.log
 storybook-static
+feitoza-ui-core-*.tgz
+consumer-tests/**/node_modules
+consumer-tests/**/dist
+consumer-tests/**/.next
+consumer-tests/**/.turbo
+consumer-tests/**/package-lock.json
