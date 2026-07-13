@@ -16,8 +16,8 @@ export default function ComponentsPage() {
         <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Components' }]} />
         <PageHeader
           eyebrow="System"
-          title="Component catalog routing without Storybook duplication"
-          description="These pages establish stable catalog URLs for the current public surface while leaving behavioral depth and interactive states in Storybook."
+          title="Component documentation index"
+          description="The first engine pass documents Button, Surface, and Card with real examples, real API notes, and links back to Storybook for deeper behavioral coverage."
           meta={['Public surface only', `${componentEntries.length} initial entries`]}
         />
       </div>

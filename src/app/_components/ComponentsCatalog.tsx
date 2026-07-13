@@ -21,8 +21,8 @@ export default function ComponentsCatalog({ entries }: ComponentsCatalogProps) {
                 {entry.kind}
               </Badge>
             </div>
-            <p>{entry.summary}</p>
-            <span className="content-card-meta">{entry.storybookStatus}</span>
+            <p>{entry.description}</p>
+            <span className="content-card-meta">{entry.status}</span>
           </Card>
         </Link>
       ))}

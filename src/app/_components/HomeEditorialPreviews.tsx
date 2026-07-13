@@ -130,8 +130,8 @@ export default function HomeEditorialPreviews({
                       {entry.kind}
                     </Badge>
                   </div>
-                  <p>{entry.summary}</p>
-                  <span className="content-card-meta">{entry.storybookStatus}</span>
+                  <p>{entry.description}</p>
+                  <span className="content-card-meta">{entry.status}</span>
                 </Card>
               </Link>
             ))}

@@ -956,6 +956,305 @@ html[data-theme='light'] {
   color: var(--docs-text);
 }
 
+.docs-split-heading {
+  display: grid;
+  gap: 12px;
+}
+
+.docs-guidance-grid,
+.docs-code-stack,
+.docs-example-stack,
+.props-table-stack {
+  display: grid;
+  gap: 16px;
+}
+
+.docs-guidance-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.docs-guidance-card,
+.docs-code-frame,
+.component-example-shell,
+.component-example-console,
+.component-preview-stage,
+.props-table-wrap {
+  border: 1px solid var(--docs-border);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--docs-surface) 96%, transparent);
+}
+
+.docs-guidance-card,
+.component-example-copy {
+  padding: 18px;
+}
+
+.docs-guidance-card {
+  display: grid;
+  gap: 12px;
+}
+
+.docs-guidance-card p {
+  margin: 0;
+  color: var(--docs-text-secondary);
+  line-height: 1.7;
+}
+
+.docs-code-frame {
+  overflow: hidden;
+}
+
+.docs-code-header,
+.component-example-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--docs-border);
+  background: color-mix(in srgb, var(--docs-surface-raised) 92%, transparent);
+}
+
+.docs-code-label,
+.component-example-action,
+.component-example-tab {
+  font-family:
+    var(--font-jetbrains-mono), ui-monospace, "SFMono-Regular", Consolas,
+    "Liberation Mono", monospace;
+}
+
+.docs-code-label,
+.docs-code-note,
+.component-example-copy .eyebrow,
+.props-table th,
+.props-table-note {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.docs-code-note,
+.table-note,
+.component-preview-loading {
+  color: var(--docs-text-muted);
+}
+
+.docs-code-block {
+  margin: 0;
+  padding: 18px;
+  overflow-x: auto;
+  color: var(--docs-text);
+  font-family:
+    var(--font-jetbrains-mono), ui-monospace, "SFMono-Regular", Consolas,
+    "Liberation Mono", monospace;
+  font-size: 0.84rem;
+  line-height: 1.7;
+  background: color-mix(in srgb, var(--docs-bg-subtle) 88%, transparent);
+}
+
+.docs-code-block code {
+  white-space: pre;
+}
+
+.table-note {
+  margin: 0;
+  line-height: 1.7;
+}
+
+.component-example-shell {
+  display: grid;
+  gap: 16px;
+  padding: 18px;
+}
+
+.component-example-shell-compact {
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.component-example-copy {
+  display: grid;
+  gap: 10px;
+  padding: 0;
+}
+
+.component-example-copy h3,
+.docs-guidance-card h3 {
+  font-size: 1rem;
+}
+
+.component-example-copy p,
+.component-example-notes strong {
+  margin: 0;
+}
+
+.component-example-copy p,
+.component-example-notes li {
+  color: var(--docs-text-secondary);
+  line-height: 1.7;
+}
+
+.component-example-notes {
+  display: grid;
+  gap: 10px;
+}
+
+.component-example-console {
+  overflow: hidden;
+}
+
+.component-example-tabs,
+.component-example-actions,
+.docs-links-row,
+.example-inline-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.component-example-tab,
+.component-example-action {
+  min-height: 36px;
+  border: 1px solid var(--docs-border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--docs-text-secondary);
+  padding: 0 12px;
+  cursor: pointer;
+  transition:
+    border-color var(--docs-transition-fast),
+    background-color var(--docs-transition-fast),
+    color var(--docs-transition-fast);
+}
+
+.component-example-tab[aria-selected='true'],
+.component-example-action:hover,
+.component-example-action:focus-visible,
+.component-example-tab:hover,
+.component-example-tab:focus-visible {
+  border-color: var(--docs-accent);
+  color: var(--docs-text);
+  background: rgba(0, 180, 216, 0.08);
+}
+
+.component-example-panel {
+  padding: 18px;
+}
+
+.component-preview-stage {
+  min-height: 220px;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 22%),
+    var(--docs-bg-subtle);
+}
+
+.component-preview-stage-button,
+.component-preview-stage-card,
+.component-preview-stage-surface {
+  align-items: stretch;
+}
+
+.component-preview-stage-card,
+.component-preview-stage-surface {
+  justify-items: stretch;
+}
+
+.component-preview-loading {
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+.copy-code-control {
+  position: relative;
+}
+
+.copy-code-live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.props-table-wrap {
+  overflow-x: auto;
+}
+
+.props-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 720px;
+}
+
+.props-table caption {
+  text-align: left;
+  padding: 16px 16px 0;
+  color: var(--docs-text-muted);
+}
+
+.props-table th,
+.props-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--docs-border);
+  vertical-align: top;
+  text-align: left;
+}
+
+.props-table th {
+  color: var(--docs-text-muted);
+}
+
+.props-table td {
+  color: var(--docs-text-secondary);
+  line-height: 1.7;
+}
+
+.props-table td code,
+.props-table th code {
+  color: var(--docs-text);
+  font-size: 0.84rem;
+}
+
+.props-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.props-table-note {
+  margin-top: 6px;
+  color: var(--docs-text-muted);
+}
+
+.example-heading,
+.example-muted-copy,
+.example-mono-copy {
+  margin: 0;
+}
+
+.example-heading {
+  font-size: 1rem;
+}
+
+.example-muted-copy {
+  color: var(--docs-text-secondary);
+  line-height: 1.7;
+}
+
+.example-mono-copy {
+  font-family:
+    var(--font-jetbrains-mono), ui-monospace, "SFMono-Regular", Consolas,
+    "Liberation Mono", monospace;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -989,6 +1288,10 @@ html[data-theme='light'] {
   .hero-topline {
     grid-template-columns: 1fr;
     justify-content: start;
+  }
+
+  .docs-guidance-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -1030,5 +1333,15 @@ html[data-theme='light'] {
 
   .hero-preview-grid {
     grid-template-columns: 1fr;
+  }
+
+  .component-example-toolbar,
+  .docs-code-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .props-table {
+    min-width: 640px;
   }
 }

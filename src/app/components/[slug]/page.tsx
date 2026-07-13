@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import Breadcrumbs from '@/app/_components/Breadcrumbs';
-import DocsScaffold from '@/app/_components/DocsScaffold';
-import PageHeader from '@/app/_components/PageHeader';
+import ComponentDocumentation from '@/app/_components/component-docs/ComponentDocumentation';
 import { componentEntries, getComponentEntry } from '@/app/_content/components';
 
 type ComponentDetailPageProps = {
@@ -40,41 +38,5 @@ export default async function ComponentDetailPage({
     notFound();
   }
 
-  return (
-    <DocsScaffold>
-      <div className="docs-panel">
-        <Breadcrumbs
-          items={[
-            { label: 'Home', href: '/' },
-            { label: 'Components', href: '/components' },
-            { label: entry.title }
-          ]}
-        />
-        <PageHeader
-          eyebrow={`${entry.kind} detail`}
-          title={entry.title}
-          description={entry.summary}
-          meta={[entry.storybookStatus, 'Catalog page']}
-        />
-      </div>
-
-      <section className="page-section">
-        <h2>API notes</h2>
-        <ul className="bullet-list">
-          {entry.apiNotes.map((note) => (
-            <li key={note}>{note}</li>
-          ))}
-        </ul>
-      </section>
-
-      <section className="page-section">
-        <h2>Documentation notes</h2>
-        <ul className="bullet-list">
-          {entry.documentationNotes.map((note) => (
-            <li key={note}>{note}</li>
-          ))}
-        </ul>
-      </section>
-    </DocsScaffold>
-  );
+  return <ComponentDocumentation entry={entry} />;
 }
