@@ -189,9 +189,33 @@ Do not increase contrast indiscriminately. Contrast is a hierarchy tool.
 
 If a lower-level surface visually outweighs a higher-level one, the hierarchy is wrong.
 
-## Applied Guidance Before Card 2.0
+## Applied Guidance
 
+- `Surface` is the first public Level 1 containment primitive.
+- `Surface` defines containment only. It does not define layout, spacing, interaction, or card composition.
+- `Card` is a structured content composition built on top of `Surface`.
+- `Card` adds predictable inner padding for related content, but it does not define heading structure, actions, variants, or interaction.
+- `Surface` resolves containment. `Card` resolves content composition.
+- `Box` remains a neutral utility primitive and should not replace `Surface` when the UI is expressing public surface hierarchy.
 - Inputs, Textarea, Select, and Tabs belong to Level 2.
 - Buttons and badges belong to Level 3.
 - Alerts and Empty States usually live inside Level 1 containers while carrying local emphasis.
 - Card 2.0 must be designed as a Level 1 primitive first, not as a generic boxed component.
+
+## Card Mission
+
+Use `Card` when:
+
+- content has a meaningful internal relationship;
+- a grouped title, description, status, fields, or actions belong to the same reading unit;
+- consistent inner padding improves scanning and comprehension.
+
+Avoid `Card` for:
+
+- page wrappers;
+- generic layout sections;
+- grids and stacks;
+- dashboard shell containers;
+- overlays or dialogs;
+- navigation;
+- future metric tiles that belong to a dedicated Metric Card.

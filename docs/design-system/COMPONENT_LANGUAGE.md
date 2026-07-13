@@ -75,6 +75,7 @@ The project currently exposes a compact public atom set, a small public molecule
 | Button | Public action primitive. Preserves native button props and ref. | Useful API baseline, but visual variants still rely on compatibility aliases and the older warm primary direction. Needs semantic action mapping and sharper state language later. | Public but requires alignment |
 | Box | Public presentational surface/layout primitive. Token props for padding, margin, background, and radius. | Small, composable, and useful. API exposes `colors` keys, so future migration must be careful. It should remain visually neutral. | Public and aligned |
 | Flex | Public layout primitive. Token gap and native div pass-through. | Strong primitive. It should remain unstyled except for layout. | Public and aligned |
+| Surface | Public Level 1 containment primitive. Expresses grouping through background, border, and radius only. | Distinct from Box because it represents public surface hierarchy instead of utility styling. It must stay layout-neutral and avoid becoming Card prematurely. | Public and aligned |
 ### Current Gaps
 
 - No Checkbox, Radio, or Switch yet.
@@ -669,39 +670,35 @@ Responsibility: group related content or actions.
 Anatomy:
 
 - Container.
-- Optional header.
-- Title.
-- Description/body.
-- Optional metadata/action/footer.
-- Optional accent edge for selected or metric state.
+- Related content block.
+- Optional local heading, description, metadata, or actions composed by consumers.
 
-Minimum variants:
+API direction:
 
-- Surface, raised, selected, interactive when needed.
-
-Sizes:
-
-- Not size-driven initially; content/layout should define dimensions.
-
-States:
-
-- Default, hover if interactive, selected, focus-visible if actionable, disabled only if truly interactive.
+- Minimal public API.
+- Native `div` props preserved.
+- `forwardRef` required.
+- No compound parts in the first implementation.
+- No variants, density, or interaction props in the first implementation.
 
 Visual hierarchy:
 
-- Use surface lightness and borders first. Shadow is secondary.
+- Built on top of `Surface`.
+- Use surface lightness and borders first.
+- Add predictable inner padding for related content.
+- Inner layout still belongs to composition.
 
 Semantic tokens:
 
-- Surface, border, text, elevation, radius, state, selection.
+- Surface, border, text, radius, and spacing roles only.
 
 Cyan:
 
-- Selected edge, active state, focus.
+- Reserved for local actions, focus, links, or status inside the Card when those states exist.
 
 Coral:
 
-- Brand callout or special highlight only.
+- Rare brand callout only.
 
 Border:
 
@@ -710,32 +707,36 @@ Border:
 Elevation:
 
 - Surface hierarchy before shadow.
-
-Motion:
-
-- Subtle border/background transition when interactive.
+- No glow.
+- No heavy dark-mode shadow.
 
 Keyboard:
 
-- Only focusable if the card itself is actionable.
+- Card itself is not focusable by default.
+- Interactive descendants remain responsible for their own keyboard behavior.
 
 Accessibility:
 
 - Do not add landmark roles by default.
+- Do not add implicit `tabIndex`.
+- Do not use Card as a button or link wrapper by default.
 
 Avoid:
 
-- Card inside card.
-- Heavy shadow in dark mode.
-- Making every card interactive.
+- Using Card as a page shell or generic panel wrapper.
+- Card inside card without a clear hierarchy reason.
+- Heavy shadow or decorative glow.
+- Interactive semantics without a real interaction contract.
+- Metric tiles that belong to a future Metric Card.
 
 Core:
 
-- Core after Button/Typography/Input alignment.
+- Card is a composition primitive that exists because `Surface` alone should not own content rhythm.
 
 Future:
 
-- Dashboard metric card and selectable card patterns.
+- Compound subcomponents only if repeated structure appears in real usage.
+- Dashboard metric card and selectable card patterns remain future work.
 
 ### Badge
 

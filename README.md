@@ -26,7 +26,7 @@ FeitozaUI is a work in progress. The current package surface is intentionally sm
 
 Current:
 
-- Public components: `Button`, `Box`, `Flex`, `Badge`, `Divider`, `Spinner`, `Skeleton`, `Progress`, `Input`, `Textarea`, `Select`, `Alert`, `EmptyState`, `Tabs`.
+- Public components: `Button`, `Box`, `Flex`, `Surface`, `Badge`, `Divider`, `Spinner`, `Skeleton`, `Progress`, `Input`, `Textarea`, `Select`, `Alert`, `EmptyState`, `Tabs`, `Card`.
 - Foundations: colors, typography, spacing, radii, motion, borders, focus, states, and semantic mappings.
 - Package build validated locally.
 - Storybook structured as the documentation surface.
@@ -65,6 +65,7 @@ export {
   Badge,
   Box,
   Button,
+  Card,
   Divider,
   EmptyState,
   Flex,
@@ -73,6 +74,7 @@ export {
   Select,
   Skeleton,
   Spinner,
+  Surface,
   Tabs,
   Textarea
 } from '@feitoza-ui/core';
@@ -216,6 +218,7 @@ Key documents:
 - [Vision](docs/philosophy/VISION.md)
 - [Architecture](docs/architecture/ARCHITECTURE.md)
 - [Surface System](docs/design-system/SURFACE_SYSTEM.md)
+- [Component Language](docs/design-system/COMPONENT_LANGUAGE.md)
 - [Layout Principles](docs/design-system/LAYOUT_PRINCIPLES.md)
 - [Component Guidelines](docs/design-system/COMPONENT_GUIDELINES.md)
 - [Accessibility](docs/design-system/ACCESSIBILITY.md)
@@ -231,4 +234,3 @@ See [Contributing](docs/CONTRIBUTING.md), [Code Style](docs/CODE_STYLE.md), and 
 ## License
 
 [MIT](LICENSE) (c) 2026 Maria Fernanda.
-

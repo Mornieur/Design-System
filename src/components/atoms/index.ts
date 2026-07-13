@@ -20,3 +20,5 @@ export { default as Textarea } from './Textarea';
 export type { TextareaProps, TextareaResize, TextareaSize } from './Textarea';
 export { default as Select } from './Select';
 export type { SelectProps, SelectSize } from './Select';
+export { default as Surface } from './Surface';
+export type { SurfaceProps, SurfaceVariant } from './Surface';
