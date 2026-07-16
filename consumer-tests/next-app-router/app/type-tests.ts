@@ -1,15 +1,17 @@
 import type {
-  ButtonProps,
   CardProps,
+  CheckboxProps,
   SurfaceProps,
   SurfaceVariant
 } from '@feitoza-ui/core';
 
 const validVariant: SurfaceVariant = 'default';
 
-const buttonProps: ButtonProps = {
-  type: 'button',
-  children: 'Action'
+const checkboxProps: CheckboxProps = {
+  name: 'releaseNotes',
+  value: 'enabled',
+  defaultChecked: false,
+  indeterminate: true
 };
 
 const cardProps: CardProps = {
@@ -20,7 +22,7 @@ const surfaceProps: SurfaceProps = {
   variant: validVariant
 };
 
-void buttonProps;
+void checkboxProps;
 void cardProps;
 void surfaceProps;
 

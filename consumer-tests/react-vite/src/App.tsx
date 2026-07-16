@@ -2,13 +2,13 @@ import { useMemo, useRef, useState } from 'react';
 import {
   Badge,
   Box,
-  Button,
   Card,
+  Checkbox,
   Flex,
   Surface,
   colors,
   space,
-  type ButtonProps,
+  type CheckboxProps,
   type CardProps,
   type SurfaceProps,
   type SurfaceVariant
@@ -22,17 +22,18 @@ const surfaceProps: SurfaceProps = {
   variant: 'secondary'
 };
 
-const buttonProps: ButtonProps = {
-  type: 'button',
-  variant: 'primary'
+const checkboxProps: CheckboxProps = {
+  name: 'releaseNotes',
+  value: 'weekly-digest',
+  helperText: 'Validates package-root import, native event flow, and forwarded refs.'
 };
 
 const emphasisVariant: SurfaceVariant = 'secondary';
 
 export default function App() {
-  const buttonRef = useRef<HTMLButtonElement | null>(null);
+  const checkboxRef = useRef<HTMLInputElement | null>(null);
   const surfaceRef = useRef<HTMLDivElement | null>(null);
-  const [clickCount, setClickCount] = useState(0);
+  const [checked, setChecked] = useState(false);
 
   const tokenStyles = useMemo(
     () => ({
@@ -43,9 +44,9 @@ export default function App() {
     []
   );
 
-  function handleAction() {
-    setClickCount((current) => current + 1);
-    buttonRef.current?.focus();
+  function handleCheckboxChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setChecked(event.target.checked);
+    checkboxRef.current?.focus();
   }
 
   return (
@@ -84,23 +85,32 @@ export default function App() {
               </p>
             </Box>
 
-            <Flex align="center" gap={3} wrap="wrap">
-              <Button
-                {...buttonProps}
-                ref={buttonRef}
-                className="consumer-button"
-                data-clicks={clickCount}
-                onClick={handleAction}
-              >
-                Trigger action
-              </Button>
-              <Button type="button" variant="secondary" onClick={() => surfaceRef.current?.focus()}>
-                Focus surface ref
-              </Button>
-            </Flex>
+            <form
+              onSubmit={(event) => event.preventDefault()}
+              style={{ display: 'grid', gap: space[3] }}
+            >
+              <Checkbox
+                {...checkboxProps}
+                ref={checkboxRef}
+                className="consumer-checkbox"
+                checked={checked}
+                onChange={handleCheckboxChange}
+                label="Receive weekly release notes"
+                data-state={checked ? 'checked' : 'unchecked'}
+                fullWidth
+              />
+              <Flex align="center" gap={3} wrap="wrap">
+                <button type="reset" onClick={() => setChecked(false)}>
+                  Reset local state
+                </button>
+                <button type="button" onClick={() => surfaceRef.current?.focus()}>
+                  Focus surface ref
+                </button>
+              </Flex>
+            </form>
 
             <p aria-live="polite" className="event-note">
-              Button clicked {clickCount} time{clickCount === 1 ? '' : 's'}.
+              Checkbox is {checked ? 'checked' : 'unchecked'}.
             </p>
           </Flex>
         </Card>

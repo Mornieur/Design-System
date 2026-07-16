@@ -4,8 +4,8 @@ import { useMemo, useRef, useState } from 'react';
 import {
   Badge,
   Box,
-  Button,
   Card,
+  Checkbox,
   Flex,
   Surface,
   colors,
@@ -16,9 +16,9 @@ import {
 const validatedVariant: SurfaceVariant = 'secondary';
 
 export default function FeitozaPreview() {
-  const buttonRef = useRef<HTMLButtonElement | null>(null);
+  const checkboxRef = useRef<HTMLInputElement | null>(null);
   const cardRef = useRef<HTMLDivElement | null>(null);
-  const [clickCount, setClickCount] = useState(0);
+  const [checked, setChecked] = useState(false);
 
   const surfaceStyle = useMemo(
     () => ({
@@ -49,24 +49,31 @@ export default function FeitozaPreview() {
             <Badge title="Client island verified">Client island verified</Badge>
           </Flex>
 
+          <Checkbox
+            ref={checkboxRef}
+            name="nextReleaseNotes"
+            value="enabled"
+            checked={checked}
+            onChange={(event) => {
+              setChecked(event.target.checked);
+              checkboxRef.current?.focus();
+            }}
+            label="Receive release notes in this client island"
+            helperText="Verifies package-root import, client rendering, ref forwarding, and native events."
+            fullWidth
+          />
+
           <Flex align="center" gap={3} wrap="wrap">
-            <Button
-              ref={buttonRef}
-              type="button"
-              onClick={() => {
-                setClickCount((current) => current + 1);
-                buttonRef.current?.focus();
-              }}
-            >
-              Trigger island action
-            </Button>
-            <Button type="button" variant="secondary" onClick={() => cardRef.current?.focus()}>
+            <button type="button" onClick={() => setChecked(false)}>
+              Clear state
+            </button>
+            <button type="button" onClick={() => cardRef.current?.focus()}>
               Focus card ref
-            </Button>
+            </button>
           </Flex>
 
           <p aria-live="polite" style={{ margin: 0 }}>
-            Button clicked {clickCount} time{clickCount === 1 ? '' : 's'}.
+            Checkbox is {checked ? 'checked' : 'unchecked'}.
           </p>
         </Flex>
       </Card>
