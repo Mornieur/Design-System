@@ -60,11 +60,11 @@
     "test:ci": "vitest run --coverage --poolOptions.forks.singleFork",
     "test:changed": "git diff --name-only --relative HEAD | xargs yarn vitest related --run",
     "prepare": "node .husky/install.mjs",
+    "prepack": "npm run build",
     "type-check": "tsc --noEmit",
     "coverage": "vitest run --coverage",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "prepublishOnly": "npm run build"
+    "build-storybook": "storybook build"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
