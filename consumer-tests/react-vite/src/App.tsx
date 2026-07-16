@@ -3,13 +3,13 @@ import {
   Badge,
   Box,
   Card,
-  Checkbox,
   Flex,
+  Radio,
   Surface,
   colors,
   space,
-  type CheckboxProps,
   type CardProps,
+  type RadioProps,
   type SurfaceProps,
   type SurfaceVariant
 } from '@feitoza-ui/core';
@@ -22,18 +22,17 @@ const surfaceProps: SurfaceProps = {
   variant: 'secondary'
 };
 
-const checkboxProps: CheckboxProps = {
-  name: 'releaseNotes',
-  value: 'weekly-digest',
+const radioProps: RadioProps = {
+  name: 'releaseChannel',
   helperText: 'Validates package-root import, native event flow, and forwarded refs.'
 };
 
 const emphasisVariant: SurfaceVariant = 'secondary';
 
 export default function App() {
-  const checkboxRef = useRef<HTMLInputElement | null>(null);
+  const radioRef = useRef<HTMLInputElement | null>(null);
   const surfaceRef = useRef<HTMLDivElement | null>(null);
-  const [checked, setChecked] = useState(false);
+  const [selectedChannel, setSelectedChannel] = useState<'email' | 'slack'>('email');
 
   const tokenStyles = useMemo(
     () => ({
@@ -44,9 +43,9 @@ export default function App() {
     []
   );
 
-  function handleCheckboxChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setChecked(event.target.checked);
-    checkboxRef.current?.focus();
+  function handleRadioChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setSelectedChannel(event.target.value as 'email' | 'slack');
+    radioRef.current?.focus();
   }
 
   return (
@@ -89,18 +88,29 @@ export default function App() {
               onSubmit={(event) => event.preventDefault()}
               style={{ display: 'grid', gap: space[3] }}
             >
-              <Checkbox
-                {...checkboxProps}
-                ref={checkboxRef}
-                className="consumer-checkbox"
-                checked={checked}
-                onChange={handleCheckboxChange}
-                label="Receive weekly release notes"
-                data-state={checked ? 'checked' : 'unchecked'}
+              <Radio
+                {...radioProps}
+                ref={radioRef}
+                className="consumer-radio"
+                value="email"
+                checked={selectedChannel === 'email'}
+                onChange={handleRadioChange}
+                label="Email release channel"
+                data-state={selectedChannel === 'email' ? 'checked' : 'unchecked'}
+                fullWidth
+              />
+              <Radio
+                {...radioProps}
+                value="slack"
+                checked={selectedChannel === 'slack'}
+                onChange={handleRadioChange}
+                label="Slack release channel"
+                helperText="Useful for immediate coordination during rollout windows."
+                data-state={selectedChannel === 'slack' ? 'checked' : 'unchecked'}
                 fullWidth
               />
               <Flex align="center" gap={3} wrap="wrap">
-                <button type="reset" onClick={() => setChecked(false)}>
+                <button type="reset" onClick={() => setSelectedChannel('email')}>
                   Reset local state
                 </button>
                 <button type="button" onClick={() => surfaceRef.current?.focus()}>
@@ -110,7 +120,7 @@ export default function App() {
             </form>
 
             <p aria-live="polite" className="event-note">
-              Checkbox is {checked ? 'checked' : 'unchecked'}.
+              Selected channel: {selectedChannel}.
             </p>
           </Flex>
         </Card>

@@ -1,18 +1,18 @@
 import type { RefObject } from 'react';
 import type {
   CardProps,
-  CheckboxProps,
+  RadioProps,
   SurfaceProps,
   SurfaceVariant
 } from '@feitoza-ui/core';
 
 const validSurfaceVariant: SurfaceVariant = 'default';
 
-const checkboxProps: CheckboxProps = {
-  name: 'releaseNotes',
-  value: 'weekly',
+const radioProps: RadioProps = {
+  name: 'releaseChannel',
+  value: 'email',
   defaultChecked: true,
-  indeterminate: false
+  required: true
 };
 
 const cardProps: CardProps = {
@@ -23,13 +23,13 @@ const surfaceProps: SurfaceProps = {
   variant: validSurfaceVariant
 };
 
-const checkboxElementRefCheck: RefObject<HTMLInputElement | null> = { current: null };
+const radioElementRefCheck: RefObject<HTMLInputElement | null> = { current: null };
 const divElementRefCheck: RefObject<HTMLDivElement | null> = { current: null };
 
-void checkboxProps;
+void radioProps;
 void cardProps;
 void surfaceProps;
-void checkboxElementRefCheck;
+void radioElementRefCheck;
 void divElementRefCheck;
 
 // @ts-expect-error -- invalid Surface variant should not be accepted

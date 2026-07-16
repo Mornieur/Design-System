@@ -1,17 +1,17 @@
 import type {
   CardProps,
-  CheckboxProps,
+  RadioProps,
   SurfaceProps,
   SurfaceVariant
 } from '@feitoza-ui/core';
 
 const validVariant: SurfaceVariant = 'default';
 
-const checkboxProps: CheckboxProps = {
-  name: 'releaseNotes',
-  value: 'enabled',
+const radioProps: RadioProps = {
+  name: 'releaseChannel',
+  value: 'email',
   defaultChecked: false,
-  indeterminate: true
+  required: true
 };
 
 const cardProps: CardProps = {
@@ -22,7 +22,7 @@ const surfaceProps: SurfaceProps = {
   variant: validVariant
 };
 
-void checkboxProps;
+void radioProps;
 void cardProps;
 void surfaceProps;
 
