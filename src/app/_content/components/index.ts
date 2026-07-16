@@ -1,5 +1,6 @@
 import type {AppLocale} from '@/i18n/routing';
 import {createButtonEntry} from './button';
+import {createCheckboxEntry} from './checkbox';
 import {createCardEntry} from './card';
 import {createSurfaceEntry} from './surface';
 import type {
@@ -20,6 +21,7 @@ export type {
 export function getComponentEntries(locale: AppLocale): ComponentEntry[] {
   return [
     createButtonEntry(locale),
+    createCheckboxEntry(locale),
     createSurfaceEntry(locale),
     createCardEntry(locale)
   ];

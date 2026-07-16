@@ -1,6 +1,8 @@
 export type ExampleKey =
   | 'button-primary-action'
   | 'button-variant-matrix'
+  | 'checkbox-notification-preferences'
+  | 'checkbox-indeterminate-selection'
   | 'surface-containment'
   | 'surface-hierarchy'
   | 'card-related-content'

@@ -10,6 +10,7 @@ describe('component documentation registry', () => {
   it('tracks the initial documented components only', () => {
     expect(getComponentEntries('en').map((entry) => entry.slug)).toEqual([
       'button',
+      'checkbox',
       'surface',
       'card'
     ]);
@@ -29,6 +30,8 @@ describe('component documentation registry', () => {
     ).toEqual([
       'button-primary-action',
       'button-variant-matrix',
+      'checkbox-notification-preferences',
+      'checkbox-indeterminate-selection',
       'surface-containment',
       'surface-hierarchy',
       'card-related-content',

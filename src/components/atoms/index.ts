@@ -16,6 +16,8 @@ export { default as Progress } from './Progress';
 export type { ProgressProps, ProgressSize, ProgressTone } from './Progress';
 export { default as Input } from './Input';
 export type { InputProps, InputSize } from './Input';
+export { default as Checkbox } from './Checkbox';
+export type { CheckboxProps } from './Checkbox';
 export { default as Textarea } from './Textarea';
 export type { TextareaProps, TextareaResize, TextareaSize } from './Textarea';
 export { default as Select } from './Select';

@@ -18,6 +18,8 @@ describe('example route params', () => {
     expect(await generateStaticParams()).toEqual([
       { slug: 'button-primary-action' },
       { slug: 'button-variant-matrix' },
+      { slug: 'checkbox-notification-preferences' },
+      { slug: 'checkbox-indeterminate-selection' },
       { slug: 'surface-containment' },
       { slug: 'surface-hierarchy' },
       { slug: 'card-related-content' },
