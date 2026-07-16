@@ -7,6 +7,8 @@ import { CheckboxIndeterminateSelectionExample } from './checkbox/CheckboxIndete
 import { CheckboxNotificationPreferencesExample } from './checkbox/CheckboxNotificationPreferencesExample';
 import { CardContextualActionsExample } from './card/CardContextualActionsExample';
 import { CardRelatedContentExample } from './card/CardRelatedContentExample';
+import { RadioNotificationPriorityExample } from './radio/RadioNotificationPriorityExample';
+import { RadioReleaseChannelSelectionExample } from './radio/RadioReleaseChannelSelectionExample';
 import { SurfaceContainmentExample } from './surface/SurfaceContainmentExample';
 import { SurfaceHierarchyExample } from './surface/SurfaceHierarchyExample';
 
@@ -15,6 +17,8 @@ export const exampleRenderers = {
   'button-variant-matrix': ButtonVariantMatrixExample,
   'checkbox-notification-preferences': CheckboxNotificationPreferencesExample,
   'checkbox-indeterminate-selection': CheckboxIndeterminateSelectionExample,
+  'radio-release-channel-selection': RadioReleaseChannelSelectionExample,
+  'radio-notification-priority': RadioNotificationPriorityExample,
   'surface-containment': SurfaceContainmentExample,
   'surface-hierarchy': SurfaceHierarchyExample,
   'card-related-content': CardRelatedContentExample,

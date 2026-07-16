@@ -20,6 +20,8 @@ describe('example route params', () => {
       { slug: 'button-variant-matrix' },
       { slug: 'checkbox-notification-preferences' },
       { slug: 'checkbox-indeterminate-selection' },
+      { slug: 'radio-release-channel-selection' },
+      { slug: 'radio-notification-priority' },
       { slug: 'surface-containment' },
       { slug: 'surface-hierarchy' },
       { slug: 'card-related-content' },

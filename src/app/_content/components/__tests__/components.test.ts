@@ -11,6 +11,7 @@ describe('component documentation registry', () => {
     expect(getComponentEntries('en').map((entry) => entry.slug)).toEqual([
       'button',
       'checkbox',
+      'radio',
       'surface',
       'card'
     ]);
@@ -32,6 +33,8 @@ describe('component documentation registry', () => {
       'button-variant-matrix',
       'checkbox-notification-preferences',
       'checkbox-indeterminate-selection',
+      'radio-release-channel-selection',
+      'radio-notification-priority',
       'surface-containment',
       'surface-hierarchy',
       'card-related-content',

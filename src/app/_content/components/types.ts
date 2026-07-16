@@ -3,6 +3,8 @@ export type ExampleKey =
   | 'button-variant-matrix'
   | 'checkbox-notification-preferences'
   | 'checkbox-indeterminate-selection'
+  | 'radio-release-channel-selection'
+  | 'radio-notification-priority'
   | 'surface-containment'
   | 'surface-hierarchy'
   | 'card-related-content'
