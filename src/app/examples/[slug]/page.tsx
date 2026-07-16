@@ -1,8 +1,13 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
-import { notFound } from 'next/navigation';
+import type {Metadata} from 'next';
+import {getLocale} from 'next-intl/server';
+import {notFound} from 'next/navigation';
 import ComponentExampleSection from '@/app/_components/component-docs/ComponentExampleSection';
-import { componentExampleEntries, getComponentExampleEntry } from '@/app/_content/components';
+import {
+  getComponentExampleEntries,
+  getComponentExampleEntry
+} from '@/app/_content/components';
+import {Link} from '@/i18n/navigation';
+import type {AppLocale} from '@/i18n/routing';
 
 type ExampleDetailPageProps = {
   params: Promise<{
@@ -10,8 +15,8 @@ type ExampleDetailPageProps = {
   }>;
 };
 
-export function generateStaticParams() {
-  return componentExampleEntries.map((entry) => ({
+export async function generateStaticParams() {
+  return getComponentExampleEntries('en').map((entry) => ({
     slug: entry.example.routeSlug
   }));
 }
@@ -19,8 +24,9 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params
 }: ExampleDetailPageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const entry = getComponentExampleEntry(slug);
+  const locale = (await getLocale()) as AppLocale;
+  const {slug} = await params;
+  const entry = getComponentExampleEntry(locale, slug);
 
   if (!entry) {
     return {};
@@ -35,8 +41,9 @@ export async function generateMetadata({
 export default async function ExampleDetailPage({
   params
 }: ExampleDetailPageProps) {
-  const { slug } = await params;
-  const entry = getComponentExampleEntry(slug);
+  const locale = (await getLocale()) as AppLocale;
+  const {slug} = await params;
+  const entry = getComponentExampleEntry(locale, slug);
 
   if (!entry) {
     notFound();
@@ -46,14 +53,19 @@ export default async function ExampleDetailPage({
     <main id="main-content" className="site-main">
       <div className="page-shell narrow-shell">
         <section className="page-section">
-          <p className="eyebrow">Isolated example</p>
+          <p className="eyebrow">
+            {locale === 'en' ? 'Isolated example' : 'Exemplo isolado'}
+          </p>
           <h1>
             {entry.component.title}: {entry.example.title}
           </h1>
           <p className="page-intro">{entry.example.description}</p>
           <div className="docs-links-row">
-            <Link className="button-link button-link-secondary" href={`/components/${entry.component.slug}`}>
-              Back to component
+            <Link
+              className="button-link button-link-secondary"
+              href={`/components/${entry.component.slug}`}
+            >
+              {locale === 'en' ? 'Back to component' : 'Voltar para o componente'}
             </Link>
             <a
               className="button-link button-link-secondary"
@@ -61,7 +73,7 @@ export default async function ExampleDetailPage({
               target="_blank"
               rel="noreferrer"
             >
-              Open Storybook
+              Storybook
             </a>
           </div>
         </section>
@@ -73,6 +85,7 @@ export default async function ExampleDetailPage({
             storybookUrl={entry.component.storybook.url}
             compact
             hideOpenExample
+            locale={locale}
           />
         </section>
       </div>

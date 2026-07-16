@@ -140,6 +140,11 @@ Do not create HTTP APIs just to read content that already exists inside the repo
 - Do not create circular dependency between the library and the showcase.
 - Hardcoded values must be rare and justified.
 - Documentation shell styling must not leak into the public component API.
+- Docs-only visual identity work may use documentation-scoped CSS variables, classes, and effects when the goal is editorial presentation rather than reusable package behavior.
+- Technical atmosphere should come primarily from typography, borders, panel structure, metadata labels, and restrained motion before decorative illustration.
+- Both dark and light modes must be designed intentionally; light mode should not be treated as a simple inversion of dark mode.
+- Prefer CSS-first motion for docs polish. Add client JavaScript only when interactivity or browser APIs are genuinely required.
+- Homepage-specific visual staging is acceptable when it uses the existing route model and preserves Storybook as the behavioral source of truth.
 
 ## Performance
 

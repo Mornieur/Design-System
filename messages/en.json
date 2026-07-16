@@ -1,0 +1,19 @@
+{
+  "common": {
+    "home": "Home",
+    "menu": "Menu",
+    "storybook": "Storybook",
+    "github": "GitHub",
+    "browseDocs": "Browse docs",
+    "backToDocs": "Back to docs",
+    "returnHome": "Return home"
+  },
+  "header": {
+    "localeSwitcher": "Select language",
+    "themeSwitcher": "Switch to {theme} theme",
+    "themes": {
+      "light": "Light",
+      "dark": "Dark"
+    }
+  }
+}

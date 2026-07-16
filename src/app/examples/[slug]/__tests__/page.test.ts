@@ -1,9 +1,21 @@
-import { describe, expect, it } from 'vitest';
+import {createElement} from 'react';
+import type {AnchorHTMLAttributes} from 'react';
+import { describe, expect, it, vi } from 'vitest';
+
+vi.mock('@/i18n/navigation', () => ({
+  Link: ({
+    href,
+    children,
+    ...props
+  }: AnchorHTMLAttributes<HTMLAnchorElement> & {href: string}) =>
+    createElement('a', {href, ...props}, children)
+}));
+
 import { generateStaticParams } from '../page';
 
 describe('example route params', () => {
-  it('generates static params for the documented examples', () => {
-    expect(generateStaticParams()).toEqual([
+  it('generates static params for the documented examples', async () => {
+    expect(await generateStaticParams()).toEqual([
       { slug: 'button-primary-action' },
       { slug: 'button-variant-matrix' },
       { slug: 'surface-containment' },

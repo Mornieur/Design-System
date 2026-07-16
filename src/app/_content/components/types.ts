@@ -17,6 +17,7 @@ export type ComponentExampleDefinition = {
   description: string;
   code: string;
   previewKey: ExampleKey;
+  category: 'composition' | 'interactive';
   accessibilityNotes?: string[];
 };
 
@@ -50,11 +51,17 @@ export type ComponentEntry = {
   description: string;
   importPath: string;
   overview: string;
+  usageSummary: string;
   useWhen: string[];
   avoidWhen: string[];
+  bestPractices: string[];
+  doItems: string[];
+  dontItems: string[];
+  featuredExampleId: string;
   examples: ComponentExampleDefinition[];
   propsDefinition: ComponentPropsDefinition;
   accessibility: string[];
+  relatedComponentSlugs: string[];
   storybook: ComponentLinkDefinition;
   source: ComponentLinkDefinition;
 };

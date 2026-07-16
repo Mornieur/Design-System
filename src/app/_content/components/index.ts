@@ -1,6 +1,7 @@
-import { buttonEntry } from './button';
-import { cardEntry } from './card';
-import { surfaceEntry } from './surface';
+import type {AppLocale} from '@/i18n/routing';
+import {createButtonEntry} from './button';
+import {createCardEntry} from './card';
+import {createSurfaceEntry} from './surface';
 import type {
   ComponentEntry,
   ComponentExampleEntry
@@ -16,22 +17,30 @@ export type {
   ExampleKey
 } from './types';
 
-export const componentEntries: ComponentEntry[] = [
-  buttonEntry,
-  surfaceEntry,
-  cardEntry
-];
-
-export const featuredComponents = componentEntries.map((entry) => entry.slug);
-
-export function getComponentEntry(slug: string) {
-  return componentEntries.find((entry) => entry.slug === slug);
+export function getComponentEntries(locale: AppLocale): ComponentEntry[] {
+  return [
+    createButtonEntry(locale),
+    createSurfaceEntry(locale),
+    createCardEntry(locale)
+  ];
 }
 
-export const componentExampleEntries: ComponentExampleEntry[] = componentEntries.flatMap(
-  (component) => component.examples.map((example) => ({ component, example }))
-);
+export function getFeaturedComponents(locale: AppLocale) {
+  return getComponentEntries(locale).map((entry) => entry.slug);
+}
 
-export function getComponentExampleEntry(routeSlug: string) {
-  return componentExampleEntries.find((entry) => entry.example.routeSlug === routeSlug);
+export function getComponentEntry(locale: AppLocale, slug: string) {
+  return getComponentEntries(locale).find((entry) => entry.slug === slug);
+}
+
+export function getComponentExampleEntries(locale: AppLocale): ComponentExampleEntry[] {
+  return getComponentEntries(locale).flatMap((component) =>
+    component.examples.map((example) => ({component, example}))
+  );
+}
+
+export function getComponentExampleEntry(locale: AppLocale, routeSlug: string) {
+  return getComponentExampleEntries(locale).find(
+    (entry) => entry.example.routeSlug === routeSlug
+  );
 }

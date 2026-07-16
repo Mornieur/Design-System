@@ -258,3 +258,50 @@ Rejected in this phase:
 - It avoids claiming that styled-components generically requires client pages.
 - It keeps documentation-specific boundaries inside `src/app` instead of pushing Next-specific requirements into the library.
 - It establishes the same future pattern needed for component preview, copy button, modal, and other documentation-engine islands.
+
+## 12. Documentation Experience Refinement
+
+### Objective
+
+The preview release readiness phase shifts the documentation website from basic architecture delivery to a recognizable FeitozaUI experience.
+
+This phase keeps all previous architecture decisions intact:
+
+- routing remains unchanged;
+- Storybook remains the behavioral source of truth;
+- package exports remain unchanged;
+- Storybook content is not moved into Next;
+- improvements stay inside the documentation website and local architectural docs.
+
+### Reference review takeaways
+
+The visual review of MUI, Ant Design, Radix, Tailwind CSS, shadcn/ui, Vercel, Stripe Docs, and Linear pointed to a consistent pattern:
+
+- strong docs feel editorial, not like route dumps;
+- technical products use navigation, metadata, and code presentation as part of brand identity;
+- the best systems keep motion small and purposeful;
+- tabs, code blocks, copy actions, and related links should feel like one language;
+- light mode needs its own atmosphere instead of a simple color inversion.
+
+### Decisions introduced
+
+| Concern | Decision | Why |
+| --- | --- | --- |
+| Visual identity | Use docs-only infrastructure styling with grid, panel edges, mono IDs, and restrained neon accents | Makes the docs recognizable as FeitozaUI without changing public tokens or package behavior |
+| Home page role | Treat the homepage as the strongest editorial page | Creates a memorable first impression similar to high-quality product docs and design system sites |
+| Component route structure | Standardize component pages around overview, usage, preview, code, API, accessibility, best practices, do/don't, composition, interactive examples, and related components | Raises documentation depth without adding CMS or MDX complexity |
+| Code presentation | Reuse a docs-only copyable code-block pattern | Improves usability and consistency across pages |
+| Motion | Keep motion CSS-first, subtle, and disabled by reduced-motion preferences | Preserves performance and accessibility while avoiding decorative noise |
+| Theme expression | Give light mode a blueprint-like identity rather than inverting dark mode | Avoids the "dark mode inverted" feel called out in the phase goals |
+
+### Explicit non-decisions
+
+This phase does not introduce:
+
+- route redesign;
+- search;
+- runtime playground infrastructure;
+- CMS or remote content;
+- additional package exports;
+- Storybook changes;
+- broader client promotion of route trees.

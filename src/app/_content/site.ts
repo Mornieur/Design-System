@@ -1,17 +1,54 @@
-export const siteMetadata = {
-  title: 'FeitozaUI Documentation Website',
-  shortTitle: 'FeitozaUI',
-  tagline: 'Quiet infrastructure for a growing React UI platform.',
-  description:
-    'A static-first documentation surface for FeitozaUI foundations, package boundaries, installation guidance, architecture notes, and the evolving public component system.'
-} as const;
+import type {AppLocale} from '@/i18n/routing';
 
-export const homeHighlights = [
-  { label: 'Render mode', value: 'Static route model' },
-  { label: 'Content source', value: 'Typed local registries' },
-  { label: 'System role', value: 'Storybook stays primary' },
-  { label: 'Package impact', value: 'Public API unchanged' }
-] as const;
+const localizedSiteContent = {
+  en: {
+    metadata: {
+      title: 'FeitozaUI Documentation',
+      shortTitle: 'FeitozaUI',
+      tagline: 'React components and design guidance for practical product interfaces.',
+      description:
+        'FeitozaUI is a React component library focused on clear APIs, design foundations, and accessible implementation guidance.'
+    },
+    homeHighlights: [
+      { label: 'Built for', value: 'React applications' },
+      { label: 'Current focus', value: 'Foundations and essential primitives' },
+      { label: 'Documentation', value: 'Examples, API, accessibility, guidance' }
+    ]
+  },
+  'pt-BR': {
+    metadata: {
+      title: 'Documentação FeitozaUI',
+      shortTitle: 'FeitozaUI',
+      tagline: 'Componentes React e orientação de design para interfaces de produto.',
+      description:
+        'FeitozaUI é uma biblioteca de componentes React focada em APIs claras, fundamentos visuais e orientação acessível de implementação.'
+    },
+    homeHighlights: [
+      { label: 'Feito para', value: 'Aplicações React' },
+      { label: 'Foco atual', value: 'Fundamentos e primitivos essenciais' },
+      { label: 'Documentação', value: 'Exemplos, API, acessibilidade e guias' }
+    ]
+  }
+} as const satisfies Record<
+  AppLocale,
+  {
+    metadata: {
+      title: string;
+      shortTitle: string;
+      tagline: string;
+      description: string;
+    };
+    homeHighlights: readonly {label: string; value: string}[];
+  }
+>;
+
+export function getSiteMetadata(locale: AppLocale) {
+  return localizedSiteContent[locale].metadata;
+}
+
+export function getHomeHighlights(locale: AppLocale) {
+  return localizedSiteContent[locale].homeHighlights;
+}
 
 export const themeScript = `
 (() => {

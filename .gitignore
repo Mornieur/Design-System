@@ -17,6 +17,7 @@
 # next.js
 /.next/
 /out/
+/.lighthouseci/
 
 # production
 /build
@@ -33,6 +34,9 @@ yarn-error.log*
 .pnpm-debug.log*
 /tmp-dev-*.log
 /tmp-next-dev-*.log
+/.tmp-next-stdout.log
+/.tmp-next-stderr.log
+/test-results/
 
 # env files (can opt-in for committing if needed)
 .env*
