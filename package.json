@@ -143,12 +143,10 @@
     "typescript-eslint": "^8.46.4",
     "vite-plugin-dts": "^4.5.4",
     "vite-tsconfig-paths": "^5.1.4",
-    "vitest": "^4.0.8"
+    "vitest": "^4.0.8",
+    "next-intl": "^4.13.2"
   },
   "publishConfig": {
     "access": "public"
-  },
-  "dependencies": {
-    "next-intl": "^4.13.2"
   }
 }
