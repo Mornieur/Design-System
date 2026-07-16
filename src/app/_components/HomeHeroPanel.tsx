@@ -1,11 +1,4 @@
-'use client';
-
-import Link from 'next/link';
-import Badge from '@/components/atoms/Badge';
-import Button from '@/components/atoms/Button';
-import Surface from '@/components/atoms/Surface';
-import Card from '@/components/molecules/Card';
-import HeroSignal from '@/app/_components/HeroSignal';
+import {Link} from '@/i18n/navigation';
 
 type Highlight = {
   label: string;
@@ -13,42 +6,60 @@ type Highlight = {
 };
 
 type HomeHeroPanelProps = {
+  heroTitle: string;
   description: string;
   highlights: readonly Highlight[];
   shortTitle: string;
+  supportingCopy: string;
+  actions: {
+    primary: string;
+    secondary: string;
+    tertiary: string;
+  };
+  why: {
+    eyebrow: string;
+    title: string;
+    body: string;
+    items: readonly string[];
+  };
+  firstSteps: {
+    eyebrow: string;
+    title: string;
+    items: readonly string[];
+    links: readonly [string, string, string];
+  };
 };
 
 export default function HomeHeroPanel({
+  heroTitle,
   description,
   highlights,
-  shortTitle
+  shortTitle,
+  supportingCopy,
+  actions,
+  why,
+  firstSteps
 }: HomeHeroPanelProps) {
   return (
     <section className="hero-panel hero-panel-home" aria-labelledby="home-title">
       <div className="hero-copy">
-        <div className="hero-topline">
-          <p className="hero-system-id">Docs node / visual refinement</p>
-          <HeroSignal label="Surface online" />
-        </div>
-        <Badge variant="info" outlined>
-          Quiet Future / Neon Infrastructure
-        </Badge>
         <h1 id="home-title">
-          Documentation infrastructure for <span>{shortTitle}</span>.
+          {heroTitle} <span>{shortTitle}</span>.
         </h1>
         <p className="hero-lead">{description}</p>
+        <p className="hero-supporting-copy">{supportingCopy}</p>
         <div className="hero-actions">
           <Link className="button-link button-link-primary" href="/docs/getting-started">
-            Start with the docs
+            {actions.primary}
           </Link>
           <Link className="button-link button-link-secondary" href="/components">
-            Browse the component index
+            {actions.secondary}
           </Link>
-          <Link className="button-link button-link-tertiary" href="/architecture">
-            Why Storybook stays primary
+          <Link className="button-link button-link-tertiary" href="/foundations">
+            {actions.tertiary}
           </Link>
         </div>
-        <ul className="hero-summary-list" aria-label="Documentation system properties">
+        <ul className="hero-summary-list" aria-label="Documentation highlights">
           {highlights.map((item) => (
             <li key={item.label}>
               <span>{item.label}</span>
@@ -57,58 +68,37 @@ export default function HomeHeroPanel({
           ))}
         </ul>
       </div>
-      <div className="hero-rail">
-        <Card className="hero-card hero-card-primary">
-          <div className="hero-card-header">
-            <div className="hero-card-heading">
-              <span className="hero-kicker">Live system</span>
-              <h2>Documentation surface</h2>
-            </div>
-            <Badge variant="success">Static-first</Badge>
+
+      <div className="hero-rail hero-rail-landing">
+        <article className="hero-card hero-card-secondary">
+          <div className="hero-card-heading">
+            <p className="eyebrow">{why.eyebrow}</p>
+            <h2>{why.title}</h2>
           </div>
-          <ul className="metric-list" aria-label="Documentation priorities">
-            {highlights.map((item) => (
-              <li key={item.label}>
-                <span>{item.label}</span>
-                <strong>{item.value}</strong>
-              </li>
+          <p>{why.body}</p>
+          <ul className="bullet-list">
+            {why.items.map((item) => (
+              <li key={item}>{item}</li>
             ))}
           </ul>
-        </Card>
+        </article>
 
-        <Surface className="hero-card hero-card-secondary">
-          <div className="hero-card-header">
-            <div className="hero-card-heading">
-              <span className="hero-kicker">Telemetry</span>
-              <h2>System boundary</h2>
-            </div>
-            <span className="panel-id">DOCS-01</span>
+        <article className="hero-card hero-card-secondary hero-card-checklist">
+          <div className="hero-card-heading">
+            <p className="eyebrow">{firstSteps.eyebrow}</p>
+            <h2>{firstSteps.title}</h2>
           </div>
-          <div className="hero-preview-grid" aria-label="Documentation boundaries">
-            <article>
-              <span>Foundations</span>
-              <strong>Registry-backed</strong>
-            </article>
-            <article>
-              <span>Components</span>
-              <strong>Public surface</strong>
-            </article>
-            <article>
-              <span>Behavior docs</span>
-              <strong>Storybook</strong>
-            </article>
-            <article>
-              <span>Package API</span>
-              <strong>Stable</strong>
-            </article>
+          <ol className="hero-checklist">
+            {firstSteps.items.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ol>
+          <div className="hero-inline-links">
+            <Link href="/docs/installation">{firstSteps.links[0]}</Link>
+            <Link href="/components/button">{firstSteps.links[1]}</Link>
+            <Link href="/accessibility">{firstSteps.links[2]}</Link>
           </div>
-          <div className="hero-preview">
-            <Button type="button">Primary action</Button>
-            <Button type="button" variant="secondary">
-              Secondary action
-            </Button>
-          </div>
-        </Surface>
+        </article>
       </div>
     </section>
   );

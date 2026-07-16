@@ -1,7 +1,9 @@
 'use client';
 
-import { Suspense, useId, useState } from 'react';
+import { useId, useState } from 'react';
+import type {AppLocale} from '@/i18n/routing';
 import type { ComponentExampleDefinition } from '@/app/_content/components';
+import {Link} from '@/i18n/navigation';
 import { exampleRenderers } from './examples/exampleRenderers';
 import CopyCodeButton from './CopyCodeButton';
 
@@ -11,6 +13,7 @@ type ComponentExampleSectionProps = {
   storybookUrl: string;
   compact?: boolean;
   hideOpenExample?: boolean;
+  locale: AppLocale;
 };
 
 export default function ComponentExampleSection({
@@ -18,22 +21,51 @@ export default function ComponentExampleSection({
   example,
   storybookUrl,
   compact = false,
-  hideOpenExample = false
+  hideOpenExample = false,
+  locale
 }: ComponentExampleSectionProps) {
   const previewPanelId = useId();
   const codePanelId = useId();
   const [activePanel, setActivePanel] = useState<'preview' | 'code'>('preview');
   const PreviewRenderer = exampleRenderers[example.previewKey];
+  const copy =
+    locale === 'pt-BR'
+      ? {
+          composition: 'Exemplo de composicao',
+          interactive: 'Exemplo interativo',
+          accessibility: 'Notas de acessibilidade',
+          preview: 'Preview',
+          code: 'Codigo',
+          openExample: 'Abrir exemplo',
+          staticSource: 'Fonte estatica do exemplo'
+        }
+      : {
+          composition: 'Composition example',
+          interactive: 'Interactive example',
+          accessibility: 'Accessibility notes',
+          preview: 'Preview',
+          code: 'Code',
+          openExample: 'Open example',
+          staticSource: 'Static example source'
+        };
 
   return (
-    <article className={`component-example-shell${compact ? ' component-example-shell-compact' : ''}`}>
+    <article
+      className={`component-example-shell${compact ? ' component-example-shell-compact' : ''}`}
+    >
       <div className="component-example-copy">
-        <span className="eyebrow">Example</span>
+        <div className="component-example-copy-topline">
+          <span className="eyebrow">
+            {example.category === 'composition'
+              ? copy.composition
+              : copy.interactive}
+          </span>
+        </div>
         <h3>{example.title}</h3>
         <p>{example.description}</p>
         {example.accessibilityNotes?.length ? (
           <div className="component-example-notes">
-            <strong>Accessibility notes</strong>
+            <strong>{copy.accessibility}</strong>
             <ul className="bullet-list">
               {example.accessibilityNotes.map((note) => (
                 <li key={note}>{note}</li>
@@ -59,7 +91,7 @@ export default function ComponentExampleSection({
               className="component-example-tab"
               onClick={() => setActivePanel('preview')}
             >
-              Preview
+              {copy.preview}
             </button>
             <button
               type="button"
@@ -70,21 +102,21 @@ export default function ComponentExampleSection({
               className="component-example-tab"
               onClick={() => setActivePanel('code')}
             >
-              Code
+              {copy.code}
             </button>
           </div>
 
           <div className="component-example-actions">
             <CopyCodeButton code={example.code} />
             {hideOpenExample ? null : (
-              <a
+              <Link
                 className="component-example-action"
                 href={`/examples/${example.routeSlug}`}
                 target="_blank"
                 rel="noreferrer"
               >
-                Open example
-              </a>
+                {copy.openExample}
+              </Link>
             )}
             <a
               className="component-example-action"
@@ -104,10 +136,10 @@ export default function ComponentExampleSection({
           hidden={activePanel !== 'preview'}
           className="component-example-panel"
         >
-          <div className={`component-preview-stage component-preview-stage-${componentSlug}`}>
-            <Suspense fallback={<p className="component-preview-loading">Loading preview…</p>}>
-              <PreviewRenderer />
-            </Suspense>
+          <div
+            className={`component-preview-stage component-preview-stage-${componentSlug}`}
+          >
+            <PreviewRenderer />
           </div>
         </div>
 
@@ -120,8 +152,10 @@ export default function ComponentExampleSection({
         >
           <div className="docs-code-frame docs-code-frame-preview">
             <div className="docs-code-header">
-              <span className="docs-code-label">tsx</span>
-              <span className="docs-code-note">Static example source</span>
+              <div className="docs-code-meta">
+                <span className="docs-code-label">tsx</span>
+                <span className="docs-code-note">{copy.staticSource}</span>
+              </div>
             </div>
             <pre className="docs-code-block" tabIndex={0}>
               <code>{example.code}</code>

@@ -1,10 +1,46 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import {NextIntlClientProvider} from 'next-intl';
+import type {AnchorHTMLAttributes, ReactNode} from 'react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
+
+vi.mock('@/i18n/navigation', () => ({
+  Link: ({
+    href,
+    children,
+    ...props
+  }: AnchorHTMLAttributes<HTMLAnchorElement> & {href: string}) => (
+    <a href={href} {...props}>
+      {children}
+    </a>
+  )
+}));
+
 import ComponentExampleSection from '../ComponentExampleSection';
 import { getComponentEntry } from '@/app/_content/components';
 
 describe('ComponentExampleSection', () => {
+  const locale = 'en' as const;
+  const messages = {
+    common: {
+      home: 'Home',
+      menu: 'Menu',
+      storybook: 'Storybook',
+      github: 'GitHub',
+      browseDocs: 'Browse docs',
+      backToDocs: 'Back to docs',
+      returnHome: 'Return home'
+    },
+    header: {
+      localeSwitcher: 'Select language',
+      themeSwitcher: 'Switch to {theme} theme',
+      themes: {
+        light: 'Light',
+        dark: 'Dark'
+      }
+    }
+  };
+
   beforeEach(() => {
     vi.restoreAllMocks();
   });
@@ -16,18 +52,27 @@ describe('ComponentExampleSection', () => {
     });
   }
 
+  function renderWithIntl(ui: ReactNode) {
+    return render(
+      <NextIntlClientProvider locale={locale} messages={messages}>
+        {ui}
+      </NextIntlClientProvider>
+    );
+  }
+
   it('renders the preview tab by default and loads the example renderer', async () => {
-    const entry = getComponentEntry('button');
+    const entry = getComponentEntry(locale, 'button');
 
     if (!entry) {
       throw new Error('button entry missing');
     }
 
-    render(
+    renderWithIntl(
       <ComponentExampleSection
         componentSlug={entry.slug}
         example={entry.examples[0]}
         storybookUrl={entry.storybook.url}
+        locale={locale}
       />
     );
 
@@ -37,17 +82,18 @@ describe('ComponentExampleSection', () => {
 
   it('switches between preview and code panels', async () => {
     const user = userEvent.setup();
-    const entry = getComponentEntry('button');
+    const entry = getComponentEntry(locale, 'button');
 
     if (!entry) {
       throw new Error('button entry missing');
     }
 
-    render(
+    renderWithIntl(
       <ComponentExampleSection
         componentSlug={entry.slug}
         example={entry.examples[0]}
         storybookUrl={entry.storybook.url}
+        locale={locale}
       />
     );
 
@@ -62,17 +108,18 @@ describe('ComponentExampleSection', () => {
     const writeText = vi.fn().mockResolvedValue(undefined);
     mockClipboard(writeText);
 
-    const entry = getComponentEntry('button');
+    const entry = getComponentEntry(locale, 'button');
 
     if (!entry) {
       throw new Error('button entry missing');
     }
 
-    render(
+    renderWithIntl(
       <ComponentExampleSection
         componentSlug={entry.slug}
         example={entry.examples[0]}
         storybookUrl={entry.storybook.url}
+        locale={locale}
       />
     );
 
@@ -88,17 +135,18 @@ describe('ComponentExampleSection', () => {
     const writeText = vi.fn().mockRejectedValue(new Error('nope'));
     mockClipboard(writeText);
 
-    const entry = getComponentEntry('button');
+    const entry = getComponentEntry(locale, 'button');
 
     if (!entry) {
       throw new Error('button entry missing');
     }
 
-    render(
+    renderWithIntl(
       <ComponentExampleSection
         componentSlug={entry.slug}
         example={entry.examples[0]}
         storybookUrl={entry.storybook.url}
+        locale={locale}
       />
     );
 
@@ -110,17 +158,18 @@ describe('ComponentExampleSection', () => {
   });
 
   it('renders accessible links for the isolated example and Storybook', () => {
-    const entry = getComponentEntry('card');
+    const entry = getComponentEntry(locale, 'card');
 
     if (!entry) {
       throw new Error('card entry missing');
     }
 
-    render(
+    renderWithIntl(
       <ComponentExampleSection
         componentSlug={entry.slug}
         example={entry.examples[0]}
         storybookUrl={entry.storybook.url}
+        locale={locale}
       />
     );
 

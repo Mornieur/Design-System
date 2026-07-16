@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import {useLocale} from 'next-intl';
+import {useEffect, useRef, useState} from 'react';
 
 type CopyCodeButtonProps = {
   code: string;
@@ -28,7 +29,8 @@ async function writeWithFallback(code: string) {
   }
 }
 
-export default function CopyCodeButton({ code }: CopyCodeButtonProps) {
+export default function CopyCodeButton({code}: CopyCodeButtonProps) {
+  const locale = useLocale();
   const [status, setStatus] = useState<'idle' | 'copied' | 'error'>('idle');
   const timeoutRef = useRef<number | null>(null);
 
@@ -57,12 +59,29 @@ export default function CopyCodeButton({ code }: CopyCodeButtonProps) {
     }, 1800);
   }
 
+  const copy =
+    locale === 'pt-BR'
+      ? {
+          copied: 'Copiado',
+          error: 'Falha ao copiar',
+          idle: 'Copiar codigo',
+          copiedStatus: 'Codigo do exemplo copiado para a area de transferencia.',
+          errorStatus: 'Falha ao copiar. Copie o codigo manualmente.'
+        }
+      : {
+          copied: 'Copied',
+          error: 'Copy failed',
+          idle: 'Copy code',
+          copiedStatus: 'Example code copied to clipboard.',
+          errorStatus: 'Copy failed. Please copy the code manually.'
+        };
+
   const label =
     status === 'copied'
-      ? 'Copied'
+      ? copy.copied
       : status === 'error'
-        ? 'Copy failed'
-        : 'Copy code';
+        ? copy.error
+        : copy.idle;
 
   return (
     <div className="copy-code-control">
@@ -76,9 +95,9 @@ export default function CopyCodeButton({ code }: CopyCodeButtonProps) {
       </button>
       <span id="copy-code-status" className="copy-code-live" aria-live="polite">
         {status === 'copied'
-          ? 'Example code copied to clipboard.'
+          ? copy.copiedStatus
           : status === 'error'
-            ? 'Copy failed. Please copy the code manually.'
+            ? copy.errorStatus
             : ''}
       </span>
     </div>

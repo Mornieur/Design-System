@@ -5,14 +5,18 @@ import { getComponentEntry } from '@/app/_content/components';
 
 describe('PropsTable', () => {
   it('renders real Button prop data', () => {
-    const entry = getComponentEntry('button');
+    const entry = getComponentEntry('en', 'button');
 
     if (!entry) {
       throw new Error('button entry missing');
     }
 
     render(
-      <PropsTable componentTitle={entry.title} definition={entry.propsDefinition} />
+      <PropsTable
+        componentTitle={entry.title}
+        definition={entry.propsDefinition}
+        locale="en"
+      />
     );
 
     expect(screen.getByRole('table', { name: 'Button public props' })).toBeVisible();
@@ -21,14 +25,18 @@ describe('PropsTable', () => {
   });
 
   it('states that Card has no component-specific props', () => {
-    const entry = getComponentEntry('card');
+    const entry = getComponentEntry('en', 'card');
 
     if (!entry) {
       throw new Error('card entry missing');
     }
 
     render(
-      <PropsTable componentTitle={entry.title} definition={entry.propsDefinition} />
+      <PropsTable
+        componentTitle={entry.title}
+        definition={entry.propsDefinition}
+        locale="en"
+      />
     );
 
     expect(screen.getByText('No component-specific props')).toBeVisible();

@@ -1,113 +1,87 @@
-'use client';
-
-import Link from 'next/link';
-import Badge from '@/components/atoms/Badge';
-import Button from '@/components/atoms/Button';
-import Surface from '@/components/atoms/Surface';
-import Card from '@/components/molecules/Card';
-import type { ComponentEntry } from '@/app/_content/components';
-import type { FoundationEntry } from '@/app/_content/foundations';
+import ComponentCardPreview from '@/app/_components/ComponentCardPreview';
+import {renderFoundationPreview} from '@/app/_components/FoundationPreview';
+import type {ComponentEntry} from '@/app/_content/components';
+import type {FoundationEntry} from '@/app/_content/foundations';
+import {Link} from '@/i18n/navigation';
 
 type HomeEditorialPreviewsProps = {
   componentEntries: readonly ComponentEntry[];
   featuredComponents: readonly string[];
   foundationEntries: readonly FoundationEntry[];
+  content: {
+    guides: {
+      eyebrow: string;
+      title: string;
+      body: string;
+      cards: readonly (readonly [string, string])[];
+    };
+    foundations: {
+      eyebrow: string;
+      title: string;
+      body: string;
+    };
+    components: {
+      eyebrow: string;
+      title: string;
+      body: string;
+    };
+  };
 };
 
 export default function HomeEditorialPreviews({
   componentEntries,
   featuredComponents,
-  foundationEntries
+  foundationEntries,
+  content
 }: HomeEditorialPreviewsProps) {
   const featuredComponentSlugs = new Set<string>(featuredComponents);
 
   return (
     <>
-      <section className="section-stack" aria-labelledby="documentation-surfaces">
-        <div className="section-heading">
-          <p className="eyebrow">Documentation surfaces</p>
-          <h2 id="documentation-surfaces">A calm infrastructure layer for the system</h2>
-          <p>
-            Storybook remains the primary source for public component behavior. The
-            Next app now provides a navigable shell for architecture, foundations,
-            installation, and future documentation growth.
-          </p>
+      <section className="section-stack" aria-labelledby="home-guides">
+        <div className="section-heading section-heading-wide">
+          <p className="eyebrow">{content.guides.eyebrow}</p>
+          <h2 id="home-guides">{content.guides.title}</h2>
+          <p>{content.guides.body}</p>
         </div>
         <div className="card-grid card-grid-three">
-          <Surface className="info-card">
-            <h3>Storybook stays primary</h3>
-            <p>Component states, examples, and behavior documentation remain anchored in stories.</p>
-          </Surface>
-          <Surface className="info-card">
-            <h3>Typed local content</h3>
-            <p>Routes are backed by repository-owned registries instead of CMS, MDX, or remote fetching.</p>
-          </Surface>
-          <Surface className="info-card">
-            <h3>Package boundary preserved</h3>
-            <p>The documentation shell consumes the library but does not redefine or extend the public API.</p>
-          </Surface>
+          <Link className="content-card-link" href="/docs/getting-started">
+            <article className="content-card">
+              <h3>{content.guides.cards[0][0]}</h3>
+              <p>{content.guides.cards[0][1]}</p>
+            </article>
+          </Link>
+          <Link className="content-card-link" href="/docs/installation">
+            <article className="content-card">
+              <h3>{content.guides.cards[1][0]}</h3>
+              <p>{content.guides.cards[1][1]}</p>
+            </article>
+          </Link>
+          <Link className="content-card-link" href="/components">
+            <article className="content-card">
+              <h3>{content.guides.cards[2][0]}</h3>
+              <p>{content.guides.cards[2][1]}</p>
+            </article>
+          </Link>
         </div>
-      </section>
-
-      <section className="section-stack" aria-labelledby="preview-console">
-        <div className="section-heading">
-          <p className="eyebrow">Editorial preview</p>
-          <h2 id="preview-console">A preview layer, not a second component engine</h2>
-          <p>
-            The homepage can stage real FeitozaUI primitives to communicate tone,
-            hierarchy, and system intent while keeping behavioral depth in Storybook.
-          </p>
-        </div>
-        <Surface className="preview-console">
-          <div className="preview-console-copy">
-            <span className="preview-console-kicker">Preview node</span>
-            <h3>Real package primitives, restrained on purpose</h3>
-            <p>
-              This shell uses the public library surface as editorial material for
-              navigation and system framing, not as a parallel interactive catalog.
-            </p>
-          </div>
-          <div className="preview-console-stage" aria-label="Component preview teaser">
-            <Badge variant="info" outlined>
-              Surface + Card
-            </Badge>
-            <div className="preview-console-actions">
-              <Button type="button">Primary</Button>
-              <Button type="button" variant="secondary">
-                Secondary
-              </Button>
-            </div>
-            <Card className="preview-console-card">
-              <div className="content-card-header">
-                <h3>System preview panel</h3>
-                <span className="panel-id">STORYBOUND</span>
-              </div>
-              <p>
-                Behavior examples stay in Storybook. This site owns route clarity,
-                context, architecture, and system navigation.
-              </p>
-            </Card>
-          </div>
-        </Surface>
       </section>
 
       <section className="section-stack" aria-labelledby="foundations-preview">
         <div className="section-heading">
-          <p className="eyebrow">Foundations</p>
-          <h2 id="foundations-preview">Core system pillars now have a technical route model</h2>
+          <p className="eyebrow">{content.foundations.eyebrow}</p>
+          <h2 id="foundations-preview">{content.foundations.title}</h2>
+          <p>{content.foundations.body}</p>
         </div>
         <div className="card-grid">
           {foundationEntries.slice(0, 4).map((entry) => (
             <Link key={entry.slug} className="content-card-link" href={`/foundations/${entry.slug}`}>
-              <Surface className="content-card">
+              <article className="content-card content-card-compact foundation-home-card">
                 <div className="content-card-header">
                   <h3>{entry.title}</h3>
-                  <Badge variant="neutral" size="sm">
-                    {entry.status}
-                  </Badge>
                 </div>
+                {renderFoundationPreview(entry.slug)}
                 <p>{entry.summary}</p>
-              </Surface>
+              </article>
             </Link>
           ))}
         </div>
@@ -115,24 +89,23 @@ export default function HomeEditorialPreviews({
 
       <section className="section-stack" aria-labelledby="components-preview">
         <div className="section-heading">
-          <p className="eyebrow">Components</p>
-          <h2 id="components-preview">The first catalog routes reflect the real public surface</h2>
+          <p className="eyebrow">{content.components.eyebrow}</p>
+          <h2 id="components-preview">{content.components.title}</h2>
+          <p>{content.components.body}</p>
         </div>
         <div className="card-grid card-grid-two">
           {componentEntries
             .filter((entry) => featuredComponentSlugs.has(entry.slug))
             .map((entry) => (
               <Link key={entry.slug} className="content-card-link" href={`/components/${entry.slug}`}>
-                <Card className="content-card elevated-card">
+                <article className="content-card content-card-compact">
                   <div className="content-card-header">
                     <h3>{entry.title}</h3>
-                    <Badge variant="primary" size="sm">
-                      {entry.kind}
-                    </Badge>
+                    <span className="content-card-eyebrow">{entry.kind}</span>
                   </div>
+                  <ComponentCardPreview slug={entry.slug} />
                   <p>{entry.description}</p>
-                  <span className="content-card-meta">{entry.status}</span>
-                </Card>
+                </article>
               </Link>
             ))}
         </div>

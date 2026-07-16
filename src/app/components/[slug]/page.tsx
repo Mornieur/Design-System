@@ -1,7 +1,9 @@
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+import type {Metadata} from 'next';
+import {getLocale} from 'next-intl/server';
+import {notFound} from 'next/navigation';
 import ComponentDocumentation from '@/app/_components/component-docs/ComponentDocumentation';
-import { componentEntries, getComponentEntry } from '@/app/_content/components';
+import {getComponentEntries, getComponentEntry} from '@/app/_content/components';
+import type {AppLocale} from '@/i18n/routing';
 
 type ComponentDetailPageProps = {
   params: Promise<{
@@ -9,34 +11,37 @@ type ComponentDetailPageProps = {
   }>;
 };
 
-export function generateStaticParams() {
-  return componentEntries.map((entry) => ({ slug: entry.slug }));
+export async function generateStaticParams() {
+  return getComponentEntries('en').map((entry) => ({slug: entry.slug}));
 }
 
 export async function generateMetadata({
   params
 }: ComponentDetailPageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const entry = getComponentEntry(slug);
+  const locale = (await getLocale()) as AppLocale;
+  const {slug} = await params;
+  const entry = getComponentEntry(locale, slug);
 
   if (!entry) {
     return {};
   }
 
   return {
-    title: entry.title
+    title: entry.title,
+    description: entry.description
   };
 }
 
 export default async function ComponentDetailPage({
   params
 }: ComponentDetailPageProps) {
-  const { slug } = await params;
-  const entry = getComponentEntry(slug);
+  const locale = (await getLocale()) as AppLocale;
+  const {slug} = await params;
+  const entry = getComponentEntry(locale, slug);
 
   if (!entry) {
     notFound();
   }
 
-  return <ComponentDocumentation entry={entry} />;
+  return <ComponentDocumentation entry={entry} locale={locale} />;
 }

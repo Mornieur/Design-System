@@ -108,3 +108,18 @@ End each task with:
 - failures or limitations
 - final Git state
 - public API impact
+
+## Visual work
+
+1. Read the documents in `docs/design-language/`.
+2. Consult the approved Figma via Figma MCP when available.
+3. Capture the current screenshot before editing.
+4. Implement only one page type at a time.
+5. Capture screenshots again after changes.
+6. Compare before, after, and Figma together.
+7. Run Playwright visual checks.
+8. Run axe accessibility checks.
+9. Do not advance without human visual approval.
+10. Do not add telemetry, runtime labels, route IDs, or fictional status UI.
+11. Do not turn whole pages into Client Components just for visual effects.
+12. Do not alter public library components to solve site-only issues.
