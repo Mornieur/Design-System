@@ -6,6 +6,7 @@ import {
   type InputHTMLAttributes,
   type ReactNode
 } from 'react';
+import { useComposedRefs } from '@/internal/refs/useComposedRefs';
 import * as S from './styles';
 
 export type CheckboxProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'size' | 'type'> & {
@@ -47,18 +48,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       .filter(Boolean)
       .join(' ');
 
-    const setRefs = (node: HTMLInputElement | null) => {
-      inputRef.current = node;
-
-      if (typeof ref === 'function') {
-        ref(node);
-        return;
-      }
-
-      if (ref) {
-        ref.current = node;
-      }
-    };
+    const composedRefs = useComposedRefs(inputRef, ref);
 
     useEffect(() => {
       if (inputRef.current) {
@@ -70,7 +60,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       <S.Root className={className} style={style} $fullWidth={fullWidth}>
         <S.Control $disabled={disabled} $fullWidth={fullWidth}>
           <S.Field
-            ref={setRefs}
+            ref={composedRefs}
             id={inputId}
             type="checkbox"
             disabled={disabled}

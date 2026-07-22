@@ -6,6 +6,8 @@ import {
   type MouseEvent,
   type ReactNode
 } from 'react';
+import { composeAriaDescribedBy, createFieldSlotIds, resolveFieldControlId } from '@/internal/ids/fieldSlotIds';
+import { useComposedRefs } from '@/internal/refs/useComposedRefs';
 import * as S from './styles';
 
 export type InputSize = 'sm' | 'md' | 'lg';
@@ -46,26 +48,13 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
   ) => {
     const inputRef = useRef<HTMLInputElement | null>(null);
     const generatedId = useId();
-    const inputId = id ?? `feitoza-input-${generatedId}`;
-    const helperId = helperText ? `${inputId}-helper` : undefined;
-    const errorId = errorMessage ? `${inputId}-error` : undefined;
+    const inputId = resolveFieldControlId({ id, generatedId, prefix: 'feitoza-input' });
+    const slotIds = createFieldSlotIds(inputId);
+    const helperId = helperText ? slotIds.helperTextId : undefined;
+    const errorId = errorMessage ? slotIds.errorTextId : undefined;
     const isInvalid = Boolean(invalid || errorMessage);
-    const describedBy = [ariaDescribedBy, helperId, isInvalid ? errorId : undefined]
-      .filter(Boolean)
-      .join(' ');
-
-    const setRefs = (node: HTMLInputElement | null) => {
-      inputRef.current = node;
-
-      if (typeof ref === 'function') {
-        ref(node);
-        return;
-      }
-
-      if (ref) {
-        ref.current = node;
-      }
-    };
+    const describedBy = composeAriaDescribedBy(ariaDescribedBy, helperId, isInvalid ? errorId : undefined);
+    const composedRefs = useComposedRefs(inputRef, ref);
 
     const handleControlMouseDown = (event: MouseEvent<HTMLDivElement>) => {
       if (disabled || event.target === inputRef.current) {
@@ -96,7 +85,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           {startIcon ? <S.IconSlot aria-hidden="true">{startIcon}</S.IconSlot> : null}
 
           <S.Field
-            ref={setRefs}
+            ref={composedRefs}
             id={inputId}
             disabled={disabled}
             readOnly={readOnly}

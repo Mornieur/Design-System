@@ -41,8 +41,9 @@ describe('Tabs', () => {
   });
 
   it('supports controlled value', () => {
+    const handleChange = vi.fn();
     const { rerender } = render(
-      <Tabs.Root value="overview" onValueChange={() => undefined}>
+      <Tabs.Root value="overview" onValueChange={handleChange}>
         <Tabs.List>
           <Tabs.Trigger value="overview">Overview</Tabs.Trigger>
           <Tabs.Trigger value="logs">Logs</Tabs.Trigger>
@@ -54,8 +55,13 @@ describe('Tabs', () => {
 
     expect(screen.getByText('Overview content')).toBeVisible();
 
+    fireEvent.click(screen.getByRole('tab', { name: 'Logs' }));
+
+    expect(handleChange).toHaveBeenCalledWith('logs');
+    expect(screen.getByText('Overview content')).toBeVisible();
+
     rerender(
-      <Tabs.Root value="logs" onValueChange={() => undefined}>
+      <Tabs.Root value="logs" onValueChange={handleChange}>
         <Tabs.List>
           <Tabs.Trigger value="overview">Overview</Tabs.Trigger>
           <Tabs.Trigger value="logs">Logs</Tabs.Trigger>
@@ -66,6 +72,64 @@ describe('Tabs', () => {
     );
 
     expect(screen.getByText('Logs content')).toBeVisible();
+  });
+
+  it('respects consumer prevented click handlers before internal state updates', () => {
+    render(
+      <Tabs.Root defaultValue="overview">
+        <Tabs.List>
+          <Tabs.Trigger
+            value="overview"
+            onClick={(event) => {
+              event.preventDefault();
+            }}
+          >
+            Overview
+          </Tabs.Trigger>
+          <Tabs.Trigger value="logs">Logs</Tabs.Trigger>
+        </Tabs.List>
+        <Tabs.Content value="overview">Overview content</Tabs.Content>
+        <Tabs.Content value="logs">Logs content</Tabs.Content>
+      </Tabs.Root>
+    );
+
+    fireEvent.click(screen.getByRole('tab', { name: 'Logs' }));
+
+    expect(screen.getByText('Logs content')).toBeVisible();
+
+    fireEvent.click(screen.getByRole('tab', { name: 'Overview' }));
+
+    expect(screen.getByText('Logs content')).toBeVisible();
+  });
+
+  it('respects consumer prevented keyboard handlers before internal navigation', () => {
+    render(
+      <Tabs.Root defaultValue="overview">
+        <Tabs.List>
+          <Tabs.Trigger
+            value="overview"
+            onKeyDown={(event) => {
+              if (event.key === 'ArrowRight') {
+                event.preventDefault();
+              }
+            }}
+          >
+            Overview
+          </Tabs.Trigger>
+          <Tabs.Trigger value="metrics">Metrics</Tabs.Trigger>
+        </Tabs.List>
+        <Tabs.Content value="overview">Overview content</Tabs.Content>
+        <Tabs.Content value="metrics">Metrics content</Tabs.Content>
+      </Tabs.Root>
+    );
+
+    const overview = screen.getByRole('tab', { name: 'Overview' });
+
+    overview.focus();
+    fireEvent.keyDown(overview, { key: 'ArrowRight' });
+
+    expect(overview).toHaveFocus();
+    expect(screen.getByRole('tab', { name: 'Overview' })).toHaveAttribute('aria-selected', 'true');
   });
 
   it('supports keyboard navigation', () => {
