@@ -1,6 +1,7 @@
 import type {
   CardProps,
   RadioProps,
+  RadioGroupProps,
   SurfaceProps,
   SurfaceVariant
 } from '@feitoza-ui/core';
@@ -14,6 +15,11 @@ const radioProps: RadioProps = {
   required: true
 };
 
+const radioGroupProps: RadioGroupProps = {
+  legend: 'Release channel',
+  helperText: 'Choose the channel used by this rollout.'
+};
+
 const cardProps: CardProps = {
   role: 'group'
 };
@@ -23,6 +29,7 @@ const surfaceProps: SurfaceProps = {
 };
 
 void radioProps;
+void radioGroupProps;
 void cardProps;
 void surfaceProps;
 

@@ -5,10 +5,12 @@ import {
   Card,
   Flex,
   Radio,
+  RadioGroup,
   Surface,
   colors,
   space,
   type CardProps,
+  type RadioGroupProps,
   type RadioProps,
   type SurfaceProps,
   type SurfaceVariant
@@ -27,10 +29,16 @@ const radioProps: RadioProps = {
   helperText: 'Validates package-root import, native event flow, and forwarded refs.'
 };
 
+const radioGroupProps: RadioGroupProps = {
+  legend: 'Release channel',
+  helperText: 'Groups the radios with native fieldset semantics while keeping name ownership on the radios.'
+};
+
 const emphasisVariant: SurfaceVariant = 'secondary';
 
 export default function App() {
   const radioRef = useRef<HTMLInputElement | null>(null);
+  const radioGroupRef = useRef<HTMLFieldSetElement | null>(null);
   const surfaceRef = useRef<HTMLDivElement | null>(null);
   const [selectedChannel, setSelectedChannel] = useState<'email' | 'slack'>('email');
 
@@ -88,30 +96,40 @@ export default function App() {
               onSubmit={(event) => event.preventDefault()}
               style={{ display: 'grid', gap: space[3] }}
             >
-              <Radio
-                {...radioProps}
-                ref={radioRef}
-                className="consumer-radio"
-                value="email"
-                checked={selectedChannel === 'email'}
-                onChange={handleRadioChange}
-                label="Email release channel"
-                data-state={selectedChannel === 'email' ? 'checked' : 'unchecked'}
-                fullWidth
-              />
-              <Radio
-                {...radioProps}
-                value="slack"
-                checked={selectedChannel === 'slack'}
-                onChange={handleRadioChange}
-                label="Slack release channel"
-                helperText="Useful for immediate coordination during rollout windows."
-                data-state={selectedChannel === 'slack' ? 'checked' : 'unchecked'}
-                fullWidth
-              />
+              <RadioGroup
+                {...radioGroupProps}
+                ref={radioGroupRef}
+                className="consumer-radio-group"
+                data-state={selectedChannel}
+              >
+                <Radio
+                  {...radioProps}
+                  ref={radioRef}
+                  className="consumer-radio"
+                  value="email"
+                  checked={selectedChannel === 'email'}
+                  onChange={handleRadioChange}
+                  label="Email release channel"
+                  data-state={selectedChannel === 'email' ? 'checked' : 'unchecked'}
+                  fullWidth
+                />
+                <Radio
+                  {...radioProps}
+                  value="slack"
+                  checked={selectedChannel === 'slack'}
+                  onChange={handleRadioChange}
+                  label="Slack release channel"
+                  helperText="Useful for immediate coordination during rollout windows."
+                  data-state={selectedChannel === 'slack' ? 'checked' : 'unchecked'}
+                  fullWidth
+                />
+              </RadioGroup>
               <Flex align="center" gap={3} wrap="wrap">
                 <button type="reset" onClick={() => setSelectedChannel('email')}>
                   Reset local state
+                </button>
+                <button type="button" onClick={() => radioGroupRef.current?.focus()}>
+                  Focus group ref
                 </button>
                 <button type="button" onClick={() => surfaceRef.current?.focus()}>
                   Focus surface ref

@@ -9,6 +9,9 @@ import { CardContextualActionsExample } from './card/CardContextualActionsExampl
 import { CardRelatedContentExample } from './card/CardRelatedContentExample';
 import { RadioNotificationPriorityExample } from './radio/RadioNotificationPriorityExample';
 import { RadioReleaseChannelSelectionExample } from './radio/RadioReleaseChannelSelectionExample';
+import { RadioGroupAccountPlanSelectionExample } from './radio-group/RadioGroupAccountPlanSelectionExample';
+import { RadioGroupNotificationPriorityExample } from './radio-group/RadioGroupNotificationPriorityExample';
+import { RadioGroupUsageGuidanceExample } from './radio-group/RadioGroupUsageGuidanceExample';
 import { SurfaceContainmentExample } from './surface/SurfaceContainmentExample';
 import { SurfaceHierarchyExample } from './surface/SurfaceHierarchyExample';
 
@@ -19,6 +22,9 @@ export const exampleRenderers = {
   'checkbox-indeterminate-selection': CheckboxIndeterminateSelectionExample,
   'radio-release-channel-selection': RadioReleaseChannelSelectionExample,
   'radio-notification-priority': RadioNotificationPriorityExample,
+  'radio-group-account-plan-selection': RadioGroupAccountPlanSelectionExample,
+  'radio-group-notification-priority': RadioGroupNotificationPriorityExample,
+  'radio-group-usage-guidance': RadioGroupUsageGuidanceExample,
   'surface-containment': SurfaceContainmentExample,
   'surface-hierarchy': SurfaceHierarchyExample,
   'card-related-content': CardRelatedContentExample,

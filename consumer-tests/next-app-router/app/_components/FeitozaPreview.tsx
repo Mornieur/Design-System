@@ -7,6 +7,7 @@ import {
   Card,
   Flex,
   Radio,
+  RadioGroup,
   Surface,
   colors,
   space,
@@ -17,6 +18,7 @@ const validatedVariant: SurfaceVariant = 'secondary';
 
 export default function FeitozaPreview() {
   const radioRef = useRef<HTMLInputElement | null>(null);
+  const radioGroupRef = useRef<HTMLFieldSetElement | null>(null);
   const cardRef = useRef<HTMLDivElement | null>(null);
   const [selectedChannel, setSelectedChannel] = useState<'email' | 'slack'>('email');
 
@@ -49,34 +51,43 @@ export default function FeitozaPreview() {
             <Badge title="Client island verified">Client island verified</Badge>
           </Flex>
 
-          <Radio
-            ref={radioRef}
-            name="nextReleaseChannel"
-            value="email"
-            checked={selectedChannel === 'email'}
-            onChange={(event) => {
-              setSelectedChannel(event.target.value as 'email' | 'slack');
-              radioRef.current?.focus();
-            }}
-            label="Email release channel in this client island"
-            helperText="Verifies package-root import, client rendering, ref forwarding, and native events."
-            fullWidth
-          />
-          <Radio
-            name="nextReleaseChannel"
-            value="slack"
-            checked={selectedChannel === 'slack'}
-            onChange={(event) => {
-              setSelectedChannel(event.target.value as 'email' | 'slack');
-            }}
-            label="Slack release channel in this client island"
-            helperText="Useful for immediate coordination during rollout windows."
-            fullWidth
-          />
+          <RadioGroup
+            ref={radioGroupRef}
+            legend="Release channel in this client island"
+            helperText="Verifies package-root import, fieldset semantics, ref forwarding, and native exclusivity."
+          >
+            <Radio
+              ref={radioRef}
+              name="nextReleaseChannel"
+              value="email"
+              checked={selectedChannel === 'email'}
+              onChange={(event) => {
+                setSelectedChannel(event.target.value as 'email' | 'slack');
+                radioRef.current?.focus();
+              }}
+              label="Email"
+              helperText="Best for release recaps and migration notes."
+              fullWidth
+            />
+            <Radio
+              name="nextReleaseChannel"
+              value="slack"
+              checked={selectedChannel === 'slack'}
+              onChange={(event) => {
+                setSelectedChannel(event.target.value as 'email' | 'slack');
+              }}
+              label="Slack"
+              helperText="Useful for immediate coordination during rollout windows."
+              fullWidth
+            />
+          </RadioGroup>
 
           <Flex align="center" gap={3} wrap="wrap">
             <button type="button" onClick={() => setSelectedChannel('email')}>
               Reset to email
+            </button>
+            <button type="button" onClick={() => radioGroupRef.current?.focus()}>
+              Focus group ref
             </button>
             <button type="button" onClick={() => cardRef.current?.focus()}>
               Focus card ref
