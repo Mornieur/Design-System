@@ -140,7 +140,7 @@
     "storybook": "10.1.0-alpha.14",
     "styled-components": "^6.1.19",
     "typescript": "^5",
-    "typescript-eslint": "^8.46.4",
+    "typescript-eslint": "^8.65.0",
     "vite-plugin-dts": "^4.5.4",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^4.0.8",
