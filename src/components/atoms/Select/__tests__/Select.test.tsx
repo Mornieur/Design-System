@@ -95,6 +95,17 @@ describe('Select', () => {
     expect(select).toBeRequired();
   });
 
+  it('keeps an explicit id on the native select instead of duplicating it on the wrapper', () => {
+    const { container } = render(
+      <Select id="release-channel" label="Release channel">
+        {options}
+      </Select>
+    );
+
+    expect(screen.getByLabelText('Release channel')).toHaveAttribute('id', 'release-channel');
+    expect(container.firstChild).not.toHaveAttribute('id', 'release-channel');
+  });
+
   it('supports defaultValue', () => {
     render(<Select defaultValue="production">{options}</Select>);
 

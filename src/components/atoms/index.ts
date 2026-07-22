@@ -14,6 +14,8 @@ export { default as Skeleton } from './Skeleton';
 export type { SkeletonProps, SkeletonRadius } from './Skeleton';
 export { default as Progress } from './Progress';
 export type { ProgressProps, ProgressSize, ProgressTone } from './Progress';
+export { default as Field } from './Field';
+export type { FieldLabelProps, FieldMessageProps, FieldRootProps } from './Field';
 export { default as Input } from './Input';
 export type { InputProps, InputSize } from './Input';
 export { default as Checkbox } from './Checkbox';

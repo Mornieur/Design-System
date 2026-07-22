@@ -66,6 +66,13 @@ describe('Input', () => {
     expect(input).toBeRequired();
   });
 
+  it('keeps an explicit id on the native input instead of duplicating it on the wrapper', () => {
+    const { container } = render(<Input id="service-id" label="Service id" />);
+
+    expect(screen.getByLabelText('Service id')).toHaveAttribute('id', 'service-id');
+    expect(container.firstChild).not.toHaveAttribute('id', 'service-id');
+  });
+
   it('calls onChange when the value changes', () => {
     const handleChange = vi.fn();
 

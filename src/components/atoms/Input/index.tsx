@@ -6,6 +6,7 @@ import {
   type MouseEvent,
   type ReactNode
 } from 'react';
+import Field, { useOptionalFieldContext } from '@/components/atoms/Field';
 import { composeAriaDescribedBy, createFieldSlotIds, resolveFieldControlId } from '@/internal/ids/fieldSlotIds';
 import { useComposedRefs } from '@/internal/refs/useComposedRefs';
 import * as S from './styles';
@@ -30,11 +31,11 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       label,
       helperText,
       errorMessage,
-      invalid = false,
+      invalid,
       size = 'md',
       startIcon,
       endIcon,
-      fullWidth = false,
+      fullWidth,
       disabled,
       readOnly,
       required,
@@ -46,18 +47,41 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     },
     ref
   ) => {
+    const fieldContext = useOptionalFieldContext();
     const inputRef = useRef<HTMLInputElement | null>(null);
     const generatedId = useId();
-    const inputId = resolveFieldControlId({ id, generatedId, prefix: 'feitoza-input' });
+    const inputId =
+      fieldContext?.controlId ??
+      id ??
+      resolveFieldControlId({ generatedId, prefix: 'feitoza-input' });
     const slotIds = createFieldSlotIds(inputId);
-    const helperId = helperText ? slotIds.helperTextId : undefined;
-    const errorId = errorMessage ? slotIds.errorTextId : undefined;
-    const isInvalid = Boolean(invalid || errorMessage);
-    const describedBy = composeAriaDescribedBy(ariaDescribedBy, helperId, isInvalid ? errorId : undefined);
+    const helperId = fieldContext
+      ? fieldContext.hasHelperText
+        ? fieldContext.helperTextId
+        : undefined
+      : helperText
+        ? slotIds.helperTextId
+        : undefined;
+    const errorId = fieldContext
+      ? fieldContext.hasErrorText
+        ? fieldContext.errorTextId
+        : undefined
+      : errorMessage
+        ? slotIds.errorTextId
+        : undefined;
+    const isInvalid = fieldContext ? Boolean(fieldContext.invalid || invalid) : Boolean(invalid || errorMessage);
+    const isDisabled = fieldContext ? fieldContext.disabled : disabled ?? false;
+    const isRequired = fieldContext ? fieldContext.required : required ?? false;
+    const isFullWidth = fieldContext ? fieldContext.fullWidth : fullWidth ?? false;
+    const describedBy = composeAriaDescribedBy(
+      ariaDescribedBy,
+      helperId,
+      isInvalid ? errorId : undefined
+    );
     const composedRefs = useComposedRefs(inputRef, ref);
 
     const handleControlMouseDown = (event: MouseEvent<HTMLDivElement>) => {
-      if (disabled || event.target === inputRef.current) {
+      if (isDisabled || event.target === inputRef.current) {
         return;
       }
 
@@ -65,51 +89,51 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       inputRef.current?.focus();
     };
 
+    const control = (
+      <S.Control
+        onMouseDown={handleControlMouseDown}
+        $disabled={isDisabled}
+        $fullWidth={isFullWidth}
+        $invalid={isInvalid}
+        $readOnly={readOnly}
+        $size={size}
+      >
+        {startIcon ? <S.IconSlot aria-hidden="true">{startIcon}</S.IconSlot> : null}
+
+        <S.Field
+          ref={composedRefs}
+          id={inputId}
+          disabled={isDisabled}
+          readOnly={readOnly}
+          required={isRequired}
+          aria-describedby={describedBy}
+          aria-invalid={isInvalid ? true : ariaInvalid}
+          {...props}
+        />
+
+        {endIcon ? <S.IconSlot aria-hidden="true">{endIcon}</S.IconSlot> : null}
+      </S.Control>
+    );
+
+    if (fieldContext) {
+      return control;
+    }
+
     return (
-      <S.Root className={className} style={style} $fullWidth={fullWidth}>
-        {label ? (
-          <S.Label htmlFor={inputId} $disabled={disabled}>
-            <span>{label}</span>
-            {required ? <S.RequiredMark aria-hidden="true">*</S.RequiredMark> : null}
-          </S.Label>
-        ) : null}
-
-        <S.Control
-          onMouseDown={handleControlMouseDown}
-          $disabled={disabled}
-          $fullWidth={fullWidth}
-          $invalid={isInvalid}
-          $readOnly={readOnly}
-          $size={size}
-        >
-          {startIcon ? <S.IconSlot aria-hidden="true">{startIcon}</S.IconSlot> : null}
-
-          <S.Field
-            ref={composedRefs}
-            id={inputId}
-            disabled={disabled}
-            readOnly={readOnly}
-            required={required}
-            aria-describedby={describedBy || undefined}
-            aria-invalid={isInvalid ? true : ariaInvalid}
-            {...props}
-          />
-
-          {endIcon ? <S.IconSlot aria-hidden="true">{endIcon}</S.IconSlot> : null}
-        </S.Control>
-
-        {helperText ? (
-          <S.Message id={helperId} $tone="muted">
-            {helperText}
-          </S.Message>
-        ) : null}
-
-        {isInvalid && errorMessage ? (
-          <S.Message id={errorId} $tone="danger">
-            {errorMessage}
-          </S.Message>
-        ) : null}
-      </S.Root>
+      <Field.Root
+        controlId={inputId}
+        disabled={isDisabled}
+        invalid={isInvalid}
+        required={isRequired}
+        fullWidth={isFullWidth}
+        className={className}
+        style={style}
+      >
+        {label ? <Field.Label>{label}</Field.Label> : null}
+        {control}
+        {helperText ? <Field.HelperText>{helperText}</Field.HelperText> : null}
+        {isInvalid && errorMessage ? <Field.ErrorText>{errorMessage}</Field.ErrorText> : null}
+      </Field.Root>
     );
   }
 );

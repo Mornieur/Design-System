@@ -1,4 +1,10 @@
 import { forwardRef, useId, type ReactNode, type TextareaHTMLAttributes } from 'react';
+import Field, { useOptionalFieldContext } from '@/components/atoms/Field';
+import {
+  composeAriaDescribedBy,
+  createFieldSlotIds,
+  resolveFieldControlId
+} from '@/internal/ids/fieldSlotIds';
 import * as S from './styles';
 
 export type TextareaSize = 'sm' | 'md' | 'lg';
@@ -21,9 +27,9 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       label,
       helperText,
       errorMessage,
-      invalid = false,
+      invalid,
       size = 'md',
-      fullWidth = false,
+      fullWidth,
       resize = 'vertical',
       disabled,
       readOnly,
@@ -36,53 +42,75 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     },
     ref
   ) => {
+    const fieldContext = useOptionalFieldContext();
     const generatedId = useId();
-    const textareaId = id ?? `feitoza-textarea-${generatedId}`;
-    const helperId = helperText ? `${textareaId}-helper` : undefined;
-    const errorId = errorMessage ? `${textareaId}-error` : undefined;
-    const isInvalid = Boolean(invalid || errorMessage);
-    const describedBy = [ariaDescribedBy, helperId, isInvalid ? errorId : undefined]
-      .filter(Boolean)
-      .join(' ');
+    const textareaId =
+      fieldContext?.controlId ??
+      id ??
+      resolveFieldControlId({ generatedId, prefix: 'feitoza-textarea' });
+    const slotIds = createFieldSlotIds(textareaId);
+    const helperId = fieldContext
+      ? fieldContext.hasHelperText
+        ? fieldContext.helperTextId
+        : undefined
+      : helperText
+        ? slotIds.helperTextId
+        : undefined;
+    const errorId = fieldContext
+      ? fieldContext.hasErrorText
+        ? fieldContext.errorTextId
+        : undefined
+      : errorMessage
+        ? slotIds.errorTextId
+        : undefined;
+    const isInvalid = fieldContext ? Boolean(fieldContext.invalid || invalid) : Boolean(invalid || errorMessage);
+    const isDisabled = fieldContext ? fieldContext.disabled : disabled ?? false;
+    const isRequired = fieldContext ? fieldContext.required : required ?? false;
+    const isFullWidth = fieldContext ? fieldContext.fullWidth : fullWidth ?? false;
+    const describedBy = composeAriaDescribedBy(
+      ariaDescribedBy,
+      helperId,
+      isInvalid ? errorId : undefined
+    );
+
+    const control = (
+      <S.Field
+        ref={ref}
+        id={textareaId}
+        disabled={isDisabled}
+        readOnly={readOnly}
+        required={isRequired}
+        aria-describedby={describedBy}
+        aria-invalid={isInvalid ? true : ariaInvalid}
+        $disabled={isDisabled}
+        $fullWidth={isFullWidth}
+        $invalid={isInvalid}
+        $readOnly={readOnly}
+        $resize={resize}
+        $size={size}
+        {...props}
+      />
+    );
+
+    if (fieldContext) {
+      return control;
+    }
 
     return (
-      <S.Root className={className} style={style} $fullWidth={fullWidth}>
-        {label ? (
-          <S.Label htmlFor={textareaId} $disabled={disabled}>
-            <span>{label}</span>
-            {required ? <S.RequiredMark aria-hidden="true">*</S.RequiredMark> : null}
-          </S.Label>
-        ) : null}
-
-        <S.Field
-          ref={ref}
-          id={textareaId}
-          disabled={disabled}
-          readOnly={readOnly}
-          required={required}
-          aria-describedby={describedBy || undefined}
-          aria-invalid={isInvalid ? true : ariaInvalid}
-          $disabled={disabled}
-          $fullWidth={fullWidth}
-          $invalid={isInvalid}
-          $readOnly={readOnly}
-          $resize={resize}
-          $size={size}
-          {...props}
-        />
-
-        {helperText ? (
-          <S.Message id={helperId} $tone="muted">
-            {helperText}
-          </S.Message>
-        ) : null}
-
-        {isInvalid && errorMessage ? (
-          <S.Message id={errorId} $tone="danger">
-            {errorMessage}
-          </S.Message>
-        ) : null}
-      </S.Root>
+      <Field.Root
+        controlId={textareaId}
+        disabled={isDisabled}
+        invalid={isInvalid}
+        required={isRequired}
+        fullWidth={isFullWidth}
+        className={className}
+        style={style}
+      >
+        {label ? <Field.Label>{label}</Field.Label> : null}
+        {control}
+        {helperText ? <Field.HelperText>{helperText}</Field.HelperText> : null}
+        {isInvalid && errorMessage ? <Field.ErrorText>{errorMessage}</Field.ErrorText> : null}
+      </Field.Root>
     );
   }
 );
