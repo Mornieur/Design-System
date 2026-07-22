@@ -1,6 +1,13 @@
 export type ExampleKey =
   | 'button-primary-action'
   | 'button-variant-matrix'
+  | 'checkbox-notification-preferences'
+  | 'checkbox-indeterminate-selection'
+  | 'radio-release-channel-selection'
+  | 'radio-notification-priority'
+  | 'radio-group-account-plan-selection'
+  | 'radio-group-notification-priority'
+  | 'radio-group-usage-guidance'
   | 'surface-containment'
   | 'surface-hierarchy'
   | 'card-related-content'

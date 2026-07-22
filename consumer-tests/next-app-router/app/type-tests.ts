@@ -1,15 +1,23 @@
 import type {
-  ButtonProps,
   CardProps,
+  RadioProps,
+  RadioGroupProps,
   SurfaceProps,
   SurfaceVariant
 } from '@feitoza-ui/core';
 
 const validVariant: SurfaceVariant = 'default';
 
-const buttonProps: ButtonProps = {
-  type: 'button',
-  children: 'Action'
+const radioProps: RadioProps = {
+  name: 'releaseChannel',
+  value: 'email',
+  defaultChecked: false,
+  required: true
+};
+
+const radioGroupProps: RadioGroupProps = {
+  legend: 'Release channel',
+  helperText: 'Choose the channel used by this rollout.'
 };
 
 const cardProps: CardProps = {
@@ -20,7 +28,8 @@ const surfaceProps: SurfaceProps = {
   variant: validVariant
 };
 
-void buttonProps;
+void radioProps;
+void radioGroupProps;
 void cardProps;
 void surfaceProps;
 

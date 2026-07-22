@@ -43,6 +43,8 @@ const localizedNavigation = {
         items: [
           { label: 'Overview', href: '/components' },
           { label: 'Button', href: '/components/button' },
+          { label: 'Checkbox', href: '/components/checkbox' },
+          { label: 'Radio', href: '/components/radio' },
           { label: 'Surface', href: '/components/surface' },
           { label: 'Card', href: '/components/card' }
         ]
@@ -98,6 +100,8 @@ const localizedNavigation = {
         items: [
           { label: 'Visão geral', href: '/components' },
           { label: 'Button', href: '/components/button' },
+          { label: 'Checkbox', href: '/components/checkbox' },
+          { label: 'Radio', href: '/components/radio' },
           { label: 'Surface', href: '/components/surface' },
           { label: 'Card', href: '/components/card' }
         ]

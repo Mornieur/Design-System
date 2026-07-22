@@ -60,11 +60,11 @@
     "test:ci": "vitest run --coverage --poolOptions.forks.singleFork",
     "test:changed": "git diff --name-only --relative HEAD | xargs yarn vitest related --run",
     "prepare": "node .husky/install.mjs",
+    "prepack": "npm run build",
     "type-check": "tsc --noEmit",
     "coverage": "vitest run --coverage",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "prepublishOnly": "npm run build"
+    "build-storybook": "storybook build"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
@@ -143,12 +143,10 @@
     "typescript-eslint": "^8.46.4",
     "vite-plugin-dts": "^4.5.4",
     "vite-tsconfig-paths": "^5.1.4",
-    "vitest": "^4.0.8"
+    "vitest": "^4.0.8",
+    "next-intl": "^4.13.2"
   },
   "publishConfig": {
     "access": "public"
-  },
-  "dependencies": {
-    "next-intl": "^4.13.2"
   }
 }

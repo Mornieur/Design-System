@@ -2,14 +2,16 @@ import { useMemo, useRef, useState } from 'react';
 import {
   Badge,
   Box,
-  Button,
   Card,
   Flex,
+  Radio,
+  RadioGroup,
   Surface,
   colors,
   space,
-  type ButtonProps,
   type CardProps,
+  type RadioGroupProps,
+  type RadioProps,
   type SurfaceProps,
   type SurfaceVariant
 } from '@feitoza-ui/core';
@@ -22,17 +24,23 @@ const surfaceProps: SurfaceProps = {
   variant: 'secondary'
 };
 
-const buttonProps: ButtonProps = {
-  type: 'button',
-  variant: 'primary'
+const radioProps: RadioProps = {
+  name: 'releaseChannel',
+  helperText: 'Validates package-root import, native event flow, and forwarded refs.'
+};
+
+const radioGroupProps: RadioGroupProps = {
+  legend: 'Release channel',
+  helperText: 'Groups the radios with native fieldset semantics while keeping name ownership on the radios.'
 };
 
 const emphasisVariant: SurfaceVariant = 'secondary';
 
 export default function App() {
-  const buttonRef = useRef<HTMLButtonElement | null>(null);
+  const radioRef = useRef<HTMLInputElement | null>(null);
+  const radioGroupRef = useRef<HTMLFieldSetElement | null>(null);
   const surfaceRef = useRef<HTMLDivElement | null>(null);
-  const [clickCount, setClickCount] = useState(0);
+  const [selectedChannel, setSelectedChannel] = useState<'email' | 'slack'>('email');
 
   const tokenStyles = useMemo(
     () => ({
@@ -43,9 +51,9 @@ export default function App() {
     []
   );
 
-  function handleAction() {
-    setClickCount((current) => current + 1);
-    buttonRef.current?.focus();
+  function handleRadioChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setSelectedChannel(event.target.value as 'email' | 'slack');
+    radioRef.current?.focus();
   }
 
   return (
@@ -84,23 +92,53 @@ export default function App() {
               </p>
             </Box>
 
-            <Flex align="center" gap={3} wrap="wrap">
-              <Button
-                {...buttonProps}
-                ref={buttonRef}
-                className="consumer-button"
-                data-clicks={clickCount}
-                onClick={handleAction}
+            <form
+              onSubmit={(event) => event.preventDefault()}
+              style={{ display: 'grid', gap: space[3] }}
+            >
+              <RadioGroup
+                {...radioGroupProps}
+                ref={radioGroupRef}
+                className="consumer-radio-group"
+                data-state={selectedChannel}
               >
-                Trigger action
-              </Button>
-              <Button type="button" variant="secondary" onClick={() => surfaceRef.current?.focus()}>
-                Focus surface ref
-              </Button>
-            </Flex>
+                <Radio
+                  {...radioProps}
+                  ref={radioRef}
+                  className="consumer-radio"
+                  value="email"
+                  checked={selectedChannel === 'email'}
+                  onChange={handleRadioChange}
+                  label="Email release channel"
+                  data-state={selectedChannel === 'email' ? 'checked' : 'unchecked'}
+                  fullWidth
+                />
+                <Radio
+                  {...radioProps}
+                  value="slack"
+                  checked={selectedChannel === 'slack'}
+                  onChange={handleRadioChange}
+                  label="Slack release channel"
+                  helperText="Useful for immediate coordination during rollout windows."
+                  data-state={selectedChannel === 'slack' ? 'checked' : 'unchecked'}
+                  fullWidth
+                />
+              </RadioGroup>
+              <Flex align="center" gap={3} wrap="wrap">
+                <button type="reset" onClick={() => setSelectedChannel('email')}>
+                  Reset local state
+                </button>
+                <button type="button" onClick={() => radioGroupRef.current?.focus()}>
+                  Focus group ref
+                </button>
+                <button type="button" onClick={() => surfaceRef.current?.focus()}>
+                  Focus surface ref
+                </button>
+              </Flex>
+            </form>
 
             <p aria-live="polite" className="event-note">
-              Button clicked {clickCount} time{clickCount === 1 ? '' : 's'}.
+              Selected channel: {selectedChannel}.
             </p>
           </Flex>
         </Card>

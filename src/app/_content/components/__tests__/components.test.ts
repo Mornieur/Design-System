@@ -10,6 +10,9 @@ describe('component documentation registry', () => {
   it('tracks the initial documented components only', () => {
     expect(getComponentEntries('en').map((entry) => entry.slug)).toEqual([
       'button',
+      'checkbox',
+      'radio',
+      'radio-group',
       'surface',
       'card'
     ]);
@@ -29,6 +32,13 @@ describe('component documentation registry', () => {
     ).toEqual([
       'button-primary-action',
       'button-variant-matrix',
+      'checkbox-notification-preferences',
+      'checkbox-indeterminate-selection',
+      'radio-release-channel-selection',
+      'radio-notification-priority',
+      'radio-group-account-plan-selection',
+      'radio-group-notification-priority',
+      'radio-group-usage-guidance',
       'surface-containment',
       'surface-hierarchy',
       'card-related-content',
