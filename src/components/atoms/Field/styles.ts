@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import { semanticColors, space, typography } from '@/design-tokens';
 
 type RootProps = {

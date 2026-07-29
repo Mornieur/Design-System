@@ -32,7 +32,8 @@ export default defineConfig({
       entry: path.resolve(__dirname, 'src/index.ts'),
       name: 'FeitozaUI',
       formats: ['es', 'cjs', 'umd'],
-      fileName: (format) => `feitoza-ui.${format}.js`
+      fileName: (format) =>
+        format === 'cjs' ? 'feitoza-ui.cjs' : `feitoza-ui.${format}.js`
     },
 
     rollupOptions: {

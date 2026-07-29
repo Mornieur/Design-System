@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 import Surface from '@/components/atoms/Surface';
 import { space } from '@/design-tokens';
 

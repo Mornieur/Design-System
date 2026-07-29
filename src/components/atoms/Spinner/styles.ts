@@ -1,4 +1,4 @@
-import styled, { css, keyframes } from 'styled-components';
+import { css, keyframes, styled } from 'styled-components';
 import { semanticColors } from '@/design-tokens';
 import { borders } from '@/design-tokens/borders';
 import type { SpinnerSize, SpinnerTone } from '.';

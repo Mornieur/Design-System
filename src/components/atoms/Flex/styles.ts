@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import { css, styled } from 'styled-components';
 import { space } from '@/design-tokens';
 
 import type { FlexProps } from './index';

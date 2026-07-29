@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import { css, styled } from 'styled-components';
 import { radiusRoles, semanticColors } from '@/design-tokens';
 import { borders } from '@/design-tokens/borders';
 import type { SurfaceVariant } from '.';
