@@ -7,9 +7,9 @@
 ![Storybook](https://img.shields.io/badge/Storybook-10-ff4785)
 ![Vitest](https://img.shields.io/badge/Vitest-4-6e9f18)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-![npm](https://img.shields.io/badge/npm-not%20published-lightgrey)
+[![npm version](https://img.shields.io/npm/v/@feitoza-ui/core.svg)](https://www.npmjs.com/package/@feitoza-ui/core)
 
-FeitozaUI is a deliberately small component platform for practical React interfaces. It documents public APIs, design foundations, accessibility rules, testing strategy, and package-readiness decisions rather than growing an unbounded component catalog.
+FeitozaUI is a published React and TypeScript component library for practical interfaces, available on npm as `@feitoza-ui/core`. It provides reusable components alongside documented APIs, design foundations, accessibility rules, tests, and verified package distribution.
 
 ## Features
 
@@ -22,7 +22,7 @@ FeitozaUI is a deliberately small component platform for practical React interfa
 
 ## Current Status
 
-FeitozaUI V1 is intentionally compact and focused on quality before breadth. The package is ready for a manual first release, but is not published to npm yet.
+FeitozaUI V1 is intentionally compact and focused on quality before breadth. The package is published on npm and ready to be consumed as `@feitoza-ui/core`.
 
 Current:
 
@@ -30,12 +30,12 @@ Current:
 - Supporting public primitives: `Badge`, `Box`, `Divider`, `EmptyState`, `Field`, `Flex`, `IconButton`, `Progress`, `Skeleton`, `Spinner`, and `VisuallyHidden`.
 - Foundations: colors, typography, spacing, radii, motion, borders, focus, states, and semantic mappings.
 - Package artifacts verified through local tarball consumers for React + Vite and Next.js App Router.
+- Published npm package: [`@feitoza-ui/core@0.3.0`](https://www.npmjs.com/package/@feitoza-ui/core).
 - Storybook structured as the documentation surface.
 - Accessibility and behavior coverage across the active public surface.
 
 Not current:
 
-- Published npm package (manual publication is the remaining external release action).
 - Full theme system.
 - Complete component catalog.
 - BFF, micro-frontends, or production showcase.
@@ -52,7 +52,7 @@ See [Architecture](docs/architecture/ARCHITECTURE.md) and [Architecture Decision
 
 ## Package Structure
 
-The future package name is:
+The package name is:
 
 ```txt
 @feitoza-ui/core
@@ -89,15 +89,48 @@ export {
 
 ## Installation
 
-The package is not published yet. After the first manual publish:
+Install the published package from npm:
 
 ```bash
 npm install @feitoza-ui/core
 ```
 
+```bash
+yarn add @feitoza-ui/core
+```
+
+```bash
+pnpm add @feitoza-ui/core
+```
+
+### Requirements
+
+- React 18 or 19.
+- `styled-components` v6.
+- TypeScript is optional, with first-class type support included.
+
 ## Quick Start
 
-Run the project locally:
+```tsx
+import { Button, Field, IconButton, Input } from '@feitoza-ui/core';
+
+export function ProfileForm() {
+  return (
+    <form>
+      <Field.Root required>
+        <Field.Label>Name</Field.Label>
+        <Input name="name" />
+        <Field.HelperText>Your full name</Field.HelperText>
+      </Field.Root>
+
+      <Button type="submit">Save</Button>
+      <IconButton aria-label="Close" icon={<span aria-hidden="true">×</span>} />
+    </form>
+  );
+}
+```
+
+For local development:
 
 ```bash
 yarn install
@@ -114,24 +147,27 @@ yarn.cmd build
 yarn.cmd test:consumers
 ```
 
-## Usage
+## Public Components
 
-Future package usage:
+### Foundations
 
-```tsx
-import { Button, Box, Flex } from '@feitoza-ui/core';
+- `Badge`, `Box`, `Card`, `Divider`, `Flex`, `Surface`
 
-export function AccountSummaryPanel() {
-  return (
-    <Flex align="center" gap={3}>
-      <Box padding={4} radius="medium" bg="backgroundAlt">
-        Account summary
-      </Box>
-      <Button variant="primary">Continue</Button>
-    </Flex>
-  );
-}
-```
+### Form Controls
+
+- `Button`, `IconButton`, `Field`, `Input`, `Textarea`, `Select`, `Checkbox`, `Radio`, `RadioGroup`
+
+### Feedback
+
+- `Alert`, `EmptyState`, `Progress`, `Skeleton`, `Spinner`
+
+### Navigation
+
+- `Tabs`
+
+### Utilities
+
+- `VisuallyHidden`
 
 ## Design Tokens
 
@@ -229,7 +265,15 @@ Short-term focus:
 - Surface primitives and Card 2.0.
 - Documentation and repository polish.
 - Continued accessibility and behavior coverage.
-- Release/versioning workflow before publishing.
+- Continued release and versioning maintenance.
+
+Delivered in V1:
+
+- ✅ `Field`
+- ✅ `VisuallyHidden`
+- ✅ `IconButton`
+
+Future component work remains outside the V1 scope: Portal, focus primitives, Dialog, Popover, and Tooltip.
 
 Future ideas such as BFF, micro-frontends, monorepo, CLI, and React Native are documented separately in [Future Roadmap](docs/roadmap/FUTURE.md).
 
