@@ -10,11 +10,16 @@ Update `[Unreleased]` during normal development. Before a release, move relevant
 
 ### Added
 
-- Initial documentation experience structure.
+- V1 editorial catalog and release-readiness documentation.
+- `IconButton`, an accessible icon-only action primitive with loading support.
+- Playwright visual and axe scripts.
+- Tarball-based React + Vite and Next.js App Router consumer validation.
 
 ### Changed
 
-- Nothing yet.
+- Button now defaults to `type="button"`.
+- Progress now has the default accessible name `Progress` when no contextual label is supplied.
+- Styled-components imports use the v6 named `styled` export for ESM compatibility.
 
 ### Deprecated
 
@@ -26,7 +31,8 @@ Update `[Unreleased]` during normal development. Before a release, move relevant
 
 ### Fixed
 
-- Nothing yet.
+- ESM and CommonJS package artifacts now load styled-components correctly.
+- CommonJS distribution now uses a `.cjs` file extension under the ESM package boundary.
 
 ### Security
 

@@ -12,7 +12,7 @@ import { Button } from '@feitoza-ui/core';
 
 ## Predictable APIs
 
-Components should use consistent prop names for shared concepts such as `variant`, `size`, `disabled`, and `loading`.
+Components should use consistent prop names for shared concepts such as `variant`, `size`, and `disabled`. A state prop such as `loading` is added only when the component has a defined loading contract.
 
 ## Autocomplete And IntelliSense
 
@@ -33,7 +33,7 @@ Names should match the language of the platform. Avoid mixing product-specific n
 ## Good API Example
 
 ```tsx
-<Button variant="primary" size="md" disabled>
+<Button variant="primary" disabled>
   Save
 </Button>
 ```

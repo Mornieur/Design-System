@@ -6,8 +6,8 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 };
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ variant = 'primary', ...props }, ref) => {
-    return <S.StyledButton ref={ref} $variant={variant} {...props} />;
+  ({ variant = 'primary', type = 'button', ...props }, ref) => {
+    return <S.StyledButton ref={ref} type={type} $variant={variant} {...props} />;
   }
 );
 

@@ -20,12 +20,13 @@ const Progress = forwardRef<HTMLDivElement, ProgressProps>(
     const normalizedValue = value === undefined ? undefined : clamp(value, 0, safeMax);
     const percentage =
       normalizedValue === undefined ? undefined : Math.round((normalizedValue / safeMax) * 100);
+    const accessibleLabel = label ?? 'Progress';
 
     return (
       <S.Track
         ref={ref}
         role="progressbar"
-        aria-label={label}
+        aria-label={accessibleLabel}
         aria-valuemax={safeMax}
         aria-valuemin={0}
         aria-valuenow={normalizedValue}

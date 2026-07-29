@@ -16,6 +16,7 @@ Use it to understand the project vision, architecture, component platform decisi
 - [Decisions](architecture/DECISIONS.md): ADR index and decision process.
 - [API Conventions](architecture/API_CONVENTIONS.md): public component API rules.
 - [ADRs](architecture/adr): architecture decision records.
+- [V1 Scope](V1.md): frozen editorial catalog, API boundaries, and release validation.
 
 ## AI Guidance
 
