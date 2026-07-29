@@ -47,3 +47,12 @@ jobs:
 
       - name: Build Storybook
         run: yarn build-storybook
+
+      - name: Verify package consumers
+        run: yarn test:consumers
+
+      - name: Accessibility checks
+        run: yarn test:a11y
+
+      - name: Visual regression checks
+        run: yarn test:visual

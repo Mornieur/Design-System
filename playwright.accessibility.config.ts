@@ -6,6 +6,11 @@ export default defineConfig({
   fullyParallel: false,
   workers: 1,
   reporter: 'list',
+  webServer: {
+    command: 'yarn build:docs && yarn start:docs -p 3100',
+    port: 3100,
+    reuseExistingServer: !process.env.CI
+  },
   use: {
     baseURL: 'http://127.0.0.1:3100',
     browserName: 'chromium',
