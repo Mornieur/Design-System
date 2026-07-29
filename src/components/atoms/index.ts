@@ -1,5 +1,7 @@
 export { default as Button } from './Button';
 export type { ButtonProps } from './Button';
+export { default as IconButton } from './IconButton';
+export type { IconButtonProps, IconButtonSize } from './IconButton';
 export { default as Box } from './Box';
 export type { BoxProps } from './Box';
 export { default as Flex } from './Flex';
@@ -14,6 +16,10 @@ export { default as Skeleton } from './Skeleton';
 export type { SkeletonProps, SkeletonRadius } from './Skeleton';
 export { default as Progress } from './Progress';
 export type { ProgressProps, ProgressSize, ProgressTone } from './Progress';
+export { default as VisuallyHidden } from './VisuallyHidden';
+export type { VisuallyHiddenProps } from './VisuallyHidden';
+export { default as Field } from './Field';
+export type { FieldLabelProps, FieldMessageProps, FieldRootProps } from './Field';
 export { default as Input } from './Input';
 export type { InputProps, InputSize } from './Input';
 export { default as Checkbox } from './Checkbox';

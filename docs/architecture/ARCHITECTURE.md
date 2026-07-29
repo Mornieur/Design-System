@@ -2,7 +2,7 @@
 
 FeitozaUI is currently a React and TypeScript project with a Next.js app, Storybook, Vite library build, Styled Components, Vitest, and Testing Library.
 
-The target architecture is a UI Engineering Platform with clear separation between reusable package code, documentation, and future examples.
+The architecture is a UI Engineering Platform with clear separation between reusable package code, documentation, and future examples.
 
 ## Current Architecture
 
@@ -15,7 +15,7 @@ The target architecture is a UI Engineering Platform with clear separation betwe
 
 ## Core Package
 
-The core package should eventually expose reusable foundations, primitives, components, and types through a stable public API. It should not depend on the showcase.
+The core package exposes reusable foundations, primitives, components, and types through a stable root public API. It does not depend on the showcase.
 
 Target package name: `@feitoza-ui/core`.
 
@@ -31,13 +31,9 @@ Storybook is the primary documentation and exploration surface. It should explai
 
 The Vite build should generate package outputs that match `package.json` exports. Build files and publishing settings should be verified before any release.
 
-## Current Limits
+## V1 Boundary
 
-- The package identity still needs alignment.
-- Public exports need to be made explicit.
-- Foundations need stronger structure.
-- Storybook needs professional documentation polish.
-- Publishing is future work.
+V1 freezes the editorial catalog at Button, Checkbox, Radio, RadioGroup, Input, Textarea, Select, Tabs, Surface, and Card. Supporting primitives remain public, but do not expand the V1 documentation scope. See [V1 Scope](../V1.md).
 
 ## Future Possibilities
 

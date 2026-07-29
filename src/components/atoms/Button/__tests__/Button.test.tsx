@@ -10,6 +10,16 @@ describe('Button', () => {
     expect(screen.getByText('Enviar')).toBeInTheDocument();
   });
 
+  it('defaults to type button while preserving an explicit type', () => {
+    const { rerender } = render(<Button>Safe action</Button>);
+
+    expect(screen.getByRole('button', { name: 'Safe action' })).toHaveAttribute('type', 'button');
+
+    rerender(<Button type="submit">Submit action</Button>);
+
+    expect(screen.getByRole('button', { name: 'Submit action' })).toHaveAttribute('type', 'submit');
+  });
+
   it('calls onClick when clicked', () => {
     const handleClick = vi.fn();
     render(<Button onClick={handleClick}>Click</Button>);

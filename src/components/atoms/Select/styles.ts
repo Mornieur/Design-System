@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import { css, styled } from 'styled-components';
 import { colorRoles, motion, radii, semanticColors, space, typography } from '@/design-tokens';
 import { borders } from '@/design-tokens/borders';
 import { focus } from '@/design-tokens/focus';

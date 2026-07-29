@@ -1,4 +1,4 @@
-import styled, { css, keyframes } from 'styled-components';
+import { css, keyframes, styled } from 'styled-components';
 import { radiusRoles, semanticColors } from '@/design-tokens';
 import type { SkeletonRadius } from '.';
 

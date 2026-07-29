@@ -72,6 +72,13 @@ describe('Textarea', () => {
     expect(textarea).toBeRequired();
   });
 
+  it('keeps an explicit id on the native textarea instead of duplicating it on the wrapper', () => {
+    const { container } = render(<Textarea id="release-notes" label="Release notes" />);
+
+    expect(screen.getByLabelText('Release notes')).toHaveAttribute('id', 'release-notes');
+    expect(container.firstChild).not.toHaveAttribute('id', 'release-notes');
+  });
+
   it('calls onChange when the value changes', () => {
     const handleChange = vi.fn();
 

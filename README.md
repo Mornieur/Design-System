@@ -1,6 +1,6 @@
 # FeitozaUI
 
-> A React and TypeScript UI Engineering Platform focused on foundations, primitives, component APIs, accessibility, testing, documentation, and future package distribution.
+> A compact React and TypeScript component library focused on foundations, accessible APIs, testing, documentation, and verified package distribution.
 
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
 ![React](https://img.shields.io/badge/React-19-61dafb)
@@ -9,32 +9,33 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 ![npm](https://img.shields.io/badge/npm-not%20published-lightgrey)
 
-FeitozaUI is not just a set of isolated components. It is being built as a small but professional component platform that documents engineering decisions, public APIs, design foundations, accessibility rules, testing strategy, and package readiness.
+FeitozaUI is a deliberately small component platform for practical React interfaces. It documents public APIs, design foundations, accessibility rules, testing strategy, and package-readiness decisions rather than growing an unbounded component catalog.
 
 ## Features
 
 - React and TypeScript-first component APIs.
 - Public package surface with foundational atoms, core molecules, and design tokens.
 - Storybook documentation for foundations, primitives, guidelines, accessibility, and roadmap.
-- Vite library build with ESM, CJS, UMD, and bundled TypeScript declarations.
+- Vite library build with verified ESM, CJS, UMD, and bundled TypeScript declarations.
 - Vitest and Testing Library coverage for public components.
 - Architecture docs, ADRs, component guidelines, release planning, and maintenance docs.
 
 ## Current Status
 
-FeitozaUI is a work in progress. The current package surface is intentionally small and focused on quality before breadth.
+FeitozaUI V1 is intentionally compact and focused on quality before breadth. The package is ready for a manual first release, but is not published to npm yet.
 
 Current:
 
-- Public components: `Button`, `Box`, `Flex`, `Surface`, `Badge`, `Divider`, `Spinner`, `Skeleton`, `Progress`, `Input`, `Textarea`, `Select`, `Alert`, `EmptyState`, `Tabs`, `Card`.
+- Editorial V1 catalog: `Button`, `Checkbox`, `Radio`, `RadioGroup`, `Input`, `Textarea`, `Select`, `Tabs`, `Surface`, and `Card`.
+- Supporting public primitives: `Badge`, `Box`, `Divider`, `EmptyState`, `Field`, `Flex`, `IconButton`, `Progress`, `Skeleton`, `Spinner`, and `VisuallyHidden`.
 - Foundations: colors, typography, spacing, radii, motion, borders, focus, states, and semantic mappings.
-- Package build validated locally.
+- Package artifacts verified through local tarball consumers for React + Vite and Next.js App Router.
 - Storybook structured as the documentation surface.
 - Accessibility and behavior coverage across the active public surface.
 
 Not current:
 
-- Published npm package.
+- Published npm package (manual publication is the remaining external release action).
 - Full theme system.
 - Complete component catalog.
 - BFF, micro-frontends, or production showcase.
@@ -57,7 +58,7 @@ The future package name is:
 @feitoza-ui/core
 ```
 
-Current public exports:
+The V1 editorial catalog is documented in [V1 Scope](docs/V1.md). Current public exports include:
 
 ```ts
 export {
@@ -66,25 +67,29 @@ export {
   Box,
   Button,
   Card,
+  Checkbox,
   Divider,
   EmptyState,
+  Field,
   Flex,
+  IconButton,
   Input,
   Progress,
+  Radio,
+  RadioGroup,
   Select,
   Skeleton,
   Spinner,
   Surface,
   Tabs,
-  Textarea
+  Textarea,
+  VisuallyHidden
 } from '@feitoza-ui/core';
 ```
 
 ## Installation
 
-The package is not published yet. Installation is future work.
-
-Future installation:
+The package is not published yet. After the first manual publish:
 
 ```bash
 npm install @feitoza-ui/core
@@ -106,6 +111,7 @@ Build the package locally:
 
 ```bash
 yarn.cmd build
+yarn.cmd test:consumers
 ```
 
 ## Usage
@@ -179,7 +185,7 @@ The project uses Vitest and Testing Library.
 yarn.cmd test --run
 ```
 
-Current tests cover rendering, interactions, disabled behavior, ref forwarding, native prop pass-through, layout props, and basic accessibility expectations for primitives.
+Current tests cover rendering, interactions, keyboard behavior, disabled behavior, ref forwarding, native prop pass-through, controlled state, form semantics, and accessibility expectations for primitives.
 
 See [Testing Strategy](docs/TESTING_STRATEGY.md).
 
@@ -195,6 +201,24 @@ yarn.cmd build-storybook
 It currently documents Overview, Getting Started, Foundations, Components, Guidelines, Accessibility, and Roadmap.
 
 See [Storybook Strategy](docs/STORYBOOK.md).
+
+## Release Validation
+
+Run the complete local release-readiness set:
+
+```bash
+yarn.cmd lint
+yarn.cmd type-check
+yarn.cmd test --run
+yarn.cmd build
+yarn.cmd build-storybook
+yarn.cmd test:a11y
+yarn.cmd test:visual
+yarn.cmd test:consumers
+npm.cmd pack --dry-run
+```
+
+`test:consumers` packs the library, installs that exact tarball into the React + Vite and Next.js fixtures, and runs their type-check and production builds.
 
 ## Roadmap
 

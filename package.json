@@ -7,14 +7,14 @@
   "license": "MIT",
   "author": "Maria Fernanda",
   "type": "module",
-  "main": "./dist/feitoza-ui.cjs.js",
+  "main": "./dist/feitoza-ui.cjs",
   "module": "./dist/feitoza-ui.es.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/feitoza-ui.es.js",
-      "require": "./dist/feitoza-ui.cjs.js"
+      "require": "./dist/feitoza-ui.cjs"
     }
   },
   "files": [
@@ -64,7 +64,10 @@
     "type-check": "tsc --noEmit",
     "coverage": "vitest run --coverage",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "test:visual": "playwright test -c playwright.visual.config.ts",
+    "test:a11y": "playwright test -c playwright.accessibility.config.ts",
+    "test:consumers": "node scripts/verify-consumers.mjs"
   },
   "lint-staged": {
     "*.{ts,tsx}": [

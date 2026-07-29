@@ -17,6 +17,15 @@ describe('Progress', () => {
     expect(progress).toHaveAttribute('aria-valuemax', '100');
   });
 
+  it('uses a default accessible name when no label is provided', () => {
+    render(<Progress value={48} />);
+
+    expect(screen.getByRole('progressbar', { name: 'Progress' })).toHaveAttribute(
+      'aria-valuenow',
+      '48'
+    );
+  });
+
   it('clamps values to the configured range', () => {
     render(<Progress label="Clamped" max={10} value={24} />);
 

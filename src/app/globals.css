@@ -1108,18 +1108,24 @@ html[data-theme='light'] .page-header h1 {
   background: color-mix(in srgb, var(--docs-surface-raised) 92%, transparent);
 }
 
+.foundation-preview-surface span {
+  flex: 1 1 0;
+  min-inline-size: 0;
+  inline-size: 100%;
+}
+
 .foundation-preview-surface span:nth-child(1) {
-  width: 56px;
+  max-inline-size: 56px;
   height: 28px;
 }
 
 .foundation-preview-surface span:nth-child(2) {
-  width: 72px;
+  max-inline-size: 72px;
   height: 36px;
 }
 
 .foundation-preview-surface span:nth-child(3) {
-  width: 88px;
+  max-inline-size: 88px;
   height: 44px;
 }
 
@@ -1998,17 +2004,17 @@ body > *::before {
 }
 
 .foundation-detail-preview-frame .foundation-preview-surface span:nth-child(1) {
-  width: 72px;
+  max-inline-size: 72px;
   height: 36px;
 }
 
 .foundation-detail-preview-frame .foundation-preview-surface span:nth-child(2) {
-  width: 96px;
+  max-inline-size: 96px;
   height: 48px;
 }
 
 .foundation-detail-preview-frame .foundation-preview-surface span:nth-child(3) {
-  width: 124px;
+  max-inline-size: 124px;
   height: 60px;
 }
 

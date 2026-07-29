@@ -4,11 +4,12 @@ import {
   useContext,
   useId,
   useMemo,
-  useState,
   type ButtonHTMLAttributes,
   type HTMLAttributes,
   type KeyboardEvent
 } from 'react';
+import { composeEventHandlers } from '@/internal/events/composeEventHandlers';
+import { useControllableState } from '@/internal/state/useControllableState';
 import * as S from './styles';
 
 type TabsContextValue = {
@@ -38,22 +39,19 @@ export type TabsRootProps = HTMLAttributes<HTMLDivElement> & {
 const Root = forwardRef<HTMLDivElement, TabsRootProps>(
   ({ value, defaultValue, onValueChange, ...props }, ref) => {
     const generatedId = useId();
-    const [internalValue, setInternalValue] = useState(defaultValue ?? '');
-    const currentValue = value ?? internalValue;
+    const [currentValue, setValue] = useControllableState({
+      value,
+      defaultValue: defaultValue ?? '',
+      onChange: onValueChange
+    });
 
     const context = useMemo<TabsContextValue>(
       () => ({
         value: currentValue,
         baseId: `feitoza-tabs-${generatedId}`,
-        setValue: (nextValue) => {
-          if (value === undefined) {
-            setInternalValue(nextValue);
-          }
-
-          onValueChange?.(nextValue);
-        }
+        setValue
       }),
-      [currentValue, generatedId, onValueChange, value]
+      [currentValue, generatedId, setValue]
     );
 
     return (
@@ -109,12 +107,6 @@ const Trigger = forwardRef<HTMLButtonElement, TabsTriggerProps>(
     const contentId = `${context.baseId}-content-${value}`;
 
     const handleKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
-      onKeyDown?.(event);
-
-      if (event.defaultPrevented) {
-        return;
-      }
-
       if (event.key === 'ArrowRight') {
         event.preventDefault();
         focusTab(event.currentTarget, 'next');
@@ -147,14 +139,12 @@ const Trigger = forwardRef<HTMLButtonElement, TabsTriggerProps>(
         disabled={disabled}
         tabIndex={selected ? 0 : -1}
         $selected={selected}
-        onClick={(event) => {
-          onClick?.(event);
-
+        onClick={composeEventHandlers(onClick, (event) => {
           if (!event.defaultPrevented && !disabled) {
             context.setValue(value);
           }
-        }}
-        onKeyDown={handleKeyDown}
+        })}
+        onKeyDown={composeEventHandlers(onKeyDown, handleKeyDown)}
         {...props}
       />
     );
