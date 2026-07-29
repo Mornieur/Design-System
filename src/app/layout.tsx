@@ -6,6 +6,7 @@ import StyledComponentsRegistry from '@/app/_components/StyledComponentsRegistry
 import SiteFooter from '@/app/_components/SiteFooter';
 import SiteHeader from '@/app/_components/SiteHeader';
 import {getSiteMetadata, themeScript} from '@/app/_content/site';
+import {getSiteUrl} from '@/app/_content/urls';
 import './globals.css';
 
 const inter = Inter({
@@ -35,13 +36,29 @@ const outfit = Outfit({
 export async function generateMetadata(): Promise<Metadata> {
   const locale = (await getLocale()) as 'en' | 'pt-BR';
   const siteMetadata = getSiteMetadata(locale);
+  const siteUrl = getSiteUrl();
 
   return {
+    metadataBase: siteUrl ? new URL(siteUrl) : undefined,
+    applicationName: 'FeitozaUI',
     title: {
       default: siteMetadata.title,
       template: `%s | ${siteMetadata.shortTitle}`
     },
-    description: siteMetadata.description
+    description: siteMetadata.description,
+    openGraph: {
+      type: 'website',
+      siteName: 'FeitozaUI',
+      title: siteMetadata.title,
+      description: siteMetadata.description,
+      locale: locale === 'pt-BR' ? 'pt_BR' : 'en_US',
+      alternateLocale: locale === 'pt-BR' ? 'en_US' : 'pt_BR'
+    },
+    twitter: {
+      card: 'summary',
+      title: siteMetadata.title,
+      description: siteMetadata.description
+    }
   };
 }
 

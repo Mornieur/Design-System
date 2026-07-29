@@ -4,8 +4,7 @@
 
 The Next.js app in this repository is:
 
-- a future showcase frontend;
-- a future navigable documentation surface;
+- a navigable documentation surface;
 - not part of the published package;
 - not the source of truth for component APIs;
 - not a BFF;

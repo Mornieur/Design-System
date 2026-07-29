@@ -63,7 +63,7 @@ describe('ComponentExampleSection', () => {
   it('renders the preview tab by default and loads the example renderer', async () => {
     const entry = getComponentEntry(locale, 'button');
 
-    if (!entry) {
+    if (!entry?.storybook) {
       throw new Error('button entry missing');
     }
 
@@ -84,7 +84,7 @@ describe('ComponentExampleSection', () => {
     const user = userEvent.setup();
     const entry = getComponentEntry(locale, 'button');
 
-    if (!entry) {
+    if (!entry?.storybook) {
       throw new Error('button entry missing');
     }
 
@@ -110,7 +110,7 @@ describe('ComponentExampleSection', () => {
 
     const entry = getComponentEntry(locale, 'button');
 
-    if (!entry) {
+    if (!entry?.storybook) {
       throw new Error('button entry missing');
     }
 
@@ -137,7 +137,7 @@ describe('ComponentExampleSection', () => {
 
     const entry = getComponentEntry(locale, 'button');
 
-    if (!entry) {
+    if (!entry?.storybook) {
       throw new Error('button entry missing');
     }
 
@@ -160,7 +160,7 @@ describe('ComponentExampleSection', () => {
   it('renders accessible links for the isolated example and Storybook', () => {
     const entry = getComponentEntry(locale, 'card');
 
-    if (!entry) {
+    if (!entry?.storybook) {
       throw new Error('card entry missing');
     }
 

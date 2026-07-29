@@ -1,6 +1,6 @@
 # Architecture
 
-FeitozaUI is currently a React and TypeScript project with a Next.js app, Storybook, Vite library build, Styled Components, Vitest, and Testing Library.
+FeitozaUI is a React and TypeScript project with a Next.js documentation app, Storybook, Vite library build, Styled Components, Vitest, and Testing Library.
 
 The architecture is a UI Engineering Platform with clear separation between reusable package code, documentation, and future examples.
 
@@ -9,7 +9,7 @@ The architecture is a UI Engineering Platform with clear separation between reus
 - `src/design-tokens`: current token definitions.
 - `src/components`: current component implementation grouped by component type.
 - `src/stories` and component stories: Storybook documentation surface.
-- `src/app`: Next.js app, intended to become a future showcase surface.
+- `src/app`: Next.js documentation app for installation, foundations, components, accessibility, and guides.
 - `vite.config.ts`: library build configuration.
 - `package.json`: package metadata, scripts, and future publishing configuration.
 
@@ -19,9 +19,9 @@ The core package exposes reusable foundations, primitives, components, and types
 
 Target package name: `@feitoza-ui/core`.
 
-## Next App As Showcase
+## Documentation App
 
-The Next.js app should become a frontend-only showcase. It should demonstrate realistic usage of the design system without becoming the source of truth for reusable components.
+The Next.js app is the navigable public documentation surface. It explains adoption, foundations, components, accessibility, and architecture without becoming the source of truth for reusable components.
 
 ## Storybook As Product
 

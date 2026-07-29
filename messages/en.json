@@ -4,6 +4,7 @@
     "menu": "Menu",
     "storybook": "Storybook",
     "github": "GitHub",
+    "npm": "npm",
     "browseDocs": "Browse docs",
     "backToDocs": "Back to docs",
     "returnHome": "Return home"

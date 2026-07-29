@@ -7,7 +7,7 @@ const localizedSiteContent = {
       shortTitle: 'FeitozaUI',
       tagline: 'React components and design guidance for practical product interfaces.',
       description:
-        'FeitozaUI is a React component library focused on clear APIs, design foundations, and accessible implementation guidance.'
+        'Accessible React and TypeScript design system with tested components, documented APIs, Storybook, and verified Vite/Next.js distribution.'
     },
     homeHighlights: [
       { label: 'Built for', value: 'React applications' },

@@ -1,6 +1,6 @@
 {
   "name": "@feitoza-ui/core",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "React and TypeScript UI Engineering Platform focused on foundations, primitives, accessibility, testing, and documentation.",
   "sideEffects": false,
   "private": false,

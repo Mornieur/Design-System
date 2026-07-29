@@ -1,10 +1,12 @@
 import {getLocale, getTranslations} from 'next-intl/server';
 import {getFooterNavigation} from '@/app/_content/navigation';
+import {getStorybookUrl} from '@/app/_content/urls';
 import {Link} from '@/i18n/navigation';
 
 export default async function SiteFooter() {
   const locale = (await getLocale()) as 'en' | 'pt-BR';
   const footerNavigation = getFooterNavigation(locale);
+  const storybookUrl = getStorybookUrl();
   const t = await getTranslations();
 
   return (
@@ -24,6 +26,18 @@ export default async function SiteFooter() {
           >
             {t('common.github')}
           </a>
+          <a
+            href="https://www.npmjs.com/package/@feitoza-ui/core"
+            target="_blank"
+            rel="noreferrer"
+          >
+            {t('common.npm')}
+          </a>
+          {storybookUrl ? (
+            <a href={storybookUrl} target="_blank" rel="noreferrer">
+              {t('common.storybook')}
+            </a>
+          ) : null}
         </nav>
       </div>
     </footer>

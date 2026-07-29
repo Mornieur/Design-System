@@ -166,7 +166,7 @@ export default function ComponentDocumentation({
         <ComponentExampleSection
           componentSlug={entry.slug}
           example={featuredExample}
-          storybookUrl={entry.storybook.url}
+          storybookUrl={entry.storybook?.url}
           compact
           locale={locale}
         />
@@ -197,7 +197,7 @@ export default function ComponentDocumentation({
               key={example.id}
               componentSlug={entry.slug}
               example={example}
-              storybookUrl={entry.storybook.url}
+              storybookUrl={entry.storybook?.url}
               locale={locale}
             />
           ))}
@@ -208,7 +208,7 @@ export default function ComponentDocumentation({
               key={example.id}
               componentSlug={entry.slug}
               example={example}
-              storybookUrl={entry.storybook.url}
+              storybookUrl={entry.storybook?.url}
               locale={locale}
             />
           ))}
@@ -291,14 +291,16 @@ export default function ComponentDocumentation({
           ))}
         </div>
         <div className="docs-links-row">
-          <a
-            className="button-link button-link-secondary"
-            href={entry.storybook.url}
-            target="_blank"
-            rel="noreferrer"
-          >
-            {copy.openStorybook}
-          </a>
+          {entry.storybook ? (
+            <a
+              className="button-link button-link-secondary"
+              href={entry.storybook.url}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {copy.openStorybook}
+            </a>
+          ) : null}
           <a
             className="button-link button-link-secondary"
             href={entry.source.url}

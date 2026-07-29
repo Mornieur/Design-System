@@ -69,7 +69,7 @@ export type ComponentEntry = {
   propsDefinition: ComponentPropsDefinition;
   accessibility: string[];
   relatedComponentSlugs: string[];
-  storybook: ComponentLinkDefinition;
+  storybook?: ComponentLinkDefinition;
   source: ComponentLinkDefinition;
 };
 

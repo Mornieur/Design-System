@@ -1,8 +1,8 @@
 import type { ComponentLinkDefinition } from './types';
+import {getStorybookUrl} from '../urls';
 
 const repositoryBaseUrl = 'https://github.com/Mornieur/design-system';
 const repositorySourceBranch = 'develop';
-const storybookBaseUrl = 'http://localhost:6006';
 
 export const packageName = '@feitoza-ui/core';
 
@@ -22,7 +22,16 @@ export function createSourceLink(path: string, label: string): ComponentLinkDefi
   };
 }
 
-export function createStorybookLink(path: string, label: string): ComponentLinkDefinition {
+export function createStorybookLink(
+  path: string,
+  label: string
+): ComponentLinkDefinition | undefined {
+  const storybookBaseUrl = getStorybookUrl();
+
+  if (!storybookBaseUrl) {
+    return undefined;
+  }
+
   return {
     label,
     path,

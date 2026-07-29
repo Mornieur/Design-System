@@ -67,14 +67,16 @@ export default async function ExampleDetailPage({
             >
               {locale === 'en' ? 'Back to component' : 'Voltar para o componente'}
             </Link>
-            <a
-              className="button-link button-link-secondary"
-              href={entry.component.storybook.url}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Storybook
-            </a>
+            {entry.component.storybook ? (
+              <a
+                className="button-link button-link-secondary"
+                href={entry.component.storybook.url}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Storybook
+              </a>
+            ) : null}
           </div>
         </section>
 
@@ -82,7 +84,7 @@ export default async function ExampleDetailPage({
           <ComponentExampleSection
             componentSlug={entry.component.slug}
             example={entry.example}
-            storybookUrl={entry.component.storybook.url}
+            storybookUrl={entry.component.storybook?.url}
             compact
             hideOpenExample
             locale={locale}

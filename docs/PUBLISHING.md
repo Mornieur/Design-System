@@ -1,8 +1,6 @@
 # Publishing
 
-FeitozaUI is not published yet.
-
-This document describes the intended future publishing process. It does not enable automatic publishing and it should not be interpreted as a current release workflow.
+FeitozaUI is published on npm. This document describes the manual process for future releases. It does not enable automatic publishing.
 
 ## Target Package
 
@@ -33,8 +31,6 @@ Future releases should follow Semantic Versioning:
 See `docs/roadmap/RELEASES.md` for versioning rules and examples.
 
 ## Manual Release Process
-
-The first public release should be manual.
 
 Recommended flow:
 

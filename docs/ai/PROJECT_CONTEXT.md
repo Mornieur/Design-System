@@ -78,7 +78,7 @@ Rules:
 
 ### 3. Next.js app
 
-Future showcase and navigable documentation surface.
+Navigable documentation surface for the public library.
 
 Main location:
 
@@ -86,8 +86,8 @@ Main location:
 
 Current maturity:
 
-- placeholder technical surface;
-- not yet a full documentation site;
+- active documentation surface;
+- focused on the current public documentation scope;
 - not the source of truth for component APIs.
 
 Rules:
@@ -113,7 +113,7 @@ The exported token surface is smaller than the internal token set. Do not assume
 
 - Public library: active and authoritative for package behavior.
 - Storybook: primary documentation product today.
-- Next.js app: future-facing placeholder and should be treated conservatively.
+- Next.js app: active documentation surface and should remain within its documented scope.
 
 ## Out of scope for the current platform phase
 

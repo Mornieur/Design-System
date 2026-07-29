@@ -46,7 +46,7 @@ FeitozaUI is organized around three surfaces:
 
 - Core library: reusable primitives, tokens, types, and public exports.
 - Storybook: documentation and component exploration.
-- Next app: a future frontend-only showcase surface.
+- Documentation app: a navigable public documentation surface. It does not define reusable component behavior.
 
 See [Architecture](docs/architecture/ARCHITECTURE.md) and [Architecture Decisions](docs/architecture/DECISIONS.md).
 
@@ -203,7 +203,7 @@ See [Core Principles](docs/philosophy/CORE_PRINCIPLES.md).
 |-- docs/                    # Project documentation
 |-- public/                  # Static assets used by the app/docs
 |-- src/
-|   |-- app/                 # Next.js app, future showcase surface
+|   |-- app/                 # Next.js documentation app
 |   |-- components/          # Public components under active platform scope
 |   |-- design-tokens/       # Token definitions and token docs
 |   |-- showcase/            # Storybook-only showcase compositions
@@ -237,6 +237,15 @@ yarn.cmd build-storybook
 It currently documents Overview, Getting Started, Foundations, Components, Guidelines, Accessibility, and Roadmap.
 
 See [Storybook Strategy](docs/STORYBOOK.md).
+
+## Public Deployment Setup
+
+The documentation app uses optional public environment variables. Leave them unset for local development; production links are intentionally omitted until the corresponding public URL exists.
+
+- `NEXT_PUBLIC_SITE_URL`: final public URL for the Next.js documentation app.
+- `NEXT_PUBLIC_STORYBOOK_URL`: final public Storybook URL from Chromatic.
+
+Copy [`.env.example`](.env.example) locally if needed. Do not place credentials in public environment variables.
 
 ## Release Validation
 

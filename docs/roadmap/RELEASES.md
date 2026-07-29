@@ -1,14 +1,12 @@
 # Releases
 
-FeitozaUI is not published yet.
-
-This document defines the intended release and versioning strategy for future public npm releases. It does not enable automated publishing.
+FeitozaUI is published on npm. This document defines the release and versioning strategy for future public npm releases. It does not enable automated publishing.
 
 ## Current Status
 
 - Package name: `@feitoza-ui/core`
-- Current package version: `0.2.3`
-- Intended registry: public npm
+- Current published package version: `0.3.0`
+- Registry: public npm
 - Automated publishing: disabled
 - Release automation: not configured
 - Changesets: future option, not installed

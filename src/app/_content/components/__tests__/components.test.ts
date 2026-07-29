@@ -22,7 +22,7 @@ describe('component documentation registry', () => {
     const entry = getComponentEntry('en', 'button');
 
     expect(entry?.title).toBe('Button');
-    expect(entry?.storybook.path).toBe('/docs/components-button--docs');
+    expect(entry?.storybook?.path).toBe('/docs/components-button--docs');
     expect(entry?.source.path).toBe('src/components/atoms/Button/index.tsx');
   });
 

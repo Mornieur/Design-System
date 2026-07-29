@@ -1,6 +1,6 @@
 # Release Checklist
 
-FeitozaUI is not published yet. Use this checklist only when preparing a future manual release.
+FeitozaUI is published on npm. Use this checklist when preparing a future manual release.
 
 ## Before Release
 

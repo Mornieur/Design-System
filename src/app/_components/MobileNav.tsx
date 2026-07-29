@@ -4,9 +4,10 @@ import {Link} from '@/i18n/navigation';
 
 type MobileNavProps = {
   items: NavItem[];
+  storybookUrl?: string;
 };
 
-export default function MobileNav({items}: MobileNavProps) {
+export default function MobileNav({items, storybookUrl}: MobileNavProps) {
   const t = useTranslations();
 
   return (
@@ -26,6 +27,18 @@ export default function MobileNav({items}: MobileNavProps) {
           >
             GitHub
           </a>
+          <a
+            href="https://www.npmjs.com/package/@feitoza-ui/core"
+            target="_blank"
+            rel="noreferrer"
+          >
+            {t('common.npm')}
+          </a>
+          {storybookUrl ? (
+            <a href={storybookUrl} target="_blank" rel="noreferrer">
+              {t('common.storybook')}
+            </a>
+          ) : null}
         </div>
       </details>
     </div>

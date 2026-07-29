@@ -10,7 +10,7 @@ import CopyCodeButton from './CopyCodeButton';
 type ComponentExampleSectionProps = {
   componentSlug: string;
   example: ComponentExampleDefinition;
-  storybookUrl: string;
+  storybookUrl?: string;
   compact?: boolean;
   hideOpenExample?: boolean;
   locale: AppLocale;
@@ -118,14 +118,16 @@ export default function ComponentExampleSection({
                 {copy.openExample}
               </Link>
             )}
-            <a
-              className="component-example-action"
-              href={storybookUrl}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Storybook
-            </a>
+            {storybookUrl ? (
+              <a
+                className="component-example-action"
+                href={storybookUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Storybook
+              </a>
+            ) : null}
           </div>
         </div>
 
